@@ -17,7 +17,11 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     static associate(models) {
-      // define association here
+      User.hasMany(models.Product, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
+      User.hasMany(models.Favorite, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
+      User.hasMany(models.Order, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
+      User.hasMany(models.Review, {foreignKey: 'buyerId', onDelete: 'CASCADE', hooks: true})
+      User.belongsToMany(models.Review, {foreignKey: 'sellerId', onDelete: 'CASCADE', hooks: true})
     }
     static async login({ credential, password }) {
       const { Op } = require("sequelize");
@@ -59,11 +63,25 @@ module.exports = (sequelize, DataTypes) => {
           }
         }
       },
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 50]
+        }
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [1, 50]
+        }
+      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [3, 256]
+          len: [3, 256],
+          isEmail: true
         }
       },
       hashedPassword: {
@@ -71,6 +89,24 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           len: [60, 60]
+        }
+      },
+      address: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [1, 100]
+        }
+      },
+      bio: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [1, 300]
+        }
+      },
+      profileImage: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [1, 2000]
         }
       }
     },
