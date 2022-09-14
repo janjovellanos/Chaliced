@@ -65,7 +65,9 @@ Returns the information about the current user that is logged in.
       "firstName": "John",
       "lastName": "Smith",
       "email": "john.smith@gmail.com",
-      "username": "JohnSmith"
+      "username": "JohnSmith",
+      "bio": "This is about me",
+      "profileImage": "photo of me"
     }
     ```
 
@@ -102,6 +104,8 @@ information.
       "lastName": "Smith",
       "email": "john.smith@gmail.com",
       "username": "JohnSmith",
+      "bio": "This is about me",
+      "profileImage": "photo of me"      
       "token": ""
     }
     ```
@@ -387,7 +391,6 @@ Returns the details of a product specified by its id.
 Creates and returns a new product.
 
 * Require Authentication: true
-* Require proper authorization: Album must belong to the current user
 * Request
   * Method: POST
   * URL: /products
@@ -449,7 +452,7 @@ Creates and returns a new product.
 Updates and returns an existing product.
 
 * Require Authentication: true
-* Require proper authorization: Song must belong to the current user
+* Require proper authorization: Product must belong to the current user
 * Request
   * Method: PUT
   * URL: /products/:productsId
@@ -524,7 +527,7 @@ Updates and returns an existing product.
 Deletes an existing product.
 
 * Require Authentication: true
-* Require proper authorization: Song must belong to the current user
+* Require proper authorization: Product must belong to the current user
 * Request
   * Method: DELETE
   * URL: /products/:productId
@@ -864,7 +867,7 @@ Updates and returns an existing review.
 Deletes an existing review.
 
 * Require Authentication: true
-* Require proper authorization: Album must belong to the current user
+* Require proper authorization: Review must belong to the current user
 * Request
   * Method: DELETE
   * URL: /reviews/:reviewId
@@ -1021,7 +1024,7 @@ Create and return a new favorite for a product specified by id.
     }
     ```
 
-## Delete a Favorite (Unlike)
+## Delete a Favorite (Unlike) for a Product based on the Product's id
 
 Delete an existing favorite for a product specified by id.
 
@@ -1288,7 +1291,7 @@ Create and return a new image for a product specified by id.
 Delete an existing image.
 
 * Require Authentication: true
-* Require proper authorization: Product image must belong to the current user
+* Require proper authorization: Image must belong to the current user
 * Request
   * Method: DELETE
   * URL: /images/:imageId
