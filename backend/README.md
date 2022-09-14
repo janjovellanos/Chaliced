@@ -1,4 +1,4 @@
-# Chaciced
+# Chaliced
 
 ## Database Schema Design
 
