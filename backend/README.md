@@ -1323,3 +1323,50 @@ Delete an existing image.
       "message": "Image couldn't be found",
       "statusCode": 404
     }  
+
+## Create a Category
+
+Create and return a new category for products
+
+* Require Authentication: true
+* Request
+  * Method: POST
+  * URL: /categories
+  * Headers:
+    * Content-Type: application/json
+  * Body: 
+
+    ```json
+    {
+      "name": "Sneakers"
+    }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "id": 3,
+      "name": "Sneakers"
+    }
+    ```
+
+* Error Response: Body validation error
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Validation Error",
+      "statusCode": 400,
+      "errors": {
+        "name": "Category name is required"
+      }
+    }
+    ```
