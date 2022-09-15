@@ -121,6 +121,7 @@ router.post('/:productId/images', requireAuth, async (req, res, next) => {
         if (product.userId === user.id) {
             const newImage = await Image.create({
                 url,
+                userId: user.id,
                 productId: +productId
             })
             res.status(201);
@@ -147,15 +148,22 @@ router.delete('/images/:imageId', requireAuth, async (req, res, next) => {
     const image = await Image.findByPk(imageId);
 
     if (image) {
-        await favorite.destroy();
+        if (image.userId === user.id) {
+            await image.destroy();
             res.json({
                 message: 'Successfully deleted',
                 statusCode: 200
             })
+        } else {
+            const err = new Error('Not Authorized');
+            err.status = 403;
+            err.title = 'Not Authorized';
+            return next(err);
+        }
     } else {
-        const err = new Error("Favorite couldn't be found");
+        const err = new Error("Image couldn't be found");
         err.status = 404;
-        err.title = "Favorite couldn't be found";
+        err.title = "Image couldn't be found";
         return next(err);
     }
 });
