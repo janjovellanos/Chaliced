@@ -255,7 +255,7 @@ Returns all the products.
           "name": "Salomon XT-4",
           "description": "Nice hiking shoe",
           "size": "US10",
-          "price": "$140",
+          "price": 140,
           "userId": 1,
           "categoryId": 3,
           "sold": false,
@@ -302,7 +302,7 @@ Returns all the songs created by the current user.
           "name": "Salomon XT-4",
           "description": "Nice hiking shoe",
           "size": "US10",
-          "price": "$140",
+          "price": 140,
           "userId": 1,
           "categoryId": 3,
           "sold": false,
@@ -347,7 +347,7 @@ Returns the details of a product specified by its id.
       "name": "Salomon XT-4",
       "description": "Nice hiking shoe",
       "size": "US10",
-      "price": "$140",
+      "price": 140,
       "userId": 1,
       "categoryId": 3,
       "sold": false,
@@ -403,7 +403,7 @@ Creates and returns a new product.
       "name": "Salomon XT-4",
       "description": "Nice hiking shoe",
       "size": "US10",
-      "price": "$140",
+      "price": 140,
       "categoryId": 3
     }
     ```
@@ -420,7 +420,7 @@ Creates and returns a new product.
       "name": "Salomon XT-4",
       "description": "Nice hiking shoe",
       "size": "US10",
-      "price": "$140",
+      "price": 140,
       "userId": 1,
       "categoryId": 3,
       "sold": false,
@@ -465,7 +465,7 @@ Updates and returns an existing product.
       "name": "Y2K Umbro Shirt",
       "description": "Great vintage condition",
       "size": "M",
-      "price": "$30",
+      "price": 30,
       "categoryId": 1
     }
     ```
@@ -482,7 +482,7 @@ Updates and returns an existing product.
       "name": "Y2K Umbro Shirt",
       "description": "Great vintage condition",
       "size": "M",
-      "price": "$30",
+      "price": 30,
       "userId": 1,
       "categoryId": 1,
       "sold": false,
@@ -592,7 +592,7 @@ Returns all the reviews for a specified user.
              "name": "Y2K Umbro Shirt",
              "description": "Great vintage condition",
              "size": "M",
-             "price": "$30",
+             "price": 30,
           }
         },
         {
@@ -609,7 +609,7 @@ Returns all the reviews for a specified user.
              "name": "Salomon XT-4",
              "description": "Good hiking shoe",
              "size": "US10",
-             "price": "$140",      
+             "price": 140,      
           }
         }
       ]
@@ -649,7 +649,7 @@ Returns all the reviews of current user.
              "name": "Y2K Umbro Shirt",
              "description": "Great vintage condition",
              "size": "M",
-             "price": "$30",
+             "price": 30,
           }
         },
         {
@@ -666,7 +666,7 @@ Returns all the reviews of current user.
              "name": "Salomon XT-4",
              "description": "Good hiking shoe",
              "size": "US10",
-             "price": "$140",       
+             "price": 140,       
           }
         }
       ]
@@ -704,7 +704,7 @@ Returns the details of a review specified by its id.
          "name": "Y2K Umbro Shirt",
          "description": "Great vintage condition",
          "size": "M",
-         "price": "$30",
+         "price": 30,
        }
      }
     ```
@@ -763,7 +763,7 @@ Creates and returns a new review.
          "name": "Y2K Umbro Shirt",
          "description": "Great vintage condition",
          "size": "M",
-         "price": "$30",
+         "price": 30,
        }
      }
     ```
@@ -802,7 +802,7 @@ Updates and returns an existing review.
     {
       "body": "Great customer service!",
       "stars": 4,
-      "productId": 2 ---- ??????
+      "productId": 2
     }
     ```
 
@@ -827,7 +827,7 @@ Updates and returns an existing review.
          "name": "Y2K Umbro Shirt",
          "description": "Great vintage condition",
          "size": "M",
-         "price": "$30",
+         "price": 30,
        }
      }
     ```
@@ -967,7 +967,7 @@ Returns all the favorites that belong to the current user.
             "id": 4,
             "name": "Salomon XT-4",
             "size": "US10",
-            "price": "$140"
+            "price": 140
           }
         },
         {
@@ -978,7 +978,7 @@ Returns all the favorites that belong to the current user.
             "id": 2,
             "name": "Y2K Umbro Shirt",
             "size": "M",
-            "price": "$30"
+            "price": 30
           }
         },    
       ]
@@ -1094,7 +1094,7 @@ Returns all the orders that belong to the current user.
             "id": 4,
             "name": "Salomon XT-4",
             "size": "US10",
-            "price": "$140"
+            "price": 140
           }
         },
         {
@@ -1105,7 +1105,7 @@ Returns all the orders that belong to the current user.
             "id": 2,
             "name": "Y2K Umbro Shirt",
             "size": "M",
-            "price": "$30"
+            "price": 30
           }
         }     
       ]
@@ -1139,7 +1139,7 @@ Returns all the orders that belong to the current user.
             "id": 4,
             "name": "Salomon XT-4",
             "size": "US10",
-            "price": "$140"
+            "price": 140
           }
         },
         {
@@ -1150,7 +1150,7 @@ Returns all the orders that belong to the current user.
             "id": 2,
             "name": "Y2K Umbro Shirt",
             "size": "M",
-            "price": "$30"
+            "price": 30
           }
         }     
       ]
@@ -1184,7 +1184,7 @@ Create (Buy) and return a new order for a product.
         "id": 3,
         "name": "John Bull Black Pants",
         "size": "31",
-        "price": "$45"
+        "price": 45
       }      
     }
     ```
