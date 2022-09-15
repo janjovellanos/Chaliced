@@ -38,18 +38,22 @@ router.post("/", validateLogin, async (req, res, next) => {
   return res.json({
     user
   });
-});
 
-//
+  // return res.json({
+  //   id: user.id,
+  //   firstName: user.firstName,
+  //   lastName: user.lastName,
+  //   username: user.username,
+  //   email: user.email,
+  //   token
+  // })
+
+});
 
 // Log out
 router.delete("/", (_req, res) => {
   res.clearCookie("token");
   return res.json({ message: "success" });
 });
-//
-//
 
-//
-//
 module.exports = router;

@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       Product.hasOne(models.Order, {foreignKey: 'productId', onDelete: 'CASCADE', hooks: true})
       Product.hasOne(models.Review, {foreignKey: 'productId', onDelete: 'CASCADE', hooks: true})
       Product.belongsTo(models.Category, {foreignKey: 'categoryId'})
-      Product.belongsTo(models.User, {foreignKey: 'userId'})
+      Product.belongsTo(models.User, {foreignKey: 'userId', as: 'Seller'})
     }
   }
   Product.init({

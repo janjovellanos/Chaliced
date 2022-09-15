@@ -2,14 +2,15 @@ const router = require("express").Router();
 //
 const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
+const productRouter = require("./products.js");
 
 router.use("/session", sessionRouter);
-
 router.use("/users", usersRouter);
+router.use("/products", productRouter);
 
-router.post("/test", (req, res) => {
-  res.json({ requestBody: req.body });
-});
+// router.post("/test", (req, res) => {
+//   res.json({ requestBody: req.body });
+// });
 
 //=============== Test Routes ============================//
 // // GET /api/set-token-cookie
@@ -25,7 +26,7 @@ router.get("/set-token-cookie", async (_req, res) => {
   return res.json({ user });
 });
 
-// GET /api/restore-user
+// GET current user
 const { restoreUser } = require("../../utils/auth.js");
 router.get("/restore-user", restoreUser, (req, res) => {
   return res.json(req.user);

@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Favorite, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
       User.hasMany(models.Order, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
       User.hasMany(models.Review, {foreignKey: 'buyerId', onDelete: 'CASCADE', hooks: true})
-      User.belongsToMany(models.Review, {foreignKey: 'sellerId', onDelete: 'CASCADE', hooks: true})
+      User.hasMany(models.Review, {foreignKey: 'sellerId', onDelete: 'CASCADE', hooks: true})
     }
     static async login({ credential, password }) {
       const { Op } = require("sequelize");
