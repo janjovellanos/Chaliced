@@ -8,7 +8,6 @@ module.exports = {
       },
       {
         name: 'Bottoms'
-
       },
       {
         name: 'Shoes'
