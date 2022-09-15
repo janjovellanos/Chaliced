@@ -139,26 +139,26 @@ router.post('/:productId/images', requireAuth, async (req, res, next) => {
     }
 });
 
-//delete an image of a product
-// router.delete('/:productId/images/:imageId', requireAuth, async (req, res, next) => {
-//     const { productId, imageId } = req.params;
-//     const { user } = req;
+//delete an image of a product by image id
+router.delete('/images/:imageId', requireAuth, async (req, res, next) => {
+    const { imageId } = req.params;
+    const { user } = req;
 
-//     const image = await Image.findByPk(imageId);
+    const image = await Image.findByPk(imageId);
 
-//     if (image) {
-//         await favorite.destroy();
-//             res.json({
-//                 message: 'Successfully deleted',
-//                 statusCode: 200
-//             })
-//     } else {
-//         const err = new Error("Favorite couldn't be found");
-//         err.status = 404;
-//         err.title = "Favorite couldn't be found";
-//         return next(err);
-//     }
-// });
+    if (image) {
+        await favorite.destroy();
+            res.json({
+                message: 'Successfully deleted',
+                statusCode: 200
+            })
+    } else {
+        const err = new Error("Favorite couldn't be found");
+        err.status = 404;
+        err.title = "Favorite couldn't be found";
+        return next(err);
+    }
+});
 
 //get specified product
 router.get('/:productId', requireAuth, async (req, res, next) => {
