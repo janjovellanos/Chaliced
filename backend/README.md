@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-![dbdiagram](https://github.com/janjovellanos/Chaliced-Clone/blob/main/images/db-schema.png)
+![dbdiagram](https://github.com/janjovellanos/Chaliced-Clone/blob/main/docs/images/db-schema.png)
 
 ## API Documentation
 
