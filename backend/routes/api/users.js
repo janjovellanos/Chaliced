@@ -1,7 +1,7 @@
 // backend/routes/api/users.js
 const express = require("express");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User } = require("../../db/models");
+const { User, Review, Product } = require("../../db/models");
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
@@ -25,6 +25,24 @@ const validateSignup = [
   handleValidationErrors
 ];
 //=======================================================
+
+//get all reviews of a specified user
+router.get("/:userId/reviews", requireAuth, async (req, res, next) => {
+  const { userId } = req.params;
+
+  const reviews = await Review.findAll({
+    where: { sellerId: +userId },
+    include: [
+        {
+            model: Product, attributes: ['id', 'name', 'size', 'price']
+        }
+    ]
+  });
+  res.json(reviews)
+})
+
+
+
 
 //================== Sign up ==========================//
 router.post("/", validateSignup, async (req, res) => {

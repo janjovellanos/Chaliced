@@ -1,105 +1,122 @@
 const express = require('express');
 const { requireAuth } = require('../../utils/auth');
-const { Product, Image, Favorite, Review, Order } = require('../../db/models');
+const { Product, Image, Favorite, Review, Order, User } = require('../../db/models');
+const product = require('../../db/models/product');
 
 const router = express.Router();
 
 
-//get details of a review from review id
-router.get('/:reviewId', requireAuth, async (req, res, next) => {
-    const { reviewId } = req.params;
+//get current user profile
+router.get('/profile', requireAuth, async (req, res, next) => {
+    const { user } = req;
+    res.json(user);
+});
 
-    const review = await Review.findByPk(reviewId, {
-        include: [
+//get products being sold by the current user
+router.get('/products', requireAuth, async (req, res, next) => {
+    const { user } = req;
+
+    const products = await Product.findAll({
+        where : { userId: user.id },
+        include : [
             {
-                model: Product, attributes: ['id', 'name', 'size', 'price']
+                model: Image, attributes: ['id', 'url', 'userId', 'productId']
             }
         ]
     })
-    if (review) {
-        res.json(review)
-    } else {
-        const err = new Error("Review couldn't be found");
-        err.status = 404;
-        err.title = "Review couldn't be found";
-        return next(err);
-    }
+    // SHOULD ADD CONDITION IF NO PRODUCTS??????? < -----------------------------
+    res.json(products);
 })
 
-//create a review for a product you've bought
-router.post('/', requireAuth, async (req, res, next) => {
+//get all review of the current user
+router.get('/reviews', requireAuth, async (req, res, next) => {
     const { user } = req;
-    const { body, stars, productId } = req.body;
 
-    const product = await Product.findByPk(productId, {
-        include: [
-            { model: Order, attributes: ['id', 'userId', 'productId'] },
-            { model: Review }
-        ]
-    });
-    //check if product was sold to the current user
-    if (product.sold && product.Order.userId === user.id) {
-        //check if you've already reviewed the product
-        if (!product.Review) {
-            const newReview = await Review.create({
-                buyerId: user.id,
-                sellerId: product.userId,
-                productId: +productId,
-                body,
-                stars
-            })
-            res.status(201);
-            res.json(newReview);
-        } else {
-            const err = new Error("You've already reviewed this item");
-            err.status = 409;
-            err.title = "You've already reviewed this item";
-            return next(err);
-        }
-    } else {
-        const err = new Error("Reviews can only be left on products you've purchased");
-        err.status = 400;
-        err.title = "Reviews can only be left on products you've purchased";
-        return next(err);
-    }
-})
-
-
-//get all reviews
-router.get('/', requireAuth, async (req, res, next) => {
     const reviews = await Review.findAll({
+        where: { sellerId: user.id },
         include: [
             {
                 model: Product, attributes: ['id', 'name', 'size', 'price']
-                // include: [{ model: Image, attributes: ['id', 'url'] }]
             }
         ]
     });
-        res.json({reviews})
+    res.json(reviews)
 });
 
-//get all favorites of specified product
-// router.get('/:productId/favorites', async (req, res, next) => {
-//     const { productId } = req.params;
+//get all products the current user has favorited
+router.get('/favorites', requireAuth, async (req, res, next) => {
+    const { user } = req;
 
-//     const product = await Product.findByPk(productId, {
-//         include: [
-//             {
-//                 model: Favorite,
-//                 include: [{ model: User, attributes: ['id', 'username', 'profileImage'] }]
-//             }
-//         ]
-//     });
-//     if (product) {
-//         const favorites = product.Favorites;
-//         res.json({ Favorites: favorites })
-//     } else {
-        // const err = new Error("Product couldn't be found");
-        // err.status = 404;
-        // err.title = "Product couldn't be found";
-        // return next(err);
-//     }
-// });
+    const favorites = await Favorite.findAll({
+        where: { userId: user.id },
+        include: [
+            {
+                model: Product, attributes: ['id', 'name', 'size', 'price']
+            }
+        ]
+    });
+    res.json(favorites)
+});
+
+//create an order for a product logged in as current user
+router.post('/orders/:productId', requireAuth, async (req, res, next) => {
+    const { productId } = req.params;
+    const { user } = req;
+
+    const product = await Product.findByPk(productId);
+
+    if (product && !product.sold) {
+        if (product.userId !== user.id) {
+            // create order
+            const newOrder = await Order.create({ userId: user.id, productId: +productId })
+            // update product to sold
+            product.update({sold: true})
+            res.json(newOrder)
+        } else {
+            const err = new Error("This is your own product");
+            err.status = 409;
+            err.title = "This is your own product";
+            return next(err)
+        }
+    } else {
+        const err = new Error("Product is sold or couldn't be found");
+        err.status = 404;
+        err.title = "Product is sold or couldn't be found";
+        return next(err)
+    }
+});
+
+//get all products the current user has ordered
+router.get('/orders', requireAuth, async (req, res, next) => {
+    const { user } = req;
+
+    const orders = await Order.findAll({
+        where: { userId: user.id },
+        include: [
+            {
+                model: Product, attributes: ['id', 'name', 'size', 'price']
+            }
+        ]
+    });
+    res.json(orders)
+});
+
+//get all products the current user has sold
+router.get('/sold', requireAuth, async (req, res, next) => {
+    const { user } = req;
+
+    const sold = await Product.findAll({
+        where: { userId: user.id, sold: true },
+        include: [
+            {
+                model: Order, attributes: ['id', 'userId', 'productId'],
+                include: {model: User}
+            }
+        ]
+    });
+
+    res.json(sold)
+});
 
 //create a favorite on specified product
 // router.post('/:productId/favorites', requireAuth, async (req, res, next) => {
@@ -119,10 +136,10 @@ router.get('/', requireAuth, async (req, res, next) => {
 //         // check to see if the current user has already favorited
 //         const userFavorited = favorites.some(fav => fav.dataValues.userId === user.id)
 //         if (userFavorited) {
-//             const err = new Error("Cannot favorite again");
-//             err.status = 409;
-//             err.title = "Cannot favorite again";
-//             return next(err)
+            // const err = new Error("Cannot favorite again");
+            // err.status = 409;
+            // err.title = "Cannot favorite again";
+            // return next(err)
 //         } else {
 //             const newFavorite = await Favorite.create({
 //                 userId: user.id,
@@ -192,13 +209,13 @@ router.get('/', requireAuth, async (req, res, next) => {
 
 //     if (product) {
 //         if (product.userId === user.id) {
-            // const newImage = await Image.create({
-            //     url,
-            //     userId: user.id,
-            //     productId: +productId
-            // })
-            // res.status(201);
-            // res.json(newImage);
+//             const newImage = await Image.create({
+//                 url,
+//                 userId: user.id,
+//                 productId: +productId
+//             })
+//             res.status(201);
+//             res.json(newImage);
 //         } else {
 //             const err = new Error('Not Authorized');
 //             err.status = 403;
