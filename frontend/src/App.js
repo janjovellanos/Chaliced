@@ -6,10 +6,12 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
 function App() {
-  const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser())
+    .then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (

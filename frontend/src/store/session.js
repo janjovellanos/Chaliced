@@ -19,11 +19,9 @@ const removeUser = () => {
   };
 };
 
-
-// thunks
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
-  const response = await csrfFetch("/api/session/login", {
+  const response = await csrfFetch("/api/session", {
     method: "POST",
     body: JSON.stringify({
       credential,
@@ -31,17 +29,13 @@ export const login = (user) => async (dispatch) => {
     }),
   });
 
-  // if (!response.ok) {
-  //   return null;
-  // }
-
   const data = await response.json();
   dispatch(setUser(data));
   return response;
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await csrfFetch("/api/session/logout", {
+  const response = await csrfFetch("/api/session", {
     method: "DELETE",
   });
   dispatch(removeUser());
@@ -49,19 +43,14 @@ export const logout = () => async (dispatch) => {
 };
 
 export const restoreUser = () => async (dispatch) => {
-  const response = await csrfFetch("/api/session");
+  const response = await csrfFetch("/api/my/profile");
   const data = await response.json();
-  dispatch(setUser(data.user));
-
-  // if (data.id) {
-  //   dispatch(setUser(data));
-  // }
-
+  dispatch(setUser(data));
   return response;
 };
 
 export const signup = (user) => async (dispatch) => {
-  const { firstName, lastName, username, email, password, profileImage } = user;
+  const { firstName, lastName, username, email, bio, password, profileImage } = user;
   const response = await csrfFetch("/api/signup", {
     method: "POST",
     body: JSON.stringify({
@@ -69,6 +58,7 @@ export const signup = (user) => async (dispatch) => {
       lastName,
       username,
       email,
+      bio,
       password,
       profileImage,
     }),

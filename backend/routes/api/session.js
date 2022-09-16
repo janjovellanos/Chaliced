@@ -33,20 +33,22 @@ router.post("/", validateLogin, async (req, res, next) => {
     return next(err);
   }
 
-  await setTokenCookie(res, user);
-
-  return res.json({
-    user
-  });
+  const token = await setTokenCookie(res, user);
 
   // return res.json({
-  //   id: user.id,
-  //   firstName: user.firstName,
-  //   lastName: user.lastName,
-  //   username: user.username,
-  //   email: user.email,
-  //   token
-  // })
+  //   user
+  // });
+
+  return res.json({
+    id: user.id,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    username: user.username,
+    email: user.email,
+    bio: user.bio,
+    profileImage: user.profileImage,
+    token
+  })
 
 });
 
