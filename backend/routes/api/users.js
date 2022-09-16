@@ -1,7 +1,7 @@
 // backend/routes/api/users.js
 const express = require("express");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User, Review, Product } = require("../../db/models");
+const { User, Review, Product, Image } = require("../../db/models");
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
@@ -38,8 +38,41 @@ router.get("/:userId/reviews", requireAuth, async (req, res, next) => {
         }
     ]
   });
-  res.json(reviews)
-})
+
+  if (reviews) {
+    res.json(reviews)
+  } else {
+    const err = new Error("This user has no reviews");
+    err.status = 404;
+    err.title = "This user has no reviews";
+    return next(err);
+  }
+
+});
+
+//get all products of a specified user
+router.get("/:userId/products", requireAuth, async (req, res, next) => {
+  const { userId } = req.params;
+
+  const products = await Product.findAll({
+    where: { userId: +userId },
+    include: [
+        {
+            model: Image, attributes: ['id', 'productId', 'url']
+        }
+    ]
+  });
+
+  if (products) {
+    res.json(products)
+  } else {
+    const err = new Error("This user has no products for sale");
+    err.status = 404;
+    err.title = "This user has no products for sale";
+    return next(err);
+  }
+
+});
 
 
 
@@ -47,7 +80,7 @@ router.get("/:userId/reviews", requireAuth, async (req, res, next) => {
 //================== Sign up ==========================//
 router.post("/", validateSignup, async (req, res) => {
   const { email, password, username } = req.body;
-  const user = await User.signup({ email, username, password });
+  const user = await User.signup({ username, firstName, lastName, email, password, address, bio, profileImage });
 
   await setTokenCookie(res, user);
 

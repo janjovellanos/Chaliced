@@ -5,6 +5,22 @@ const product = require('../../db/models/product');
 
 const router = express.Router();
 
+//edit current user profile
+router.put('/profile', requireAuth, async (req, res, next) => {
+    const { user } = req;
+    const { username, firstName, lastName, email, address, bio, profileImage } = req.body;
+
+    await user.update({
+            username,
+            firstName,
+            lastName,
+            email,
+            address,
+            bio,
+            profileImage
+    })
+    res.json(user)
+})
 
 //get current user profile
 router.get('/profile', requireAuth, async (req, res, next) => {
