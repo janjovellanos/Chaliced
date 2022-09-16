@@ -4,6 +4,61 @@ const { Product, Image, Favorite, Review, Order } = require('../../db/models');
 
 const router = express.Router();
 
+//edit a review by a specified id
+router.put('/:reviewId', requireAuth, async (req, res, next) => {
+    const { reviewId } = req.params;
+    const { body, stars }  = req.body;
+    // 469
+    const { user } = req;
+
+    const review = await Review.findByPk(reviewId)
+
+    if (review) {
+        if (review.buyerId === user.id) {
+            review.update({ body, stars });
+            res.json(review)
+        } else {
+            const err = new Error('Not Authorized');
+            err.status = 403;
+            err.title = 'Not Authorized';
+            return next(err);
+        }
+    } else {
+        const err = new Error("Review couldn't be found");
+        err.status = 404;
+        err.title = "Review couldn't be found";
+        return next(err);
+    }
+})
+
+//delete specified review
+router.delete('/:reviewId', requireAuth, async (req, res, next) => {
+    const { reviewId } = req.params;
+    const { user } = req;
+
+    const review = await Review.findByPk(reviewId);
+
+    if (review) {
+        if (review.buyerId === user.id) {
+            await review.destroy();
+            res.json({
+                message: 'Successfully deleted',
+                statusCode: 200
+            })
+        } else {
+            const err = new Error('Not Authorized');
+            err.status = 403;
+            err.title = 'Not Authorized';
+            return next(err);
+        }
+    } else {
+        const err = new Error("Review couldn't be found");
+        err.status = 404;
+        err.title = "Review couldn't be found";
+        return next(err);
+    }
+})
+
 
 //get details of a review from review id
 router.get('/:reviewId', requireAuth, async (req, res, next) => {
