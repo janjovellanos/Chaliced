@@ -13,7 +13,7 @@ function Navigation({ isLoaded }) {
     sessionLinks =
     <div className="main-nav">
       <div className="top-nav">
-        <div className="home-logo">Chaliced Logo</div>
+        <div className="home-logo">Chaliced</div>
         <div className="searchbar">
           <input type="search" placeholder="Search"></input>
         </div>
@@ -30,7 +30,7 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div className="main-nav">
         <div className="top-nav">
-          <div className="home-logo">Chaliced Logo</div>
+          <div className="home-logo">Chaliced</div>
           <div className="searchbar">
             <input type="search" placeholder="Search"></input>
           </div>

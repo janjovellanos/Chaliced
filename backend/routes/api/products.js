@@ -269,7 +269,7 @@ router.get('/', requireAuth, async (req, res, next) => {
             }
         ]
     });
-        res.json({products})
+        res.json(products)
 });
 
 module.exports = router;
