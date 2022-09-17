@@ -11,27 +11,47 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks =
-    <>
-      <ProfileButton user={sessionUser} />;
-      <h1>hello world</h1>
-    </>
+    <div className="main-nav">
+      <div className="top-nav">
+        <div className="home-logo">Chaliced Logo</div>
+        <div className="searchbar">
+          <input type="search" placeholder="Search"></input>
+        </div>
+        <div className="nav-right">
+          MyFavs <ProfileButton user={sessionUser} />
+        </div>
+      </div>
+      <div className="bottom-nav">
+        <div className="nav-categories">Categories</div>
+      </div>
+      {/* <ProfileButton user={sessionUser} /> */}
+    </div>
   } else {
     sessionLinks = (
-      <>
-        <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
+      <div className="main-nav">
+        <div className="top-nav">
+          <div className="home-logo">Chaliced Logo</div>
+          <div className="searchbar">
+            <input type="search" placeholder="Search"></input>
+          </div>
+          <div className="nav-right">
+            MyFavs <LoginFormModal />
+            <NavLink to="/signup">Sign Up</NavLink>
+          </div>
+        </div>
+        <div className="bottom-nav">
+          <div className="nav-categories">Categories</div>
+        </div>
+        {/* <LoginFormModal />
+        <NavLink to="/signup">Sign Up</NavLink> */}
+      </div>
     );
   }
 
   return (
-    <div>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        {/* isLoaded && sessionLinks??? */}
-        {sessionLinks}
-    </div>
+    <>
+      {isLoaded && sessionLinks}
+    </>
   );
 }
 

@@ -1,0 +1,39 @@
+.home-page-container {
+    display: grid;
+    grid-template-rows: 70% 30%;
+    height: 45rem;
+    width: 100%;
+}
+
+.featured {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin: 2rem 5rem;
+}
+
+.featured-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.featured-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.items-container-scroll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+    height: fit-content;
+}
+
+.item-preview {
+    margin: 8px;
+    background-color: aquamarine;
+    border-radius: 3px;
+    padding: 8px;
+}

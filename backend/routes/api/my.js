@@ -1,5 +1,5 @@
 const express = require('express');
-const { requireAuth } = require('../../utils/auth');
+const { requireAuth, restoreUser } = require('../../utils/auth');
 const { Product, Image, Favorite, Review, Order, User } = require('../../db/models');
 const product = require('../../db/models/product');
 
@@ -23,9 +23,11 @@ router.put('/profile', requireAuth, async (req, res, next) => {
 })
 
 //get current user profile
-router.get('/profile', requireAuth, async (req, res, next) => {
+router.get('/profile', restoreUser, async (req, res, next) => {
     const { user } = req;
-    res.json(user);
+
+    if (user) res.json(user);
+    else res.json({})
 });
 
 //get products being sold by the current user
