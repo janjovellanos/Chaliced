@@ -6,19 +6,44 @@
 .top-nav {
     display: grid;
     grid-template-columns: 20% 60% 20%;
-    padding: 10px
+    padding: 10px;
 }
 
 .home-logo {
     display: flex;
+    text-decoration: none;
+    color: black;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.home-logo:hover {
+    color: rgb(0, 0, 0, 0.8);
+    text-shadow:
+    -0.6px -0.6px 0 rgb(0, 0, 0, 0.5),
+    0.6px -0.6px 0 rgb(0, 0, 0, 0.5),
+    -0.6px 0.6px 0 rgb(0, 0, 0, 0.5),
+    0.6px 0.6px 0 rgb(0, 0, 0, 0.5);
+    -webkit-transition: all ease .7s;
+    -moz-transition: all ease .7s;
+    -o-transition: all ease .7s;
+    transition: all ease .7s;
 }
 
 .searchbar {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.searchbar input {
+    height: 1.75rem;
+    width: 35rem;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid rgb(0, 0, 0, 0.3);
 }
 
 .nav-right {
@@ -33,7 +58,17 @@
     padding: 10px;
 }
 
-/* profile dropdown css */
+/* profile btn & dropdown css */
+.profile-btn {
+    border-radius: 4px;
+    background-color: white;
+    border-color: rgb(0, 0, 0, 0.4);
+}
+
+.profile-btn:hover {
+    cursor: pointer;
+}
+
 .profile-dropdown {
     list-style: none;
     padding-left: 0;
@@ -62,4 +97,28 @@
     list-style: none;
     z-index: 1;
 }
-/* profile dropdown css */
+/*//////////////////////////////*/
+
+.nav-right > * {
+    margin: 0 20px 0 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.shop-btn {
+    text-decoration: none;
+    color: black;
+}
+
+.sell-btn {
+    text-decoration: none;
+    color: black;
+}
+
+.shop-btn:hover {
+    text-decoration: underline;
+}
+
+.sell-btn:hover {
+    text-decoration: underline;
+}

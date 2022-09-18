@@ -5,6 +5,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import Explore from "./components/ProductComponents/Explore";
+import ProductPage from "./components/ProductComponents/ProductPage";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -25,6 +27,12 @@ function App() {
           </Route>
           <Route exact path="/">
             <HomePage />
+          </Route>
+          <Route exact path="/shop">
+            <Explore />
+          </Route>
+          <Route exact path="/products/:productId">
+            <ProductPage />
           </Route>
         </Switch>
       )}

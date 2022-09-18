@@ -13,12 +13,16 @@ function Navigation({ isLoaded }) {
     sessionLinks =
     <div className="main-nav">
       <div className="top-nav">
-        <div className="home-logo">Chaliced</div>
+        <NavLink to='/' className="home-logo">Chaliced</NavLink>
         <div className="searchbar">
           <input type="search" placeholder="Search"></input>
         </div>
         <div className="nav-right">
-          MyFavs <ProfileButton user={sessionUser} />
+          <NavLink to='/shop' className="shop-btn">Shop</NavLink>
+          <NavLink to='/sell' className="sell-btn">Sell</NavLink>
+          <div className="favs-and-profile">
+            <i className="fa-regular fa-heart"></i> || <ProfileButton user={sessionUser} />
+          </div>
         </div>
       </div>
       <div className="bottom-nav">
@@ -35,7 +39,7 @@ function Navigation({ isLoaded }) {
             <input type="search" placeholder="Search"></input>
           </div>
           <div className="nav-right">
-            MyFavs <LoginFormModal />
+            <LoginFormModal />
             <NavLink to="/signup">Sign Up</NavLink>
           </div>
         </div>

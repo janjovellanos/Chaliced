@@ -174,7 +174,14 @@ router.get('/:productId', requireAuth, async (req, res, next) => {
     const product = await Product.findByPk(productId, {
         include: [
             { model: Image, attributes: ['id', 'url'] },
-            { model: User, as: 'Seller', attributes: ['id', 'username', 'profileImage'] }
+            {
+                model: User, as: 'Seller',
+                attributes: ['id', 'username', 'profileImage'],
+                include: [
+                    {model: Review, attributes: ['id', 'body', 'stars']},
+                    {model: Product, attributes: ['id', 'name', 'price']}
+                ]
+            }
         ]
     });
 

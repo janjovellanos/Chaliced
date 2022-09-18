@@ -1,0 +1,46 @@
+.explore-page-container {
+    display: grid;
+    grid-template-rows: 10% 10% 80%;
+    justify-content: center;
+}
+
+.top-explore {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 75rem;
+    margin: auto;
+}
+
+.item-count {
+    margin: 0 5rem 0 5rem;
+    font-size: 15px;
+}
+
+.filter-btn {
+    font-weight: bold;
+    font-size: 17px;
+    margin: 0 5rem 0 5rem;
+}
+
+.filter-btn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.available {
+    display: flex;
+    align-items: center;
+    margin: 0 5rem;
+    font-weight: bold;
+}
+
+.preview-image {
+    cursor: pointer;
+}
+
+.item-name-and-size {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}

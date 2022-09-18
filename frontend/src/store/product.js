@@ -1,13 +1,25 @@
 import { csrfFetch } from "./csrf";
 
 export const LOAD_PRODUCTS = 'products/loadProducts';
-export const LOAD_ONE_PRODUCT = 'products/loadOneProduct'
-export const CREATE_PRODUCT = 'products/createProduct'
+export const LOAD_AVAIL_PRODUCTS = 'products/loadAvailProducts';
+export const LOAD_USER_PRODUCTS = 'users/loadUserProducts';
+export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
+export const CREATE_PRODUCT = 'products/createProduct';
 export const UPDATE_PRODUCT = 'products/updateProduct';
 export const DELETE_PRODUCT = 'products/deleteProduct';
 
 const loadProducts = (data) => ({
     type: LOAD_PRODUCTS,
+    data
+})
+
+const loadAvailProducts = (data) => ({
+    type: LOAD_AVAIL_PRODUCTS,
+    data
+})
+
+const loadUserProducts = (data) => ({
+    type: LOAD_USER_PRODUCTS,
     data
 })
 
@@ -36,6 +48,22 @@ export const getProducts = () => async dispatch => {
     if (res.ok) {
         const data = await res.json();
         dispatch(loadProducts(data));
+    }
+}
+
+export const getAvailProducts = () => async dispatch => {
+    const res = await csrfFetch('/api/products');
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadAvailProducts(data));
+    }
+}
+
+export const getUserProducts = (userId) => async dispatch => {
+    const res = await csrfFetch(`/api/users/${userId}/products`);
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadUserProducts(data));
     }
 }
 
@@ -111,16 +139,32 @@ const productsReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_PRODUCTS:
             newState = { ...state };
-            console.log(action);
             action.data.forEach(product => {
                 newState[product.id] = product;
             });
             return newState
-        // case LOAD_ONE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         [action.song.id]: action.song
-        //     }
+        case LOAD_AVAIL_PRODUCTS:
+            newState = {};
+            action.data.forEach(product => {
+                if (!product.sold) {
+                    newState[product.id] = product
+                }
+            });
+            return newState;
+        case LOAD_USER_PRODUCTS:
+            newState = {};
+            console.log(action);
+            action.data.forEach(product => {
+                if (!product.sold) {
+                    newState[product.id] = product
+                }
+            });
+            return newState;
+        case LOAD_ONE_PRODUCT:
+            return {
+                ...state,
+                [action.product.id]: action.product
+            }
         // case CREATE_PRODUCT:
         //     return {
         //         ...state,

@@ -1,0 +1,53 @@
+.product-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-buttons > * {
+    margin: 5px 0;
+}
+
+.product-purchase-btn button {
+    width: 25rem;
+    height: 3rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 10pt;
+    background-color: black;
+    border-color: rgb(0, 0, 0, 0.4);
+    color: white;
+}
+
+.product-purchase-btn button:hover,
+.product-favorite-btn button:hover {
+    font-size: 11pt;
+    cursor: pointer;
+}
+
+.product-favorite-btn button {
+    width: 25rem;
+    height: 3rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 10pt;
+    background-color: white;
+    border-color: rgb(0, 0, 0, 0.4);
+}
+
+.product-seller-info {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.15);
+    border-top: 1px solid rgb(0, 0, 0, 0.15);
+}
+
+.seller-profile-pic img {
+    width: 4rem;
+    height: 4rem;
+}

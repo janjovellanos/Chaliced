@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { timeSince } from '../../utils/helpers';
+import { timeAgo } from '../../utils/helpers';
 import * as productActions from '../../store/product';
 import './HomePage.css'
 
 export default function HomePage() {
+    const user = useSelector((state) => state.session.user);
     const products = useSelector(state => Object.values(state.products));
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(productActions.getProducts())
+        dispatch(productActions.getAvailProducts())
     }, [dispatch]);
 
   return (
@@ -29,22 +30,22 @@ export default function HomePage() {
             </div>
         </div>
         <div className='items-container-scroll'>
-            {products.map(product => (
-                <div className='item-preview'>
+            {/* Get 5 Newest Listings */}
+            {user && products?.slice(-5).reverse().map(product => (
+                <div key={product?.id} className='item-preview'>
                     <div className='preview-image-container'>
                         {/* {product?.Images[0]?.url} */}
                         <img className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
                     </div>
                     <div className='item-preview-bottom'>
-                        <div className='item-post-date'>{timeSince(new Date(product?.createdAt))}</div>
+                        <div className='item-post-date'>{timeAgo(new Date(product?.createdAt))}</div>
                         <div className='item-name-and-size'><p>{product?.name}</p><p>{product?.size}</p></div>
                         <div className='item-description'>{product?.description}</div>
-                        <div className='item-price-and-fav'><p>${product?.price}</p><p><i class="fa-regular fa-heart"></i></p></div>
+                        <div className='item-price-and-fav'><p>${product?.price}</p><p><i className="fa-regular fa-heart"></i></p></div>
                     </div>
                 </div>
             ))}
         </div>
     </div>
   )
-
 }

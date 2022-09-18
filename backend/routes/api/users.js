@@ -74,6 +74,32 @@ router.get("/:userId/products", requireAuth, async (req, res, next) => {
 
 });
 
+//get all details of a specified user
+router.get("/:userId", requireAuth, async (req, res, next) => {
+  const { userId } = req.params;
+
+  const seller = await User.findByPk(userId, {
+    include: [
+        {
+            model: Product, attributes: ['id', 'userId', 'name']
+        },
+        {
+          model: Review, attributes: ['id', 'sellerId', 'body', 'stars']
+      }
+    ]
+  });
+
+  if (seller) {
+    res.json(seller)
+  } else {
+    const err = new Error("Seller couldn't be found");
+    err.status = 404;
+    err.title = "Seller couldn't be found";
+    return next(err);
+  }
+
+});
+
 
 
 
