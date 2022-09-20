@@ -27,8 +27,10 @@ export default function ProductButtons({product}) {
         </div>
         <div className='product-seller-info'>
             <div className='seller-profile-pic'>
+                <NavLink to={`/users/${product?.userId}`}>
+                    <img src='https://cdn3.iconfinder.com/data/icons/office-485/100/ICON_BASIC-11-512.png'></img>
+                </NavLink>
                 {/* {product?.Seller?.profileImage} */}
-                <img src='https://cdn3.iconfinder.com/data/icons/office-485/100/ICON_BASIC-11-512.png'></img>
             </div>
             <div className='seller-stats'>
                 <NavLink to={`/users/${product?.userId}`} className='product-seller-name'>{product?.Seller?.username}</NavLink>
