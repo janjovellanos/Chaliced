@@ -1,3 +1,10 @@
+.login-header {
+    font-size: 14pt;
+    font-style: italic;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(0, 0, 0, 0.2);
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
@@ -12,25 +19,28 @@
 }
 
 .credential-label {
-
+    font-style: italic;
 }
 
 .credential-label + input {
     border: 1px solid white;
     border-radius: 4px;
     height: 1.5rem;
-    width: 10.5rem;
+    width: 10rem;
+    margin: 0.5rem;
     background-color: rgb(0, 0, 0, 0.05);
 }
 
 .password-label {
+    font-style: italic;
 }
 
 .password-label + input {
     border: 1px solid white;
     border-radius: 4px;
     height: 1.5rem;
-    width: 10.5rem;
+    width: 10rem;
+    margin: 0.5rem;
     background-color: rgb(0, 0, 0, 0.05);
 }
 

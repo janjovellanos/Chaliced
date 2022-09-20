@@ -1,0 +1,71 @@
+.signup-header {
+    font-size: 14pt;
+    font-style: italic;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(0, 0, 0, 0.2);
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    /* grid-template-rows: 50% 50%; */
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.form-inputs {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: fit-content;
+}
+
+.form-left, .form-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: fit-content; */
+}
+
+.form-left label, .form-right label {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+
+.signup-form > * {
+    margin: 5px 0;
+}
+
+.credential-label {
+    font-style: italic;
+}
+
+.credential-label + input {
+    border: 1px solid white;
+    border-radius: 4px;
+    height: 1.5rem;
+    width: 10rem;
+    margin: 0.5rem;
+    background-color: rgb(0, 0, 0, 0.05);
+}
+
+.password-label {
+    font-style: italic;
+}
+
+.password-label + input {
+    border: 1px solid white;
+    border-radius: 4px;
+    height: 1.5rem;
+    width: 10rem;
+    margin: 0.5rem;
+    background-color: rgb(0, 0, 0, 0.05);
+}
+
+.signup-btn {
+    color: rgb(0, 0, 0, 0.05);
+}
