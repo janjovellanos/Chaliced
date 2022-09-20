@@ -40,3 +40,12 @@ export const timeAgo = (date) => {
     }
     return Math.floor(seconds) + " seconds ago";
 }
+
+export const getCreatedDate = (datestr) => {
+  const fullDate = new Date(datestr).toDateString()
+  let date = fullDate.slice(4)
+  if (date[4] === '0') {
+      date = date.slice(0, 4) + date.slice(5);
+  };
+  return date
+}

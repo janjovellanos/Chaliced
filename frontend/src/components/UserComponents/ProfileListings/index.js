@@ -14,7 +14,7 @@ export default function ProfileListings({availProducts}) {
                 <button>FILTER</button>
             </div>
         </div>
-    <div className='explore-page-container'>
+    <div className='seller-explore-page-container'>
         <div className='items-container-scroll'>
             {availProducts?.map(product => (
                 <div key={product?.id} className='seller-item-preview'>

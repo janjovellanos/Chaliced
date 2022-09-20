@@ -30,7 +30,7 @@ export default function ProfilePage() {
     const handleReviewsClicked = () => {
         setReviewsClicked('profile-reviews-clicked')
         setListingsClicked('')
-        setBottomView(<ProfileReviews sellerReviews={sellerReviews} />)
+        setBottomView(<ProfileReviews sellerReviews={sellerReviews} seller={seller} />)
     }
 
 

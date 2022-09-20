@@ -1,6 +1,6 @@
 .seller-reviews-container {
     display: grid;
-    grid-template-rows: 40%;
+    grid-template-rows: 40;
 }
 
 .seller-reviews-header {
@@ -28,4 +28,53 @@
 
 .seller-review-ct {
     font-size: 14px;
+}
+
+.seller-reviews-list {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.review-li {
+    display: grid;
+    grid-template-columns: 50% 40%;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 1rem 8rem 0 8rem;
+}
+
+
+.review-left > * {
+    margin: 1rem;
+    display: flex;
+    width: fit-content;
+}
+
+.review-date {
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.review-stars {
+    font-weight: bold;
+    color: green;
+    font-size: 14pt;
+}
+
+.review-product-name {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.review-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.review-right img {
+    width: 10rem;
 }
