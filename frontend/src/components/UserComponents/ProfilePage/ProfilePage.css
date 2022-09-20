@@ -1,0 +1,136 @@
+.profile-page-container {
+    display: grid;
+    grid-template-rows: 25% 10% 10%;
+    height: 40rem;
+}
+
+.profile-page-header {
+    display: grid;
+    grid-template-columns: 25% 30%;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+    border-top: 1px solid rgb(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.profile-header-left {
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.profile-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.profile-pic img {
+    width: 4rem;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.profile-info > * {
+    width: fit-content;
+}
+
+.profile-username {
+    font-weight: bold;
+    font-size: 14pt;
+    margin-left: 1rem;
+}
+
+.profile-created-at {
+    font-size: 10pt;
+    margin-left: 1rem;
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-stats > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    padding-left: 1rem;
+    border-left: 1px solid rgb(0, 0, 0, 0.2);
+}
+.profile-reviews {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-transactions {
+    width: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.seller-review-count, .profile-transactions-count  {
+     font-weight: bold;
+}
+
+.profile-listings-reviews-btns {
+    display: grid;
+    grid-template-columns: 15% 15%;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+}
+
+.profile-listings-reviews-btns > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profile-listings-clicked, .profile-reviews-clicked {
+    font-weight: bold;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+.listing-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px auto;
+}
+
+.profile-item-count {
+    margin: 0 1rem 0 1rem;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.profile-filter-btn button{
+    margin: 0 1rem 0 1rem;
+    width: 5rem;
+    height: 2rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: black;
+    border-color: rgb(0, 0, 0, 0.4);
+    color: white;
+}
+
+.profile-filter-btn button:hover{
+    font-size: 14.5px;
+    cursor: pointer;
+}

@@ -1,0 +1,31 @@
+.seller-reviews-container {
+    display: grid;
+    grid-template-rows: 40%;
+}
+
+.seller-reviews-header {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.seller-reviews-header > * {
+    margin: 5px 0;
+}
+
+.seller-score {
+    font-weight: bold;
+    font-size: 18pt;
+}
+
+.seller-stars {
+    font-weight: bold;
+    font-size: 18pt;
+    color: green;
+}
+
+.seller-review-ct {
+    font-size: 14px;
+}

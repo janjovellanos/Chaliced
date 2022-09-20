@@ -21,11 +21,15 @@
 }
 
 .product-image {
-    width: 20rem;
+    width: 25rem;
 }
 
 .product-images-small {
     display: flex;
+}
+
+.product-images-small img {
+    width: 5rem;
 }
 
 .product-images-small > * {

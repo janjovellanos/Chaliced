@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import Explore from "./components/ProductComponents/Explore";
 import ProductPage from "./components/ProductComponents/ProductPage";
+import ProfilePage from "./components/UserComponents/ProfilePage";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/products/:productId">
             <ProductPage />
+          </Route>
+          <Route exact path="/users/:userId">
+            <ProfilePage />
           </Route>
         </Switch>
       )}

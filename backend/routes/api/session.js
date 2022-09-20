@@ -49,7 +49,6 @@ router.post("/", validateLogin, async (req, res, next) => {
     profileImage: user.profileImage,
     token
   })
-
 });
 
 // Log out

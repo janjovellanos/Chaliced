@@ -1,0 +1,38 @@
+.seller-item-preview {
+    width: fit-content;
+}
+
+.seller-item-preview-bottom > * {
+    margin: 4px 0 4px 0;
+}
+
+.seller-item-post-date {
+    color: rgb(0, 0, 0, 0.7);
+    font-size: 8pt;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+.seller-item-name-and-size {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.seller-item-name-and-size p {
+    margin: 0;
+    padding: 0;
+}
+
+.seller-item-description {
+    font-size: 9pt;
+}
+
+.seller-item-price-and-fav {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9pt;
+    font-weight: bold;
+}

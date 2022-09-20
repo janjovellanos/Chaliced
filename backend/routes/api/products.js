@@ -1,7 +1,6 @@
 const express = require('express');
 const { requireAuth } = require('../../utils/auth');
 const { Product, Image, Favorite, Review, User } = require('../../db/models');
-
 const router = express.Router();
 
 
@@ -168,6 +167,38 @@ router.delete('/images/:imageId', requireAuth, async (req, res, next) => {
     }
 });
 
+//get product by categoryId
+router.get('/category/:categoryId', requireAuth, async (req, res, next) => {
+    const { categoryId } = req.params;
+    const product = await Product.findAll({
+        where: {categoryId: categoryId, sold: false},
+        include: [
+            { model: Image, attributes: ['id', 'url'] },
+            // {
+            //     model: User, as: 'Seller',
+            //     attributes: ['id', 'username', 'profileImage'],
+            // }
+        ]
+    });
+
+    if (product) {
+        // const reviews = await Review.findAndCountAll({
+        //     where: {sellerId: product.userId}
+        // })
+        // const products = await Product.findAndCountAll({
+        //     where: {userId: product.userId, sold: false}
+        // })
+        // product.dataValues.Seller.dataValues.reviewCount = reviews.count
+        // product.dataValues.Seller.dataValues.productCount = products.count
+        res.json(product);
+    } else {
+        const err = new Error("Category couldn't be found");
+        err.status = 404;
+        err.title = "Category couldn't be found";
+        return next(err);
+    }
+});
+
 //get specified product
 router.get('/:productId', requireAuth, async (req, res, next) => {
     const { productId } = req.params;
@@ -177,15 +208,24 @@ router.get('/:productId', requireAuth, async (req, res, next) => {
             {
                 model: User, as: 'Seller',
                 attributes: ['id', 'username', 'profileImage'],
-                include: [
-                    {model: Review, attributes: ['id', 'body', 'stars']},
-                    {model: Product, attributes: ['id', 'name', 'price']}
-                ]
+                // include: [
+                //     {model: Review, attributes: ['id', 'body', 'stars']},
+                //     {model: Product, attributes: ['id', 'name', 'price']}
+                // ]
             }
         ]
     });
 
     if (product) {
+        // find and attach all reviews and unsold products associated with the Seller
+        const reviews = await Review.findAndCountAll({
+            where: {sellerId: product.userId}
+        })
+        const products = await Product.findAndCountAll({
+            where: {userId: product.userId, sold: false}
+        })
+        product.dataValues.Seller.dataValues.reviewCount = reviews.count
+        product.dataValues.Seller.dataValues.productCount = products.count
         res.json(product);
     } else {
         const err = new Error("Product couldn't be found");

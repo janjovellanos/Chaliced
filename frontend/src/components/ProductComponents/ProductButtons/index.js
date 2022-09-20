@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { timeAgo } from '../../../utils/helpers';
 import * as favActions from '../../../store/favorite';
 import * as sellerActions from '../../../store/seller';
@@ -31,9 +31,9 @@ export default function ProductButtons({product}) {
                 <img src='https://cdn3.iconfinder.com/data/icons/office-485/100/ICON_BASIC-11-512.png'></img>
             </div>
             <div className='seller-stats'>
-                <div className='product-seller-name'>{product?.Seller?.username}</div>
-                <div className='product-seller-rating'>***** {product?.Seller?.Reviews?.length} Reviews</div>
-                <div className='product-seller-listings'>{product?.Seller?.Products?.length} listing for sale</div>
+                <NavLink to={`/users/${product?.userId}`} className='product-seller-name'>{product?.Seller?.username}</NavLink>
+                <NavLink to={`/users/${product?.userId}/reviews`} className='product-seller-rating'>***** {product?.Seller?.reviewCount} Reviews</NavLink>
+                <NavLink to={`/users/${product?.userId}`} className='product-seller-listings'>{product?.Seller?.productCount} listing for sale</NavLink>
             </div>
         </div>
     </div>
