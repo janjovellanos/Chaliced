@@ -1,6 +1,6 @@
 .explore-page-container {
     display: grid;
-    grid-template-rows: 10% 10% 80%;
+    grid-template-rows: 5% 5% 90%;
     justify-content: center;
 }
 
