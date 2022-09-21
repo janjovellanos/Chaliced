@@ -5,6 +5,7 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import "./Navigation.css";
 import SignupFormModal from "../SignupFormPage";
+import CreateProductModal from "../ProductComponents/CreateProduct";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -20,7 +21,8 @@ function Navigation({ isLoaded }) {
         </div>
         <div className="nav-right">
           <NavLink to='/shop' className="shop-btn">Shop</NavLink>
-          <NavLink to='/sell' className="sell-btn">Sell</NavLink>
+          <CreateProductModal />
+          {/* <NavLink to='/sell' className="sell-btn">Sell</NavLink> */}
           <div className="favs-and-profile">
             <i className="fa-regular fa-heart"></i> || <ProfileButton user={sessionUser} />
           </div>
@@ -35,13 +37,12 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div className="main-nav">
         <div className="top-nav">
-          <div className="home-logo">Chaliced</div>
+        <NavLink to='/' className="home-logo">Chaliced</NavLink>
           <div className="searchbar">
             <input type="search" placeholder="Search"></input>
           </div>
           <div className="nav-right">
             <LoginFormModal />
-            {/* <NavLink to="/signup">Sign Up</NavLink> */}
             <SignupFormModal />
           </div>
         </div>

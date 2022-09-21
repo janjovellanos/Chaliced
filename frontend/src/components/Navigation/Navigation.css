@@ -105,6 +105,30 @@
     font-size: 16px;
 }
 
+.nav-right a+button, .nav-right a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 1.7rem;
+    border-radius: 3px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 9pt;
+    background-color: black;
+    border-color: rgb(0, 0, 0, 0.2);
+    color: white;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    padding: 0 1rem;
+}
+
+.nav-right a+button {
+    background-color: white;
+    border-color: rgb(0, 0, 0, 0.4);
+    color: black;
+}
+
 .shop-btn {
     text-decoration: none;
     color: black;

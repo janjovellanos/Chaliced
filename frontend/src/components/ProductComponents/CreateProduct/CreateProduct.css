@@ -1,0 +1,93 @@
+.create-listing-header {
+    font-size: 14pt;
+    font-style: italic;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(0, 0, 0, 0.2);
+}
+
+.create-listing-form {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.create-listing-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-listing-right {
+    /* display: grid;
+    grid-template-rows: 50% 50%;
+    align-items: flex-end; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.create-listing-right div {
+    /* display: grid;
+    grid-template-rows: 25% 25% 25% 25% ; */
+}
+
+.create-listing-form > * {
+    margin: 0 2rem;
+}
+
+.listing-label {
+    font-style: italic;
+}
+
+.listing-label + input {
+    border: 1px solid white;
+    border-radius: 4px;
+    height: 1.5rem;
+    width: 10rem;
+    margin: 0.5rem;
+    background-color: rgb(0, 0, 0, 0.03);
+}
+
+.password-label {
+    font-style: italic;
+}
+
+.password-label + input {
+    border: 1px solid white;
+    border-radius: 4px;
+    height: 1.5rem;
+    width: 10rem;
+    margin: 0.5rem;
+    background-color: rgb(0, 0, 0, 0.05);
+}
+
+.create-listing-image-container {
+    width: 7.5rem;
+    height: 7.5rem;
+    border: 1px solid black;
+}
+
+.create-listing-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.create-listing-btn {
+    /* color: rgb(0, 0, 0, 0.05);
+    font-weight: bold;
+    font-style: italic; */
+    width: 5rem;
+    height: 3rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 10pt;
+    background-color: white;
+    border-color: rgb(0, 0, 0, 0.4);
+    /* align-self: center; */
+}

@@ -5,6 +5,8 @@ export const LOAD_AVAIL_PRODUCTS = 'products/loadAvailProducts';
 export const LOAD_USER_PRODUCTS = 'users/loadUserProducts';
 export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
 export const CREATE_PRODUCT = 'products/createProduct';
+export const CREATE_PRODUCT_IMAGE = 'products/createProductImage';
+
 export const UPDATE_PRODUCT = 'products/updateProduct';
 export const DELETE_PRODUCT = 'products/deleteProduct';
 
@@ -31,6 +33,11 @@ const loadOneProduct = (product) => ({
 const createProduct = (product) => ({
     type: CREATE_PRODUCT,
     product
+});
+
+const createProductImage = (productId, image) => ({
+    type: CREATE_PRODUCT_IMAGE,
+    payload: {productId, image}
 });
 
 const deleteProduct = (id) => ({
@@ -101,6 +108,28 @@ export const addProduct = (data) => async (dispatch) => {
     }
 };
 
+export const addProductImage = (productId, url) => async (dispatch) => {
+    // const { url } = data;
+
+    const res = await csrfFetch(`/api/products/${productId}/images`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            url,
+            productId
+        })
+    });
+
+    if (res.ok) {
+        const image = await res.json();
+        dispatch(createProductImage(productId, image));
+
+        return image;
+    }
+};
+
 export const editProduct = (product, productId) => async (dispatch) => {
     const { name, description, size, price, categoryId } = product;
 
@@ -165,11 +194,27 @@ const productsReducer = (state = {}, action) => {
                 ...state,
                 [action.product.id]: action.product
             }
-        // case CREATE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         [action.song.id]: action.song
-        //     }
+        case CREATE_PRODUCT:
+            // console.log('PRODUCT-------------------', action);
+            return {
+                ...state,
+                [action.product.id]: action.product
+            }
+        case CREATE_PRODUCT_IMAGE:
+            // console.log('IMAGE-------------------', action);
+            const productImageState = { ...state }
+            if (productImageState[action.payload.productId].Images) {
+                productImageState[action.payload.productId].Images.push(action.payload.image)
+            } else {
+                productImageState[action.payload.productId].Images = [action.payload.image]
+            }
+
+            // {
+            //         ...state,
+            //         [action.payload.productId.Images]: [
+            //             ...action.payload.productId.Images, action.payload.image
+            //         ]
+            //     }
         // case UPDATE_PRODUCT:
         //     return {
         //         ...state,
