@@ -33,8 +33,6 @@ export default function ProfilePage() {
         setBottomView(<ProfileReviews sellerReviews={sellerReviews} seller={seller} />)
     }
 
-
-
     useEffect(() => {
         dispatch(sellerActions.getUserDetails(userId))
     }, [dispatch]);

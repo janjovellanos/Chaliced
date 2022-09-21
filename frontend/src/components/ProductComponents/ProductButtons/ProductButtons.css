@@ -9,7 +9,8 @@
     margin: 5px 0;
 }
 
-.product-purchase-btn button {
+.product-purchase-btn button,
+.product-edit-btn button {
     width: 25rem;
     height: 3rem;
     font-family: 'Roboto Mono', monospace;
@@ -21,12 +22,16 @@
 }
 
 .product-purchase-btn button:hover,
-.product-favorite-btn button:hover {
+.product-favorite-btn button:hover,
+.product-edit-btn button:hover,
+.product-delete-btn button:hover
+ {
     font-size: 11pt;
     cursor: pointer;
 }
 
-.product-favorite-btn button {
+.product-favorite-btn button,
+.product-delete-btn button {
     width: 25rem;
     height: 3rem;
     font-family: 'Roboto Mono', monospace;
@@ -56,7 +61,8 @@
     display: grid;
 }
 
-.seller-stats a {
+.seller-stats a, .seller-stats div {
     text-decoration: none;
     color: black;
+    margin: 2px 0;
 }

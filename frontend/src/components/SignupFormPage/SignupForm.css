@@ -66,6 +66,23 @@
     background-color: rgb(0, 0, 0, 0.05);
 }
 
-.signup-btn {
+/* .signup-btn {
     color: rgb(0, 0, 0, 0.05);
+} */
+
+#signup-btn {
+    /* color: rgb(0, 0, 0, 0.05);
+    font-weight: bold;
+    font-style: italic; */
+    width: 5rem;
+    height: 3rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 12pt;
+    background-color: white;
+    border-color: rgb(0, 0, 0, 0.4);
+}
+
+#signup-btn:hover {
+    font-size: 12.5pt;
 }

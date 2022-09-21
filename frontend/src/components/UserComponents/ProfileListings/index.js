@@ -6,6 +6,10 @@ import './ProfileListings.css'
 
 export default function ProfileListings({availProducts}) {
 
+    availProducts?.sort((a, b) => {
+        return b.id - a.id;
+    })
+
   return (
     <>
         <div className='listing-filter-bar'>

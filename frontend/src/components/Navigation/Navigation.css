@@ -141,8 +141,10 @@
 
 .shop-btn:hover {
     text-decoration: underline;
+    font-size: 9.2pt;
 }
 
 .sell-btn:hover {
     text-decoration: underline;
+    font-size: 9.2pt;
 }

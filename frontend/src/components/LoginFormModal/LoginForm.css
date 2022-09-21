@@ -29,6 +29,7 @@
     width: 10rem;
     margin: 0.5rem;
     background-color: rgb(0, 0, 0, 0.05);
+    text-align: center;
 }
 
 .password-label {
@@ -42,8 +43,26 @@
     width: 10rem;
     margin: 0.5rem;
     background-color: rgb(0, 0, 0, 0.05);
+    text-align: center;
 }
 
-.login-btn {
+/* .login-btn {
     color: rgb(0, 0, 0, 0.05);
+} */
+
+#login-btn {
+    /* color: rgb(0, 0, 0, 0.05);
+    font-weight: bold;
+    font-style: italic; */
+    width: 5rem;
+    height: 3rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 12pt;
+    background-color: white;
+    border-color: rgb(0, 0, 0, 0.4);
+}
+
+#login-btn:hover {
+    font-size: 12.5pt;
 }

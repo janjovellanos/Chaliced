@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as productActions from "../../../store/product";
 import "./CreateProduct.css";
 
-function CreateProductForm() {
+function CreateProductForm({setShowModal}) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+  const history = useHistory();
+  const user = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [size, setSize] = useState("");
-  const [categoryId, setCategoryId] = useState("");
+  const [categoryId, setCategoryId] = useState(null);
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([
@@ -17,15 +18,31 @@ function CreateProductForm() {
   ]);
   const [errors, setErrors] = useState([]);
 
+  const reset = () => {
+    setName("")
+    setSize("")
+    setCategoryId(null)
+    setPrice(0)
+    setDescription("")
+    setImages([
+        'https://montevista.greatheartsamerica.org/wp-content/uploads/sites/2/2016/11/default-placeholder.png'
+    ])
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
     return dispatch(productActions.addProduct({ name, size, categoryId, price, description }))
         .then(data => dispatch(productActions.addProductImage(data.id, images[0])))
+        .then(() => {
+            setShowModal(false);
+            history.push(`/users/${user?.id}`);
+            reset();
+        })
         .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors);
+            else history.push(`/users/${user?.id}`)
         }
     );
   };
@@ -67,12 +84,17 @@ function CreateProductForm() {
             <label className="listing-label">
             Category
             </label>
-            <input
+            <select
                 type="text"
                 value={categoryId}
                 onChange={(e) => setCategoryId(e.target.value)}
                 required
-                />
+            >
+                <option value="" disabled selected>Select a Category</option>
+                <option value={1}>Tops</option>
+                <option value={2}>Bottoms</option>
+                <option value={3}>Shoes</option>
+            </select>
             <label className="listing-label">
             Price
             </label>
@@ -87,7 +109,7 @@ function CreateProductForm() {
                 <label className="listing-label">
                 Description
                 </label>
-                <input
+                <textarea
                     type="text"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -106,8 +128,8 @@ function CreateProductForm() {
                 <img src={images[images?.length - 1]}></img>
             </div>
         </div>
-        <div>
-            <button className="create-listing-btn" type="submit">List</button>
+        <div className="create-listing-btn-container">
+            <button className="create-listing-btn" id="create-listing-btn" type="submit">List <i className="fa-regular fa-square-plus"></i></button>
         </div>
       </form>
     </>
