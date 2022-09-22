@@ -182,7 +182,6 @@ const productsReducer = (state = {}, action) => {
             return newState;
         case LOAD_USER_PRODUCTS:
             newState = {};
-            console.log(action);
             action.data.forEach(product => {
                 if (!product.sold) {
                     newState[product.id] = product
@@ -195,13 +194,11 @@ const productsReducer = (state = {}, action) => {
                 [action.product.id]: action.product
             }
         case CREATE_PRODUCT:
-            // console.log('PRODUCT-------------------', action);
             return {
                 ...state,
                 [action.product.id]: action.product
             }
         case CREATE_PRODUCT_IMAGE:
-            // console.log('IMAGE-------------------', action);
             const productImageState = { ...state }
             if (productImageState[action.payload.productId].Images) {
                 productImageState[action.payload.productId].Images.push(action.payload.image)
@@ -209,15 +206,15 @@ const productsReducer = (state = {}, action) => {
                 productImageState[action.payload.productId].Images = [action.payload.image]
             }
         case UPDATE_PRODUCT:
-            console.log(action);
             return {
                 ...state,
                 [action.product.id]: action.product
             };
-        // case DELETE_PRODUCT:
-        //     newState = { ...state };
-        //     delete newState[action.id];
-        //     return newState;
+        case DELETE_PRODUCT:
+            console.log(action);
+            newState = { ...state };
+            delete newState[action.id];
+            return newState;
         default:
             return state;
     }
