@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
-import { timeAgo } from '../../../utils/helpers';
 import * as favActions from '../../../store/favorite';
-import * as productActions from '../../../store/product';
 import './ProductDetails.css'
 import ProductButtons from '../ProductButtons';
 
@@ -94,5 +91,5 @@ export default function ProductDetails({product}) {
     </div>
     )
 
-   return editing ? editDetails : prodDetails
+   return editing ? editDetails : prodDetails;
 }

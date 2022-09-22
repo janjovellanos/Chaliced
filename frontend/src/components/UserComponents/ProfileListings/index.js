@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useHistory } from 'react-router-dom';
+import React from 'react'
+import { NavLink } from 'react-router-dom';
 import { timeAgo } from '../../../utils/helpers';
 import './ProfileListings.css'
 

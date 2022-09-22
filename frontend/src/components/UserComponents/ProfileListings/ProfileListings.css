@@ -47,7 +47,12 @@
 
 .seller-item-price-and-fav {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
     font-size: 9pt;
     font-weight: bold;
+}
+
+.seller-item-price-and-fav > * {
+    margin-top: 0;
 }

@@ -9,7 +9,6 @@ import ProfileReviews from '../ProfileReviews';
 
 export default function ProfilePage() {
     const { userId } = useParams();
-    // const user = useSelector(state => state.session.user);
     const seller = useSelector(state => (state.sellers))[userId];
     const [listingsClicked, setListingsClicked] = useState('profile-listings-clicked')
     const [reviewsClicked, setReviewsClicked] = useState('')

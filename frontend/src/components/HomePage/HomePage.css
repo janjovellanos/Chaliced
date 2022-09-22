@@ -84,6 +84,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* object-fit: contain; */
+    background-color: rgb(0, 0, 0, 0.025);
+    border: 1px solid rgb(0, 0, 0, 0.05);
 }
 
 .preview-image-container a {
@@ -94,7 +97,7 @@
     resize: none;
     height: 12rem;
     width: auto;
-    margin: 0 0 5px 0;
+    margin: 0;
 }
 
 

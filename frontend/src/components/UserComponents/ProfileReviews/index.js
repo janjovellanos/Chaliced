@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
-import { timeAgo, getCreatedDate } from '../../../utils/helpers';
+import { getCreatedDate } from '../../../utils/helpers';
 import * as sellerActions from '../../../store/seller';
 import './ProfileReviews.css'
-import ProfileListings from '../ProfileListings';
 
 export default function ProfileReviews({sellerReviews, seller}) {
     const { userId } = useParams();
-    // const seller = useSelector(state => (state.sellers))[userId];
 
     let total = 0;
     sellerReviews?.forEach(review => {
@@ -33,7 +31,7 @@ export default function ProfileReviews({sellerReviews, seller}) {
         </div>
         <div className='seller-reviews-list'>
             {sellerReviews?.map(review => (
-                <div className='review-li'>
+                <div key={review?.id} className='review-li'>
                     <div className='review-left'>
                         <div className='review-date'>{getCreatedDate(review?.createdAt)}</div>
                         <div className='review-stars'>{review?.stars} *****</div>

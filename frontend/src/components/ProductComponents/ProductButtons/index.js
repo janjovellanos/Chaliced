@@ -42,7 +42,6 @@ export default function ProductButtons({product, editing, setEditing, productEdi
             </div>
             <div className='product-delete-btn'>
                 <DeleteButtonModal product={product}/>
-                {/* <button>DELETE LISTING <i className="fa-solid fa-trash-can"></i></button> */}
             </div>
         </>
     )
@@ -58,7 +57,6 @@ export default function ProductButtons({product, editing, setEditing, productEdi
         </>
     )
 
-//    {editing ?
         return (<div className='product-buttons'>
             {user?.id === product?.userId ? sellerBtns : buyerBtns}
             <div className='product-seller-info'>
@@ -66,7 +64,6 @@ export default function ProductButtons({product, editing, setEditing, productEdi
                     <NavLink to={`/users/${product?.userId}`}>
                         <img src='https://cdn3.iconfinder.com/data/icons/office-485/100/ICON_BASIC-11-512.png'></img>
                     </NavLink>
-                    {/* {product?.Seller?.profileImage} */}
                 </div>
                 <div className='seller-stats'>
                     <NavLink to={`/users/${product?.userId}`} className='product-seller-name'>{product?.Seller?.username}</NavLink>
@@ -75,22 +72,4 @@ export default function ProductButtons({product, editing, setEditing, productEdi
                 </div>
             </div>
         </div>)
-//    :
-//         (<div className='product-buttons'>
-//             {user?.id === product?.userId ? sellerBtns : buyerBtns}
-//             <div className='product-seller-info'>
-//                 <div className='seller-profile-pic'>
-//                     <NavLink to={`/users/${product?.userId}`}>
-//                         <img src='https://cdn3.iconfinder.com/data/icons/office-485/100/ICON_BASIC-11-512.png'></img>
-//                     </NavLink>
-//                     {/* {product?.Seller?.profileImage} */}
-//                 </div>
-//                 <div className='seller-stats'>
-//                     <NavLink to={`/users/${product?.userId}`} className='product-seller-name'>{product?.Seller?.username}</NavLink>
-//                     <div className='product-seller-rating'>***** {product?.Seller?.reviewCount} Reviews</div>
-//                     <NavLink to={`/users/${product?.userId}`} className='product-seller-listings'>{product?.Seller?.productCount} listing for sale</NavLink>
-//                 </div>
-//             </div>
-//         </div>)
-//    }
 }

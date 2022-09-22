@@ -8,7 +8,6 @@ function DeleteButtonModal({product}) {
   return (
     <>
       <button onClick={() => setShowModal(true)}>DELETE LISTING <i className="fa-solid fa-trash-can"></i></button>
-      {/* <button onClick={() => setShowModal(true)}>Log In</button> */}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <DeleteButton product={product} setShowModal={setShowModal}/>
