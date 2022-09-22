@@ -24,6 +24,7 @@
     width: 100%;
     height: 100%;
     font-weight: bold;
+    font-size: 12pt;
 }
 
 .product-favs {
@@ -40,6 +41,12 @@
 }
 
 .product-price {
+    font-weight: bold;
+    font-size: 18pt;
+    font-family: monospace;
+}
+
+.product-price input {
     font-weight: bold;
     font-size: 18pt;
     font-family: monospace;

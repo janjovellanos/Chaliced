@@ -27,7 +27,7 @@ export default function ProductPage() {
                     <img className='product-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
                 </div>
             </div>
-            <ProductDetails product={product}/>
+            {product && <ProductDetails product={product}/>}
         </div>
         <div className='product-page-bottom'>
             <div>items at the bottom</div>

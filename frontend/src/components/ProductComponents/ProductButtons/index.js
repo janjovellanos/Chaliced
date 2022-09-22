@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import * as favActions from '../../../store/favorite';
 import * as productActions from '../../../store/product';
+import DeleteButtonModal from './DeleteButton';
 import './ProductButtons.css'
 
 export default function ProductButtons({product, editing, setEditing, productEdits}) {
@@ -22,7 +23,12 @@ export default function ProductButtons({product, editing, setEditing, productEdi
             setEditBtnText('UPDATE')
         }
         else {
-            await dispatch(productActions.editProduct(productEdits, product?.id))
+            if (productEdits.name !== product.name ||
+                productEdits.size !== product.size ||
+                productEdits.price !== product.price ||
+                productEdits.description !== product.description) {
+                    await dispatch(productActions.editProduct(productEdits, product?.id))
+                }
             setEditing(false)
             setEditBtnText('EDIT LISTING')
         }
@@ -35,7 +41,8 @@ export default function ProductButtons({product, editing, setEditing, productEdi
                 <button onClick={() => handleEditBtn()}>{editBtnText} <i className="fa-solid fa-pencil"></i></button>
             </div>
             <div className='product-delete-btn'>
-                <button>DELETE LISTING <i className="fa-solid fa-trash-can"></i></button>
+                <DeleteButtonModal product={product}/>
+                {/* <button>DELETE LISTING <i className="fa-solid fa-trash-can"></i></button> */}
             </div>
         </>
     )

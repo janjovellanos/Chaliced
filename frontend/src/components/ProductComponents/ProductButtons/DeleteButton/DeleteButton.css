@@ -1,0 +1,50 @@
+.delete-modal-container {
+    display: grid;
+    grid-template-rows: 40% 20% 40%;
+    /* justify-content: center;
+    align-items: center; */
+    text-align: center;
+    /* height: 8rem; */
+}
+
+.delete-modal-container > * {
+    margin: 0.5rem;
+}
+
+.delete-modal-header {
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.delete-modal-second {
+    margin: 2px 1px 0 1px;
+    font-size: 10pt;
+    font-style: italic;
+}
+
+.delete-modal-options {
+    display: flex;
+    justify-content: space-around;
+}
+
+.yes-delete {
+    display: flex;
+    align-items: center;
+    font-size: 10pt;
+    font-weight: bold;
+    margin: 2px 5px;
+    color: rgb(182, 5, 5);
+}
+
+.dont-delete {
+    display: flex;
+    align-items: center;
+    font-size: 8pt;
+    margin: 2px 5px;
+    color: rgb(0, 0, 0, 0.7);
+    text-decoration: underline;
+}
+
+.yes-delete:hover, .dont-delete:hover {
+    cursor: pointer;
+}
