@@ -6,12 +6,14 @@ import * as sellerActions from '../../../store/seller';
 import './ProfilePage.css'
 import ProfileListings from '../ProfileListings';
 import ProfileReviews from '../ProfileReviews';
+import ProfileTransactions from '../ProfileTransactions';
 
 export default function ProfilePage() {
     const { userId } = useParams();
     const seller = useSelector(state => (state.sellers))[userId];
     const [listingsClicked, setListingsClicked] = useState('profile-listings-clicked')
     const [reviewsClicked, setReviewsClicked] = useState('')
+    const [transactionsClicked, setTransactionsClicked] = useState('')
 
 
     const availProducts = seller?.Products?.filter(product => product.sold === false)
@@ -23,14 +25,23 @@ export default function ProfilePage() {
     const handleListingsClicked = () => {
         setListingsClicked('profile-listings-clicked')
         setReviewsClicked('')
+        setTransactionsClicked('')
         setBottomView(<ProfileListings availProducts={availProducts} />)
-    }
+    };
 
     const handleReviewsClicked = () => {
         setReviewsClicked('profile-reviews-clicked')
         setListingsClicked('')
+        setTransactionsClicked('')
         setBottomView(<ProfileReviews sellerReviews={sellerReviews} seller={seller} />)
-    }
+    };
+
+    const handleTransactionsClicked = () => {
+        setTransactionsClicked('profile-orders-clicked')
+        setListingsClicked('')
+        setReviewsClicked('')
+        setBottomView(<ProfileTransactions seller={seller} />)
+    };
 
     useEffect(() => {
         dispatch(sellerActions.getUserDetails(userId))
@@ -63,13 +74,8 @@ export default function ProfilePage() {
         <div className='profile-listings-reviews-btns'>
             <div onClick={() => handleListingsClicked()} className={listingsClicked}>Listings ({availProducts?.length})</div>
             <div onClick={() => handleReviewsClicked()} className={reviewsClicked}>Reviews ({sellerReviews?.length})</div>
+            <div onClick={() => handleTransactionsClicked()} className={transactionsClicked}>Your Orders</div>
         </div>
-        {/* <div className='listing-filter-bar'>
-            <div className='profile-item-count'>{availProducts?.length} Listings</div>
-            <div className='profile-filter-btn'>
-                <button>FILTER</button>
-            </div>
-        </div> */}
         <div className='listings-or-reviews'>
             {bottomView || <ProfileListings availProducts={availProducts} />}
             {/* <ProfileListings availProducts={availProducts} /> */}

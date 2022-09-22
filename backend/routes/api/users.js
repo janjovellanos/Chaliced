@@ -87,7 +87,7 @@ router.get("/:userId", requireAuth, async (req, res, next) => {
           model: Review, attributes: ['id', 'sellerId', 'body', 'stars', 'productId', 'createdAt']
         },
         {
-          model: Order, attributes: ['id', 'productId']
+          model: Order, attributes: ['id', 'productId', 'createdAt']
         },
     ]
   });

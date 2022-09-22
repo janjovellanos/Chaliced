@@ -89,7 +89,7 @@
 
 .profile-listings-reviews-btns {
     display: grid;
-    grid-template-columns: 15% 15%;
+    grid-template-columns: 15% 15% 15%;
     border-bottom: 1px solid rgb(0, 0, 0, 0.2);
 }
 
@@ -100,7 +100,7 @@
     cursor: pointer;
 }
 
-.profile-listings-clicked, .profile-reviews-clicked {
+.profile-listings-clicked, .profile-reviews-clicked, .profile-orders-clicked {
     font-weight: bold;
     border-bottom: 2px solid rgb(0, 0, 0);
 }
