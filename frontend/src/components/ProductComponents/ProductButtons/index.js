@@ -5,10 +5,10 @@ import * as favActions from '../../../store/favorite';
 import * as productActions from '../../../store/product';
 import './ProductButtons.css'
 
-export default function ProductButtons({product}) {
+export default function ProductButtons({product, editing, setEditing, productEdits}) {
     const user = useSelector(state => state.session.user);
+    const [editBtnText, setEditBtnText] = useState('EDIT LISTING')
     const dispatch = useDispatch();
-    const [editing, setEditing] = useState(false);
 
     useEffect(() => {
         if (product) {
@@ -16,15 +16,23 @@ export default function ProductButtons({product}) {
         }
     }, [dispatch]);
 
-    const handleEditBtn = () => {
-        setEditing(!editing)
+    const handleEditBtn = async () => {
+        if (!editing) {
+            setEditing(true)
+            setEditBtnText('UPDATE')
+        }
+        else {
+            await dispatch(productActions.editProduct(productEdits, product?.id))
+            setEditing(false)
+            setEditBtnText('EDIT LISTING')
+        }
     };
 
 
     let sellerBtns = (
         <>
             <div className='product-edit-btn'>
-                <button onClick={() => handleEditBtn()}>EDIT LISTING <i className="fa-solid fa-pencil"></i></button>
+                <button onClick={() => handleEditBtn()}>{editBtnText} <i className="fa-solid fa-pencil"></i></button>
             </div>
             <div className='product-delete-btn'>
                 <button>DELETE LISTING <i className="fa-solid fa-trash-can"></i></button>

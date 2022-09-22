@@ -45,9 +45,9 @@ const deleteProduct = (id) => ({
     id
 });
 
-const updateProduct = (song) => ({
+const updateProduct = (product) => ({
     type: UPDATE_PRODUCT,
-    song
+    product
 })
 
 export const getProducts = () => async dispatch => {
@@ -134,7 +134,7 @@ export const editProduct = (product, productId) => async (dispatch) => {
     const { name, description, size, price, categoryId } = product;
 
 
-    const res = await csrfFetch(`/api/product/${productId}`, {
+    const res = await csrfFetch(`/api/products/${productId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -208,18 +208,12 @@ const productsReducer = (state = {}, action) => {
             } else {
                 productImageState[action.payload.productId].Images = [action.payload.image]
             }
-
-            // {
-            //         ...state,
-            //         [action.payload.productId.Images]: [
-            //             ...action.payload.productId.Images, action.payload.image
-            //         ]
-            //     }
-        // case UPDATE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         [action.song.id]: action.song
-        //     };
+        case UPDATE_PRODUCT:
+            console.log(action);
+            return {
+                ...state,
+                [action.product.id]: action.product
+            };
         // case DELETE_PRODUCT:
         //     newState = { ...state };
         //     delete newState[action.id];
