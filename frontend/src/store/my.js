@@ -1,22 +1,22 @@
 import { csrfFetch } from "./csrf";
 
-export const LOAD_SELLER_DETAILS = 'sellers/loadSellerDetails';
-export const LOAD_SELLERS = 'sellers/loadSellers';
+export const LOAD_MY_ORDERS = 'my/loadMyOrders';
+export const LOAD_MY_SOLD = 'my/loadMySold';
 // export const LOAD_AVAIL_PRODUCTS = 'products/loadAvailProducts';
 // export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
 // export const CREATE_PRODUCT = 'products/createProduct';
 // export const UPDATE_PRODUCT = 'products/updateProduct';
 // export const DELETE_PRODUCT = 'products/deleteProduct';
 
-const loadSellerDetails = (data) => ({
-    type: LOAD_SELLER_DETAILS,
+const loadMyOrders = (data) => ({
+    type: LOAD_MY_ORDERS,
     data
 })
 
-// const loadOneProduct = (product) => ({
-//     type: LOAD_ONE_PRODUCT,
-//     product
-// });
+const loadMySold = (data) => ({
+    type: LOAD_MY_SOLD,
+    data
+});
 
 // const createProduct = (product) => ({
 //     type: CREATE_PRODUCT,
@@ -33,22 +33,22 @@ const loadSellerDetails = (data) => ({
 //     song
 // })
 
-export const getUserDetails = (userId) => async dispatch => {
-    const res = await csrfFetch(`/api/users/${userId}`);
+export const getMyOrders = () => async dispatch => {
+    const res = await csrfFetch(`/api/my/orders`);
     if (res.ok) {
         const data = await res.json();
-        dispatch(loadSellerDetails(data));
+        dispatch(loadMyOrders(data));
     }
 }
 
-// export const getProduct = (productId) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/products/${productId}`);
+export const getMySold = () => async (dispatch) => {
+    const res = await csrfFetch(`/api/my/sold`);
 
-//     if (res.ok) {
-//         const data = await res.json();
-//         dispatch(loadOneProduct(data));
-//     }
-// };
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadMySold(data));
+    }
+};
 
 // export const addProduct = (data) => async (dispatch) => {
 //     const { name, description, size, price, categoryId } = data;
@@ -108,18 +108,19 @@ export const getUserDetails = (userId) => async dispatch => {
 //     }
 // };
 
-const sellersReducer = (state = {}, action) => {
+const myReducer = (state = {Orders: {}, Sold: {}}, action) => {
     let newState;
     switch (action.type) {
-        case LOAD_SELLER_DETAILS:
-            newState = {};
-            newState[action.data.id] = action.data
+        case LOAD_MY_ORDERS:
+            // console.log('ORDERS', action);
+            newState = {...state};
+            action.data.forEach(order => newState.Orders[order.id]= order)
             return newState
-        // case LOAD_ONE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         [action.product.id]: action.product
-        //     }
+        case LOAD_MY_SOLD:
+            // console.log('SOLD', action);
+            newState = {...state};
+            action.data.forEach(sold => newState.Sold[sold.id]= sold)
+            return newState
         // case CREATE_PRODUCT:
         //     return {
         //         ...state,
@@ -139,4 +140,4 @@ const sellersReducer = (state = {}, action) => {
     }
 }
 
-export default sellersReducer
+export default myReducer

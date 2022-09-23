@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { timeAgo } from '../../../utils/helpers';
 import * as sellerActions from '../../../store/seller';
+import * as myActions from '../../../store/my';
 import './ProfilePage.css'
 import ProfileListings from '../ProfileListings';
 import ProfileReviews from '../ProfileReviews';
@@ -10,6 +11,7 @@ import ProfileTransactions from '../ProfileTransactions';
 
 export default function ProfilePage() {
     const { userId } = useParams();
+    const user = useSelector(state => state.session.user);
     const seller = useSelector(state => (state.sellers))[userId];
     const [listingsClicked, setListingsClicked] = useState('profile-listings-clicked')
     const [reviewsClicked, setReviewsClicked] = useState('')
@@ -45,6 +47,10 @@ export default function ProfilePage() {
 
     useEffect(() => {
         dispatch(sellerActions.getUserDetails(userId))
+        if (user?.id === +userId) {
+            dispatch(myActions.getMyOrders());
+            dispatch(myActions.getMySold());
+        }
     }, [dispatch]);
 
   return (

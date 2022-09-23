@@ -81,7 +81,7 @@ router.get("/:userId", requireAuth, async (req, res, next) => {
   const seller = await User.findByPk(userId, {
     include: [
         {
-            model: Product, attributes: ['id', 'userId', 'name', 'price', 'size', 'description', 'sold', 'createdAt']
+            model: Product, attributes: ['id', 'userId', 'name', 'price', 'size', 'description', 'sold', 'createdAt', 'updatedAt']
         },
         {
           model: Review, attributes: ['id', 'sellerId', 'body', 'stars', 'productId', 'createdAt']
@@ -100,8 +100,22 @@ router.get("/:userId", requireAuth, async (req, res, next) => {
     err.title = "Seller couldn't be found";
     return next(err);
   }
-
 });
+
+//get details of all users
+router.get('/', requireAuth, async (req, res, next) => {
+  const sellers = await User.findAll({
+    include: [
+      {
+        model: Order, attributes: ['id', 'productId', 'createdAt']
+      },
+      {
+        model: Product, attributes: ['id', 'userId', 'name', 'price', 'size', 'description', 'sold', 'createdAt', 'updatedAt']
+      },
+    ]
+  })
+  res.json(sellers);
+})
 
 
 

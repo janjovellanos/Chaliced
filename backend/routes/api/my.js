@@ -112,7 +112,8 @@ router.get('/orders', requireAuth, async (req, res, next) => {
         where: { userId: user.id },
         include: [
             {
-                model: Product, attributes: ['id', 'name', 'size', 'price']
+                model: Product, attributes: ['id', 'name', 'size', 'price', 'description'],
+                include: {model: User, as: 'Seller'}
             }
         ]
     });

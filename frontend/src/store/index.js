@@ -5,6 +5,7 @@ import productsReducer from "./product";
 import favoritesReducer from "./favorite";
 import reviewsReducer from "./review";
 import sellersReducer from "./seller";
+import myReducer from "./my";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   favorites: favoritesReducer,
   reviews: reviewsReducer,
   sellers: sellersReducer,
+  my: myReducer
 });
 
 let enhancer;
