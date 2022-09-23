@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
 import * as productActions from '../../../store/product';
 import { getCreatedDate } from '../../../utils/helpers';
 
 export default function ProfilePurchases({seller}) {
     const myOrders = useSelector(state => Object.values(state.my.Orders));
     const products = useSelector(state => Object.values(state.products));
+    const history = useHistory();
     const dispatch = useDispatch();
 
     useEffect(() => {

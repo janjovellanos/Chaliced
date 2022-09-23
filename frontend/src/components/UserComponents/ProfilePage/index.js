@@ -80,7 +80,7 @@ export default function ProfilePage() {
         <div className='profile-listings-reviews-btns'>
             <div onClick={() => handleListingsClicked()} className={listingsClicked}>Listings ({availProducts?.length})</div>
             <div onClick={() => handleReviewsClicked()} className={reviewsClicked}>Reviews ({sellerReviews?.length})</div>
-            <div onClick={() => handleTransactionsClicked()} className={transactionsClicked}>Your Orders</div>
+            {user?.id === +userId && <div onClick={() => handleTransactionsClicked()} className={transactionsClicked}>Your Orders</div>}
         </div>
         <div className='listings-or-reviews'>
             {bottomView || <ProfileListings availProducts={availProducts} />}
