@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import * as sellerActions from '../../../store/seller';
+import * as myActions from '../../../store/my';
 import { getCreatedDate } from '../../../utils/helpers';
 
-export default function ProfileSales({seller}) {
+export default function ProfileSales() {
     const mySold = useSelector(state => Object.values(state.my.Sold));
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(sellerActions.getAllSellers());
-    // }, [dispatch])
+    useEffect(() => {
+        // dispatch(myActions.getMyOrders());
+        dispatch(myActions.getMySold());
+    }, [dispatch])
 
-    // const soldProducts = seller?.Products?.filter(product => product?.sold === true);
+    mySold?.sort((a, b) => {
+        return b.id - a.id;
+    })
 
     return (
         <div className='solds-list'>

@@ -83,8 +83,8 @@ router.get('/favorites', requireAuth, async (req, res, next) => {
 });
 
 //create an order for a product logged in as current user
-router.post('/orders/:productId', requireAuth, async (req, res, next) => {
-    const { productId } = req.params;
+router.post('/orders', requireAuth, async (req, res, next) => {
+    const { productId } = req.body;
     const { user } = req;
 
     const product = await Product.findByPk(productId);

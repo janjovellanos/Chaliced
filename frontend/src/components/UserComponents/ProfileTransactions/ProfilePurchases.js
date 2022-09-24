@@ -1,22 +1,26 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as productActions from '../../../store/product';
+import * as myActions from '../../../store/my';
 import { getCreatedDate } from '../../../utils/helpers';
 
 export default function ProfilePurchases({seller}) {
     const myOrders = useSelector(state => Object.values(state.my.Orders));
-    const products = useSelector(state => Object.values(state.products));
     const history = useHistory();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(productActions.getProducts());
+        dispatch(myActions.getMyOrders());
     }, [dispatch])
 
     // const orderIds = seller.Orders.map(order => order.productId)
     // const orderProducts = products.filter(product => orderIds.includes(product.id) )
     // console.log(orderProducts);
+
+    myOrders?.sort((a, b) => {
+        return b.id - a.id;
+    })
 
     return (
         <div className='orders-list'>

@@ -3,7 +3,7 @@ import { csrfFetch } from "./csrf";
 export const LOAD_MY_ORDERS = 'my/loadMyOrders';
 export const LOAD_MY_SOLD = 'my/loadMySold';
 export const LOAD_MY_REVIEWS = 'my/loadMyReviews';
-// export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
+export const CREATE_ORDER = 'my/createOrder';
 // export const CREATE_PRODUCT = 'products/createProduct';
 // export const UPDATE_PRODUCT = 'products/updateProduct';
 // export const DELETE_PRODUCT = 'products/deleteProduct';
@@ -23,10 +23,10 @@ const loadMyReviews = (data) => ({
     data
 });
 
-// const deleteProduct = (id) => ({
-//     type: DELETE_PRODUCT,
-//     id
-// });
+const createOrder = (data) => ({
+    type: CREATE_ORDER,
+    data
+});
 
 // const updateProduct = (song) => ({
 //     type: UPDATE_PRODUCT,
@@ -58,6 +58,26 @@ export const getMyReviews = () => async (dispatch) => {
         dispatch(loadMyReviews(data));
     }
 };
+
+export const addOrder = (productId) => async (dispatch) => {
+
+    const res = await csrfFetch('/api/my/orders', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            productId
+        })
+    });
+
+    if (res.ok) {
+        const order = await res.json();
+        dispatch(createOrder(order));
+
+        return order;
+    }
+}
 
 // export const addProduct = (data) => async (dispatch) => {
 //     const { name, description, size, price, categoryId } = data;
@@ -134,6 +154,11 @@ const myReducer = (state = {Orders: {}, Sold: {}, Reviews: {}}, action) => {
             // console.log('SOLD', action);
             newState = {...state};
             action.data.forEach(review => newState.Reviews[review.id]= review)
+            return newState
+        case CREATE_ORDER:
+            console.log(action);
+            newState = {...state};
+            newState.Orders[action.data.id] = action.data
             return newState
         default:
             return state;

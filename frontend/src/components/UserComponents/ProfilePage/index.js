@@ -49,10 +49,6 @@ export default function ProfilePage() {
 
     useEffect(() => {
         dispatch(sellerActions.getUserDetails(userId))
-        if (user?.id === +userId) {
-            dispatch(myActions.getMyOrders());
-            dispatch(myActions.getMySold());
-        }
     }, [dispatch]);
 
   return (

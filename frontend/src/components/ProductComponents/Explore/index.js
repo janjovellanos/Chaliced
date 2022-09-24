@@ -15,6 +15,10 @@ export default function Explore() {
         dispatch(productActions.getAvailProducts())
     }, [dispatch]);
 
+    products?.sort((a, b) => {
+        return b.id - a.id;
+    })
+
   return (
     <div className='explore-page-container'>
         <div className='top-explore'>
