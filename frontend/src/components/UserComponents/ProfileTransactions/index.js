@@ -6,24 +6,24 @@ import ProfilePurchases from './ProfilePurchases';
 import ProfileSales from './ProfileSales';
 import './ProfileTransactions.css'
 
-export default function ProfileTransactions({sellerorders, seller}) {
+export default function ProfileTransactions({myOrders, mySold}) {
     const { userId } = useParams();
     const [purchasesClicked, setPurchasesClicked] = useState('profile-purchases-clicked')
     const [salesClicked, setSalesClicked] = useState('')
-    const [bottomView, setBottomView] = useState(<ProfilePurchases seller={seller}/>);
+    const [bottomView, setBottomView] = useState(<ProfilePurchases myOrders={myOrders}/>);
     const dispatch = useDispatch();
 
     const handlePurchasesClicked = () => {
         setPurchasesClicked('profile-purchases-clicked')
         setSalesClicked('')
-        setBottomView(<ProfilePurchases seller={seller}/>)
+        setBottomView(<ProfilePurchases myOrders={myOrders}/>)
         // setBottomView(<ProfileListings availProducts={availProducts} />)
     };
 
     const handleSalesClicked = () => {
         setSalesClicked('profile-sales-clicked')
         setPurchasesClicked('')
-        setBottomView(<ProfileSales seller={seller} />)
+        setBottomView(<ProfileSales mySold={mySold} />)
     };
 
     useEffect(() => {

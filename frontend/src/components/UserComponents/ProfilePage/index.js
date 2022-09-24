@@ -13,14 +13,16 @@ export default function ProfilePage() {
     const { userId } = useParams();
     const user = useSelector(state => state.session.user);
     const seller = useSelector(state => (state.sellers))[userId];
+    const myOrders = useSelector(state => Object.values(state.my.Orders));
+    const mySold = useSelector(state => Object.values(state.my.Sold));
     const [listingsClicked, setListingsClicked] = useState('profile-listings-clicked')
-    const [reviewsClicked, setReviewsClicked] = useState('')
-    const [transactionsClicked, setTransactionsClicked] = useState('')
+    const [reviewsClicked, setReviewsClicked] = useState('');
+    const [transactionsClicked, setTransactionsClicked] = useState('');
 
 
     const availProducts = seller?.Products?.filter(product => product.sold === false)
     const sellerReviews = seller?.Reviews
-    const sellerTransactions = sellerReviews?.length + seller?.Orders?.length
+    const sellerTransactions = sellerReviews?.length + myOrders?.length
     const [bottomView, setBottomView] = useState(null);
     const dispatch = useDispatch();
 
@@ -42,7 +44,7 @@ export default function ProfilePage() {
         setTransactionsClicked('profile-orders-clicked')
         setListingsClicked('')
         setReviewsClicked('')
-        setBottomView(<ProfileTransactions seller={seller} />)
+        setBottomView(<ProfileTransactions myOrders={myOrders} mySold={mySold}/>)
     };
 
     useEffect(() => {
@@ -84,8 +86,6 @@ export default function ProfilePage() {
         </div>
         <div className='listings-or-reviews'>
             {bottomView || <ProfileListings availProducts={availProducts} />}
-            {/* <ProfileListings availProducts={availProducts} /> */}
-            {/* <ProfileReviews sellerReviews={sellerReviews} /> */}
         </div>
     </div>
   )

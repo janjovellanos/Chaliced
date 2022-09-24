@@ -20,12 +20,12 @@ export default function ProfileSales({seller}) {
                     <div className='sold-details'>
                         <div className='sold-details-top'>
                             <div>
-                                <div className='top-detail-name'>Buyer</div>
-                                <div className='top-detail'>{product?.Order?.User?.username}</div>
-                            </div>
-                            <div>
                                 <div className='top-detail-name'>Sold on</div>
                                 <div className='top-detail'>{getCreatedDate(product?.updatedAt)}</div>
+                            </div>
+                            <div>
+                                <div className='top-detail-name'>Buyer</div>
+                                <div className='top-detail'>{product?.Order?.User?.username}</div>
                             </div>
                             <div>
                                 <div className='top-detail-name'>Sale Price</div>

@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 export const LOAD_MY_ORDERS = 'my/loadMyOrders';
 export const LOAD_MY_SOLD = 'my/loadMySold';
-// export const LOAD_AVAIL_PRODUCTS = 'products/loadAvailProducts';
+export const LOAD_MY_REVIEWS = 'my/loadMyReviews';
 // export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
 // export const CREATE_PRODUCT = 'products/createProduct';
 // export const UPDATE_PRODUCT = 'products/updateProduct';
@@ -18,10 +18,10 @@ const loadMySold = (data) => ({
     data
 });
 
-// const createProduct = (product) => ({
-//     type: CREATE_PRODUCT,
-//     product
-// });
+const loadMyReviews = (data) => ({
+    type: LOAD_MY_REVIEWS,
+    data
+});
 
 // const deleteProduct = (id) => ({
 //     type: DELETE_PRODUCT,
@@ -47,6 +47,15 @@ export const getMySold = () => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(loadMySold(data));
+    }
+};
+
+export const getMyReviews = () => async (dispatch) => {
+    const res = await csrfFetch(`/api/my/reviews`);
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadMyReviews(data));
     }
 };
 
@@ -108,7 +117,7 @@ export const getMySold = () => async (dispatch) => {
 //     }
 // };
 
-const myReducer = (state = {Orders: {}, Sold: {}}, action) => {
+const myReducer = (state = {Orders: {}, Sold: {}, Reviews: {}}, action) => {
     let newState;
     switch (action.type) {
         case LOAD_MY_ORDERS:
@@ -121,20 +130,11 @@ const myReducer = (state = {Orders: {}, Sold: {}}, action) => {
             newState = {...state};
             action.data.forEach(sold => newState.Sold[sold.id]= sold)
             return newState
-        // case CREATE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         [action.song.id]: action.song
-        //     }
-        // case UPDATE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         [action.song.id]: action.song
-        //     };
-        // case DELETE_PRODUCT:
-        //     newState = { ...state };
-        //     delete newState[action.id];
-        //     return newState;
+        case LOAD_MY_REVIEWS:
+            // console.log('SOLD', action);
+            newState = {...state};
+            action.data.forEach(review => newState.Reviews[review.id]= review)
+            return newState
         default:
             return state;
     }

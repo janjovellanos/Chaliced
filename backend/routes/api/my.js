@@ -54,8 +54,14 @@ router.get('/reviews', requireAuth, async (req, res, next) => {
         where: { sellerId: user.id },
         include: [
             {
-                model: Product, attributes: ['id', 'name', 'size', 'price']
-            }
+                model: Product, attributes: ['id', 'name', 'size', 'price'],
+                include: [
+                    {
+                        model: User, as: 'Seller',
+                        attributes: ['id', 'username', 'profileImage']
+                    }
+                ]
+            },
         ]
     });
     res.json(reviews)
