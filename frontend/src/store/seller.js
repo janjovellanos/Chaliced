@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 export const LOAD_SELLER_DETAILS = 'sellers/loadSellerDetails';
-// export const LOAD_USER_PRODUCTS = 'users/loadUserProducts';
+export const LOAD_SELLERS = 'sellers/loadSellers';
 // export const LOAD_AVAIL_PRODUCTS = 'products/loadAvailProducts';
 // export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
 // export const CREATE_PRODUCT = 'products/createProduct';
@@ -12,11 +12,6 @@ const loadSellerDetails = (data) => ({
     type: LOAD_SELLER_DETAILS,
     data
 })
-
-// const loadUserProducts = (data) => ({
-//     type: LOAD_USER_PRODUCTS,
-//     data
-// })
 
 // const loadOneProduct = (product) => ({
 //     type: LOAD_ONE_PRODUCT,
@@ -45,14 +40,6 @@ export const getUserDetails = (userId) => async dispatch => {
         dispatch(loadSellerDetails(data));
     }
 }
-
-// export const getUserProducts = (userId) => async dispatch => {
-//     const res = await csrfFetch(`/api/users/${userId}/products`);
-//     if (res.ok) {
-//         const data = await res.json();
-//         dispatch(loadUserProducts(data));
-//     }
-// }
 
 // export const getProduct = (productId) => async (dispatch) => {
 //     const res = await csrfFetch(`/api/products/${productId}`);
@@ -128,15 +115,6 @@ const sellersReducer = (state = {}, action) => {
             newState = {};
             newState[action.data.id] = action.data
             return newState
-        // case LOAD_USER_PRODUCTS:
-        //     newState = {};
-        //     console.log(action);
-        //     action.data.forEach(product => {
-        //         if (!product.sold) {
-        //             newState[product.id] = product
-        //         }
-        //     });
-        //     return newState;
         // case LOAD_ONE_PRODUCT:
         //     return {
         //         ...state,

@@ -54,8 +54,14 @@ router.get('/reviews', requireAuth, async (req, res, next) => {
         where: { sellerId: user.id },
         include: [
             {
-                model: Product, attributes: ['id', 'name', 'size', 'price']
-            }
+                model: Product, attributes: ['id', 'name', 'size', 'price'],
+                include: [
+                    {
+                        model: User, as: 'Seller',
+                        attributes: ['id', 'username', 'profileImage']
+                    }
+                ]
+            },
         ]
     });
     res.json(reviews)
@@ -77,8 +83,8 @@ router.get('/favorites', requireAuth, async (req, res, next) => {
 });
 
 //create an order for a product logged in as current user
-router.post('/orders/:productId', requireAuth, async (req, res, next) => {
-    const { productId } = req.params;
+router.post('/orders', requireAuth, async (req, res, next) => {
+    const { productId } = req.body;
     const { user } = req;
 
     const product = await Product.findByPk(productId);
@@ -112,7 +118,12 @@ router.get('/orders', requireAuth, async (req, res, next) => {
         where: { userId: user.id },
         include: [
             {
-                model: Product, attributes: ['id', 'name', 'size', 'price']
+                model: Product, attributes: ['id', 'name', 'size', 'price', 'description'],
+                include: [
+                    {model: User, as: 'Seller'},
+                    {model: Image, attributes: ['id', 'url']},
+                    {model: Review, attributes: ['id', 'stars', 'body']}
+                ]
             }
         ]
     });

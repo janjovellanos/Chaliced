@@ -78,3 +78,12 @@
 .review-right img {
     width: 10rem;
 }
+
+.review-buyer {
+    display: flex;
+    align-items: flex-end;
+    font-size: 9.5pt;
+    text-decoration: underline;
+    font-weight: bold;
+    color: rgb(0, 0, 0, 0.8);
+}

@@ -12,7 +12,7 @@ export default function ProductPage() {
 
     useEffect(() => {
         dispatch(productActions.getProduct(productId))
-    }, [dispatch]);
+    }, [dispatch, product?.name, product?.size, product?.price, product?.description]);
 
   return (
     <div className='product-page-container'>

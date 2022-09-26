@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
-export const LOAD_USER_REVIEWS = 'users/loadUserReviews';
-// export const LOAD_USER_PRODUCTS = 'users/loadUserProducts';
+export const LOAD_USER_REVIEWS = 'reviews/loadUserReviews';
+export const CREATE_REVIEW = 'reviews/createReview';
 // export const LOAD_AVAIL_PRODUCTS = 'products/loadAvailProducts';
 // export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
 // export const CREATE_PRODUCT = 'products/createProduct';
@@ -13,10 +13,10 @@ const loadUserReviews = (data) => ({
     data
 })
 
-// const loadUserProducts = (data) => ({
-//     type: LOAD_USER_PRODUCTS,
-//     data
-// })
+const createReview = (data) => ({
+    type: CREATE_REVIEW,
+    data
+})
 
 // const loadOneProduct = (product) => ({
 //     type: LOAD_ONE_PRODUCT,
@@ -46,13 +46,28 @@ export const getUserReviews = (userId) => async dispatch => {
     }
 }
 
-// export const getUserProducts = (userId) => async dispatch => {
-//     const res = await csrfFetch(`/api/users/${userId}/products`);
-//     if (res.ok) {
-//         const data = await res.json();
-//         dispatch(loadUserProducts(data));
-//     }
-// }
+export const addReview = (data) => async dispatch => {
+    const { stars, body, productId } = data;
+
+    const res = await csrfFetch('/api/reviews', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            stars,
+            body,
+            productId
+        })
+    });
+
+    if (res.ok) {
+        const review = await res.json();
+        dispatch(createReview(review));
+
+        return review;
+    }
+}
 
 // export const getProduct = (productId) => async (dispatch) => {
 //     const res = await csrfFetch(`/api/products/${productId}`);
@@ -130,15 +145,10 @@ const reviewsReducer = (state = {}, action) => {
                 newState[review.id] = review;
             });
             return newState
-        // case LOAD_USER_PRODUCTS:
-        //     newState = {};
-        //     console.log(action);
-        //     action.data.forEach(product => {
-        //         if (!product.sold) {
-        //             newState[product.id] = product
-        //         }
-        //     });
-        //     return newState;
+        case CREATE_REVIEW:
+            newState = { ...state };
+            console.log(action);
+            return newState;
         // case LOAD_ONE_PRODUCT:
         //     return {
         //         ...state,

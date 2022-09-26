@@ -5,6 +5,7 @@ import * as favActions from '../../../store/favorite';
 import * as productActions from '../../../store/product';
 import DeleteButtonModal from './DeleteButton';
 import './ProductButtons.css'
+import PurchaseButtonModal from './PurchaseButton';
 
 export default function ProductButtons({product, editing, setEditing, productEdits}) {
     const user = useSelector(state => state.session.user);
@@ -49,7 +50,7 @@ export default function ProductButtons({product, editing, setEditing, productEdi
     let buyerBtns = (
         <>
             <div className='product-purchase-btn'>
-                <button>PURCHASE</button>
+               <PurchaseButtonModal product={product}/>
             </div>
             <div className='product-favorite-btn'>
                 <button>FAVORITE</button>

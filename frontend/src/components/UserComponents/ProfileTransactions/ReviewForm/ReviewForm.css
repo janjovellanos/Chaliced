@@ -1,0 +1,141 @@
+#review-form-modal {
+}
+
+.review-modal-container {
+    display: grid;
+    grid-template-rows: 60% 30% 10%;
+    justify-content: center;
+    text-align: center;
+    height: 25rem;
+    width: 20rem;
+}
+
+.review-modal-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15pt;
+    color: white;
+    width: 22.1rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.review-product-item {
+    font-size: 18pt;
+}
+
+
+.review-modal-header div {
+    margin: 0.25rem 0;
+    color: white;
+    text-shadow:
+    0.07em 0 rgb(0, 0, 0, 0.7),
+    0 0.07em rgb(0, 0, 0, 0.7),
+    -0.07em 0 rgb(0, 0, 0, 0.7),
+    0 -0.07em rgb(0, 0, 0, 0.7);
+}
+
+.review-product-description {
+    text-shadow: none;
+    font-weight: normal;
+    font-size: 12pt;
+}
+
+.review-modal-second {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2px 1px 2px 1px;
+    font-size: 12pt;
+    /* font-style: italic; */
+}
+
+.review-modal-second > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.review-size-label, .review-price-label {
+    font-size: 11pt;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    color: rgb(0, 0, 0, 0.65);
+
+}
+
+.review-size, .review-price {
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.review-modal-options {
+    display: flex;
+    justify-content: center;
+    /* height: fit-content; */
+    align-items: center;
+}
+
+.review-modal-options > * {
+    /* width: 6rem; */
+    height: fit-content;
+    justify-content: center;
+}
+
+.yes-review {
+    display: flex;
+    align-items: center;
+    font-size: 12pt;
+    font-weight: bold;
+    margin: 2px 5px;
+    color: rgb(100,149,237)
+}
+
+.dont-review {
+    display: flex;
+    align-items: center;
+    font-size: 11pt;
+    margin: 2px 5px;
+    color: rgb(0, 0, 0, 0.6);
+    text-decoration: underline;
+}
+
+.yes-review:hover, .dont-review:hover {
+    cursor: pointer;
+}
+
+.star-container {
+    display: flex;
+    justify-content: center;
+    font-size: 16pt;
+}
+
+.rating-form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.filled {
+    color: gold;
+}
+
+.hollow {
+    color: rgb(0, 0, 0, 0.8);
+}
+
+.review-body-textarea {
+    overflow-y: auto ;
+    width: 100%;
+    height: 3rem;
+    resize: none;
+    border: 2px solid rgb(0, 0, 0, 0.6);
+    border-radius: 4px;
+}

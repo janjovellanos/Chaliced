@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { getCreatedDate } from '../../../utils/helpers';
 import * as sellerActions from '../../../store/seller';
 import './ProfileReviews.css'
@@ -35,7 +35,10 @@ export default function ProfileReviews({sellerReviews, seller}) {
                     <div className='review-left'>
                         <div className='review-date'>{getCreatedDate(review?.createdAt)}</div>
                         <div className='review-stars'>{review?.stars} *****</div>
-                        <div className='review-body'>{review?.body}</div>
+                        <div className='review-body'>
+                            <div>{review?.body} -</div>
+                            <div className='review-buyer'>{review?.Buyer?.username}</div>
+                        </div>
                         <div className='review-product-name'>
                             {seller?.Products?.find(product => product?.id === review?.productId)?.name}
                         </div>

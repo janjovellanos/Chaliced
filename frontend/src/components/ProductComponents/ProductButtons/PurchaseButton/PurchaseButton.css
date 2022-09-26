@@ -1,0 +1,81 @@
+.purchase-modal-container {
+    display: grid;
+    grid-template-rows: 40% 20% 40%;
+    /* justify-content: center;
+    align-items: center; */
+    text-align: center;
+    height: 12rem;
+    width: 16rem;
+}
+
+.purchase-modal-container > * {
+    margin: 0.5rem;
+}
+
+.purchase-modal-header {
+    font-weight: bold;
+    font-size: 15pt;
+}
+
+.purchase-modal-second {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2px 1px 2px 1px;
+    font-size: 12pt;
+    /* font-style: italic; */
+}
+
+.purchase-modal-second > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1rem 1rem 1rem;
+}
+
+.purchase-size-label, .purchase-price-label {
+    font-size: 11pt;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    color: rgb(0, 0, 0, 0.65);
+
+}
+
+.purchase-size, .purchase-price {
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.purchase-modal-options {
+    display: flex;
+    justify-content: center;
+}
+
+.purchase-modal-options > * {
+    width: 6rem;
+    justify-content: center;
+}
+
+.yes-purchase {
+    display: flex;
+    align-items: center;
+    font-size: 12pt;
+    font-weight: bold;
+    margin: 2px 5px;
+    color: rgb(26, 162, 26);
+}
+
+.dont-purchase {
+    display: flex;
+    align-items: center;
+    font-size: 11pt;
+    margin: 2px 5px;
+    color: rgb(0, 0, 0, 0.6);
+    text-decoration: underline;
+}
+
+.yes-purchase:hover, .dont-purchase:hover {
+    cursor: pointer;
+}

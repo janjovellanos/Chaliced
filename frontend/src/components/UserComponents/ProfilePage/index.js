@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { timeAgo } from '../../../utils/helpers';
 import * as sellerActions from '../../../store/seller';
+import * as myActions from '../../../store/my';
 import './ProfilePage.css'
 import ProfileListings from '../ProfileListings';
 import ProfileReviews from '../ProfileReviews';
@@ -10,15 +11,18 @@ import ProfileTransactions from '../ProfileTransactions';
 
 export default function ProfilePage() {
     const { userId } = useParams();
+    const user = useSelector(state => state.session.user);
     const seller = useSelector(state => (state.sellers))[userId];
+    const myOrders = useSelector(state => Object.values(state.my.Orders));
+    const mySold = useSelector(state => Object.values(state.my.Sold));
     const [listingsClicked, setListingsClicked] = useState('profile-listings-clicked')
-    const [reviewsClicked, setReviewsClicked] = useState('')
-    const [transactionsClicked, setTransactionsClicked] = useState('')
+    const [reviewsClicked, setReviewsClicked] = useState('');
+    const [transactionsClicked, setTransactionsClicked] = useState('');
 
 
     const availProducts = seller?.Products?.filter(product => product.sold === false)
     const sellerReviews = seller?.Reviews
-    const sellerTransactions = sellerReviews?.length + seller?.Orders?.length
+    const sellerTransactions = sellerReviews?.length + myOrders?.length
     const [bottomView, setBottomView] = useState(null);
     const dispatch = useDispatch();
 
@@ -40,11 +44,17 @@ export default function ProfilePage() {
         setTransactionsClicked('profile-orders-clicked')
         setListingsClicked('')
         setReviewsClicked('')
-        setBottomView(<ProfileTransactions seller={seller} />)
+        setBottomView(<ProfileTransactions myOrders={myOrders} mySold={mySold}/>)
     };
 
     useEffect(() => {
         dispatch(sellerActions.getUserDetails(userId))
+        //if url contains curr user's id && transactions
+        if (window.location.href.includes('transactions')
+        && window.location.href.includes(`${user?.id}`)) {
+            //show purchases bottomview
+            handleTransactionsClicked();
+        }
     }, [dispatch]);
 
   return (
@@ -74,12 +84,10 @@ export default function ProfilePage() {
         <div className='profile-listings-reviews-btns'>
             <div onClick={() => handleListingsClicked()} className={listingsClicked}>Listings ({availProducts?.length})</div>
             <div onClick={() => handleReviewsClicked()} className={reviewsClicked}>Reviews ({sellerReviews?.length})</div>
-            <div onClick={() => handleTransactionsClicked()} className={transactionsClicked}>Your Orders</div>
+            {user?.id === +userId && <div onClick={() => handleTransactionsClicked()} className={transactionsClicked}>Your Orders</div>}
         </div>
         <div className='listings-or-reviews'>
             {bottomView || <ProfileListings availProducts={availProducts} />}
-            {/* <ProfileListings availProducts={availProducts} /> */}
-            {/* <ProfileReviews sellerReviews={sellerReviews} /> */}
         </div>
     </div>
   )

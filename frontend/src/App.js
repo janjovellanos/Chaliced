@@ -38,6 +38,9 @@ function App() {
           <Route exact path="/users/:userId">
             <ProfilePage />
           </Route>
+          <Route exact path="/users/:userId/transactions">
+            <ProfilePage />
+          </Route>
         </Switch>
       )}
     </>

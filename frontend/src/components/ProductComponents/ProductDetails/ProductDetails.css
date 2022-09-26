@@ -53,7 +53,10 @@
 }
 
 .product-description-container {
+    /* margin-top: 2rem; */
     width: 20rem;
+    margin-bottom: 3rem;
+    overflow-y: auto
 }
 
 .description-header {

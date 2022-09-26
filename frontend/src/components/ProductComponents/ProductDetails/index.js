@@ -38,7 +38,7 @@ export default function ProductDetails({product}) {
         <ProductButtons product={product} editing={editing} setEditing={setEditing} productEdits={productEdits}/>
         <div className='product-description-container'>
             <div className='description-header'>Description</div>
-            <div className='description-body'>{product?.description} dsffnsd sdjfns nsd fsdjn fsdnf sds njfs nfs jkfsdjkf nsdjfnsdfn sdfn sjk fsd njk</div>
+            <div className='description-body'>{product?.description}</div>
         </div>
     </div>
     )
