@@ -12,7 +12,7 @@ export default function PurchaseButton({product, setShowModal}) {
   const handlePurchaseBtn = async () => {
     await dispatch(myActions.addOrder(product?.id))
     setShowModal(false);
-    history.push(`/users/${user.id}`)
+    history.push(`/users/${user?.id}/transactions`)
     alert(`Congratulations on your ${product?.name}!`)
   };
 
@@ -21,11 +21,11 @@ export default function PurchaseButton({product, setShowModal}) {
         <div className='purchase-modal-header'>{product?.name}</div>
         <div className='purchase-modal-second'>
             <div>
-                <div className='purchase-size-label'>size:</div>
+                <div className='purchase-size-label'>size: </div>
                 <div className='purchase-size'>{product?.size}</div>
             </div>
             <div>
-                <div className='purchase-price-label'>price:</div>
+                <div className='purchase-price-label'>price: </div>
                 <div className='purchase-price'>${product?.price}</div>
             </div>
         </div>

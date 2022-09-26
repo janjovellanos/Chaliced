@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import * as productActions from '../../../store/product';
 import * as myActions from '../../../store/my';
 import { getCreatedDate } from '../../../utils/helpers';
+import CreateReviewButtonModal from './ReviewForm';
 
 export default function ProfilePurchases({seller}) {
     const myOrders = useSelector(state => Object.values(state.my.Orders));
@@ -13,10 +14,6 @@ export default function ProfilePurchases({seller}) {
     useEffect(() => {
         dispatch(myActions.getMyOrders());
     }, [dispatch])
-
-    // const orderIds = seller.Orders.map(order => order.productId)
-    // const orderProducts = products.filter(product => orderIds.includes(product.id) )
-    // console.log(orderProducts);
 
     myOrders?.sort((a, b) => {
         return b.id - a.id;
@@ -51,9 +48,13 @@ export default function ProfilePurchases({seller}) {
                             <div className='order-item-description'>
                                 {order?.Product?.description}
                             </div>
+                            {order?.Product?.Review && <div className='current-review'>
+                                <div>{order?.Product?.Review?.stars}* - {order?.Product?.Review?.body}</div>
+                            </div>}
                         </div>
                         <div className='order-leave-review'>
-                            <button>LEAVE A REVIEW</button>
+                            {!order?.Product?.Review && <CreateReviewButtonModal product={order?.Product}/>
+                                                    || <button>EDIT REVIEW</button>}
                         </div>
                     </div>
                 </div>

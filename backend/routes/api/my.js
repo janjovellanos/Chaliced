@@ -119,7 +119,11 @@ router.get('/orders', requireAuth, async (req, res, next) => {
         include: [
             {
                 model: Product, attributes: ['id', 'name', 'size', 'price', 'description'],
-                include: {model: User, as: 'Seller'}
+                include: [
+                    {model: User, as: 'Seller'},
+                    {model: Image, attributes: ['id', 'url']},
+                    {model: Review, attributes: ['id', 'stars', 'body']}
+                ]
             }
         ]
     });

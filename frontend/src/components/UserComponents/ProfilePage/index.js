@@ -49,6 +49,12 @@ export default function ProfilePage() {
 
     useEffect(() => {
         dispatch(sellerActions.getUserDetails(userId))
+        //if url contains curr user's id && transactions
+        if (window.location.href.includes('transactions')
+        && window.location.href.includes(`${user?.id}`)) {
+            //show purchases bottomview
+            handleTransactionsClicked();
+        }
     }, [dispatch]);
 
   return (

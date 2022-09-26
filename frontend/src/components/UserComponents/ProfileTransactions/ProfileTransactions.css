@@ -55,7 +55,7 @@
 
 .order-details {
     display: grid;
-    grid-template-rows: 40% 40% 20%;
+    grid-template-rows: 40% 50% 20%;
     width: 100%;
     margin: 0 1.5rem;
 }
@@ -104,8 +104,13 @@
 
 .order-leave-review {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.current-review {
+    display: flex;
 }
 
 .order-leave-review button {
