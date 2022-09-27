@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 export const LOAD_USER_REVIEWS = 'reviews/loadUserReviews';
 export const CREATE_REVIEW = 'reviews/createReview';
+export const EDIT_REVIEW = 'reviews/editReview';
 // export const LOAD_AVAIL_PRODUCTS = 'products/loadAvailProducts';
 // export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
 // export const CREATE_PRODUCT = 'products/createProduct';
@@ -18,6 +19,10 @@ const createReview = (data) => ({
     data
 })
 
+const editReview = (data) => ({
+    type: EDIT_REVIEW,
+    data
+})
 // const loadOneProduct = (product) => ({
 //     type: LOAD_ONE_PRODUCT,
 //     product
@@ -64,6 +69,28 @@ export const addReview = (data) => async dispatch => {
     if (res.ok) {
         const review = await res.json();
         dispatch(createReview(review));
+
+        return review;
+    }
+}
+
+export const updateReview = (data) => async dispatch => {
+    const { stars, body, id } = data;
+
+    const res = await csrfFetch(`/api/reviews/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            stars,
+            body,
+        })
+    });
+
+    if (res.ok) {
+        const review = await res.json();
+        dispatch(editReview(review));
 
         return review;
     }
@@ -147,13 +174,13 @@ const reviewsReducer = (state = {}, action) => {
             return newState
         case CREATE_REVIEW:
             newState = { ...state };
-            console.log(action);
             return newState;
-        // case LOAD_ONE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         [action.product.id]: action.product
-        //     }
+        case EDIT_REVIEW:
+            console.log(action);
+            return {
+                ...state,
+                [action.data.id]: action.data
+            }
         // case CREATE_PRODUCT:
         //     return {
         //         ...state,

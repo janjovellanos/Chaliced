@@ -5,6 +5,8 @@ import * as productActions from '../../../store/product';
 import * as myActions from '../../../store/my';
 import { getCreatedDate } from '../../../utils/helpers';
 import CreateReviewButtonModal from './ReviewForm';
+import EditReviewForm from './EditReviewForm/EditReviewForm';
+import EditReviewButtonModal from './EditReviewForm';
 
 export default function ProfilePurchases({seller}) {
     const myOrders = useSelector(state => Object.values(state.my.Orders));
@@ -54,7 +56,7 @@ export default function ProfilePurchases({seller}) {
                         </div>
                         <div className='order-leave-review'>
                             {!order?.Product?.Review && <CreateReviewButtonModal product={order?.Product}/>
-                                                    || <button>EDIT REVIEW</button>}
+                                                    || <EditReviewButtonModal product={order?.Product} />}
                         </div>
                     </div>
                 </div>
