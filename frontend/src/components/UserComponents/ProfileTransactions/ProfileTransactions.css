@@ -218,15 +218,29 @@
 }
 
 .review-edit-delete {
-    display: grid;
+    /* display: grid;
     /* width: 100%; */
-    grid-template-columns: 90% 10%;
-}
-
-.review-edit-delete > * {
-}
-
-#delete-review-btn {
-    width: 1rem;
+    /* grid-template-columns: 90% 10%; */
+    display: flex;
+    justify-content: flex-start;
+    width: 25rem;
+    height: 2rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 10pt;
     background-color: white;
+    border-color: rgb(0, 0, 0, 0.4);
+    color: white;
+}
+
+.review-edit-delete button {
+    margin-right: 1rem;
+    border-radius: 2px;
+    /* background-color: white; */
+
+}
+
+.delete-review-btn {
+    width: 1rem;
+    /* background-color: white; */
 }
