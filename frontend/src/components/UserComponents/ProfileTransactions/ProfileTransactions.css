@@ -202,3 +202,31 @@
 .sold-details-top div > * {
     margin: 0.5rem 0;
 }
+
+.current-review-stars {
+    font-weight: bold;
+    color: rgb(0, 0, 0, 0.8);
+}
+
+.current-review-body {
+    /* display: flex; */
+    /* align-items: flex-end; */
+    font-style: italic;
+    /* font-weight: bold; */
+    font-size: 10pt;
+    color: rgb(0, 0, 0, 0.65);
+}
+
+.review-edit-delete {
+    display: grid;
+    /* width: 100%; */
+    grid-template-columns: 90% 10%;
+}
+
+.review-edit-delete > * {
+}
+
+#delete-review-btn {
+    width: 1rem;
+    background-color: white;
+}

@@ -51,12 +51,15 @@ export default function ProfilePurchases({seller}) {
                                 {order?.Product?.description}
                             </div>
                             {order?.Product?.Review && <div className='current-review'>
-                                <div>{order?.Product?.Review?.stars}* - {order?.Product?.Review?.body}</div>
+                                <div className='current-review-stars'>{order?.Product?.Review?.stars}<i className="fa-solid fa-star filled"></i> </div>
+                                <div className='current-review-body'>{order?.Product?.Review?.body.slice(0, 45) + '...'}</div>
                             </div>}
                         </div>
                         <div className='order-leave-review'>
                             {!order?.Product?.Review && <CreateReviewButtonModal product={order?.Product}/>
-                                                    || <EditReviewButtonModal product={order?.Product} />}
+                                                    || <div className='review-edit-delete'>
+                                                         <EditReviewButtonModal product={order?.Product} />
+                                                       </div>}
                         </div>
                     </div>
                 </div>
