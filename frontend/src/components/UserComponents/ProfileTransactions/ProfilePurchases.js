@@ -1,25 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import * as productActions from '../../../store/product';
+import * as reviewActions from '../../../store/review';
 import * as myActions from '../../../store/my';
 import { getCreatedDate } from '../../../utils/helpers';
 import CreateReviewButtonModal from './ReviewForm';
-import EditReviewForm from './EditReviewForm/EditReviewForm';
 import EditReviewButtonModal from './EditReviewForm';
 
 export default function ProfilePurchases({seller}) {
     const myOrders = useSelector(state => Object.values(state.my.Orders));
+    const reviews = useSelector(state => state.reviews);
     const history = useHistory();
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(myActions.getMyOrders());
-    }, [dispatch])
+    }, [dispatch, reviews])
 
     myOrders?.sort((a, b) => {
         return b.id - a.id;
     })
+
+    const handleDeleteReview = (id) => {
+        dispatch(reviewActions.removeReview(id));
+    }
 
     return (
         <div className='orders-list'>
@@ -52,14 +56,14 @@ export default function ProfilePurchases({seller}) {
                             </div>
                             {order?.Product?.Review && <div className='current-review'>
                                 <div className='current-review-stars'>{order?.Product?.Review?.stars}<i className="fa-solid fa-star filled"></i> </div>
-                                <div className='current-review-body'>{order?.Product?.Review?.body.slice(0, 45) + '...'}</div>
+                                <div className='current-review-body'>"{order?.Product?.Review?.body.slice(0, 40) + '...'}"</div>
                             </div>}
                         </div>
                         <div className='order-leave-review'>
                             {!order?.Product?.Review && <CreateReviewButtonModal product={order?.Product}/>
                                                     || <div className='review-edit-delete'>
                                                          <EditReviewButtonModal product={order?.Product} />
-                                                         <button className='delete-review-btn'>REMOVE REVIEW</button>
+                                                         <button onClick={e => handleDeleteReview(order?.Product?.Review?.id)} className='delete-review-btn'>REMOVE REVIEW</button>
                                                        </div>}
                         </div>
                     </div>

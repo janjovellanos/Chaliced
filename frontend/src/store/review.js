@@ -3,11 +3,11 @@ import { csrfFetch } from "./csrf";
 export const LOAD_USER_REVIEWS = 'reviews/loadUserReviews';
 export const CREATE_REVIEW = 'reviews/createReview';
 export const EDIT_REVIEW = 'reviews/editReview';
+export const DELETE_REVIEW = 'reviews/deleteReview';
 // export const LOAD_AVAIL_PRODUCTS = 'products/loadAvailProducts';
 // export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
 // export const CREATE_PRODUCT = 'products/createProduct';
 // export const UPDATE_PRODUCT = 'products/updateProduct';
-// export const DELETE_PRODUCT = 'products/deleteProduct';
 
 const loadUserReviews = (data) => ({
     type: LOAD_USER_REVIEWS,
@@ -23,6 +23,11 @@ const editReview = (data) => ({
     type: EDIT_REVIEW,
     data
 })
+
+const deleteReview = (id) => ({
+    type: DELETE_REVIEW,
+    id
+});
 // const loadOneProduct = (product) => ({
 //     type: LOAD_ONE_PRODUCT,
 //     product
@@ -33,10 +38,6 @@ const editReview = (data) => ({
 //     product
 // });
 
-// const deleteProduct = (id) => ({
-//     type: DELETE_PRODUCT,
-//     id
-// });
 
 // const updateProduct = (song) => ({
 //     type: UPDATE_PRODUCT,
@@ -96,6 +97,16 @@ export const updateReview = (data) => async dispatch => {
     }
 }
 
+export const removeReview = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${id}`, {
+        method: 'DELETE'
+    });
+
+    if (res.ok) {
+        dispatch(deleteReview(id));
+    }
+};
+
 // export const getProduct = (productId) => async (dispatch) => {
 //     const res = await csrfFetch(`/api/products/${productId}`);
 
@@ -153,16 +164,6 @@ export const updateReview = (data) => async dispatch => {
 //     }
 // }
 
-// export const removeProduct = (productId) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/products/${productId}`, {
-//         method: 'DELETE'
-//     });
-
-//     if (res.ok) {
-//         dispatch(deleteProduct(productId));
-//     }
-// };
-
 const reviewsReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
@@ -181,6 +182,10 @@ const reviewsReducer = (state = {}, action) => {
                 ...state,
                 [action.data.id]: action.data
             }
+            case DELETE_REVIEW:
+                newState = { ...state };
+                delete newState[action.id];
+                return newState;
         // case CREATE_PRODUCT:
         //     return {
         //         ...state,
@@ -191,10 +196,6 @@ const reviewsReducer = (state = {}, action) => {
         //         ...state,
         //         [action.song.id]: action.song
         //     };
-        // case DELETE_PRODUCT:
-        //     newState = { ...state };
-        //     delete newState[action.id];
-        //     return newState;
         default:
             return state;
     }
