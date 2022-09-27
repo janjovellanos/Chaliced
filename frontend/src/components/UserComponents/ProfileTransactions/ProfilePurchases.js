@@ -59,7 +59,7 @@ export default function ProfilePurchases({seller}) {
                             {!order?.Product?.Review && <CreateReviewButtonModal product={order?.Product}/>
                                                     || <div className='review-edit-delete'>
                                                          <EditReviewButtonModal product={order?.Product} />
-                                                         <button className='delete-review-btn'>DELETE REVIEW</button>
+                                                         <button className='delete-review-btn'>REMOVE REVIEW</button>
                                                        </div>}
                         </div>
                     </div>

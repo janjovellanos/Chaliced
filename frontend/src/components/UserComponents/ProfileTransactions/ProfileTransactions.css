@@ -113,7 +113,7 @@
     display: flex;
 }
 
-.order-leave-review button {
+.order-leave-review > button {
     width: 25rem;
     height: 2rem;
     font-family: 'Roboto Mono', monospace;
@@ -229,18 +229,32 @@
     font-weight: bold;
     font-size: 10pt;
     background-color: white;
-    border-color: rgb(0, 0, 0, 0.4);
+    border-color: rgb(0, 0, 0, 0.2);
     color: white;
 }
 
 .review-edit-delete button {
     margin-right: 1rem;
     border-radius: 2px;
-    /* background-color: white; */
+    /* border-color: 2px solid yellow; */
+    background-color: rgb(222, 222, 220);
 
+    background: linear-gradient(60deg, white, rgb(211, 210, 210), rgb(151, 151, 151) 80%) no-repeat;
+
+
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 10pt;
+    color: white;
+    text-shadow:
+    0.1em 0 rgb(0, 0, 0, 1),
+    0 0.1em rgb(0, 0, 0, 1),
+    -0.1em 0 rgb(0, 0, 0, 1),
+    0 -0.1em rgb(0, 0, 0, 1);
 }
 
 .delete-review-btn {
-    width: 1rem;
+    /* width: 3rem; */
+    /* color: red; */
     /* background-color: white; */
 }
