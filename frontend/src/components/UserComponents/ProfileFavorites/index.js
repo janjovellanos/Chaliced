@@ -1,17 +1,26 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { timeAgo } from '../../../utils/helpers';
 import * as myActions from '../../../store/my';
+import * as favActions from '../../../store/favorite';
 import './ProfileFavorites.css'
 
 export default function ProfileFavorites() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const myFavs = useSelector(state => Object.values(state.my.Favorites))
+    const favs = useSelector(state => state.my.Favorites);
+
 
     useEffect(() => {
         dispatch(myActions.getMyFavs());
-    }, [dispatch])
+    }, [dispatch, favs])
+
+    const handleUnFavorite = (id) => {
+        dispatch(favActions.removeFav(id));
+        history.go();
+    }
 
     let soldItem =  <>
                       <div className='this-item-sold'>
@@ -46,7 +55,7 @@ export default function ProfileFavorites() {
                                 <p>{fav?.Product?.size}</p>
                         </NavLink>
                         <div className='seller-item-description'>{fav?.Product?.description}</div>
-                        <div className='seller-item-price-and-fav'><p>${fav?.Product?.price}</p><p><i className="fa-regular fa-heart"></i></p></div>
+                        <div className='seller-item-price-and-fav'><p>${fav?.Product?.price}</p><p><i onClick={() => handleUnFavorite(fav?.Product?.id)} className="fa-solid fa-heart"></i></p></div>
                     </div>
                 </div>
             ))}
