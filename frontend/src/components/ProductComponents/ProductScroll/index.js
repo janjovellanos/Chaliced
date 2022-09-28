@@ -1,8 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { timeAgo } from '../../../utils/helpers'
+import * as myActions from '../../../store/my';
+import * as favActions from '../../../store/favorite';
 
 export default function ProductScroll({products}) {
+    const userFavs = useSelector(state => Object.values(state.my.Favorites));
+    const myFavs = useSelector(state => state.my.Favorites);
+    const dispatch = useDispatch();
+
+    const currUserLiked = (id) => {
+        let favProductIds = userFavs.map(fav => fav?.productId);
+        return favProductIds.includes(id);
+    }
+
+    const handleFavButton = (id) => {
+        if (!currUserLiked(id)) {
+            dispatch(favActions.addFav(id))
+            // setFaved('fa-solid fa-heart')
+        } else {
+            dispatch(favActions.removeFav(id))
+            // setFaved('fa-regular fa-heart')
+        }
+    }
+
+    useEffect(() => {
+        dispatch(myActions.getMyFavs());
+    }, [dispatch, myFavs])
+
   return (
         <>
             {products?.map(product => (
@@ -23,7 +49,7 @@ export default function ProductScroll({products}) {
                                 <p>{product?.size}</p>
                         </NavLink>
                         <div className='item-description'>{product?.description}</div>
-                        <div className='item-price-and-fav'><p>${product?.price}</p><p><i className="fa-regular fa-heart"></i></p></div>
+                        <div className='item-price-and-fav'><p>${product?.price}</p><p>{currUserLiked(product?.id) ? <i onClick={() => handleFavButton(product?.id)} className="fa-solid fa-heart" /> : <i onClick={() => handleFavButton(product?.id)} className="fa-regular fa-heart" />}</p></div>
                     </div>
                 </div>
             ))}
