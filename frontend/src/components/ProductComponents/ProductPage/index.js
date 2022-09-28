@@ -4,16 +4,19 @@ import { useParams } from 'react-router-dom';
 import * as productActions from '../../../store/product';
 import './ProductPage.css'
 import ProductDetails from '../ProductDetails';
+import ProductScroll from '../ProductScroll';
 
 export default function ProductPage() {
     const { productId } = useParams();
     const product = useSelector(state => (state.products))[productId];
+    const products = useSelector(state => Object.values(state.products));
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(productActions.getProduct(productId))
+        dispatch(productActions.getCategory(product?.categoryId))
     }, [dispatch, product?.name, product?.size, product?.price, product?.description]);
-
+    // console.log(product);
   return (
     <div className='product-page-container'>
         <div className='product-container'>
@@ -28,11 +31,12 @@ export default function ProductPage() {
             {product && <ProductDetails product={product}/>}
         </div>
         <div className='product-page-bottom'>
+            <ProductScroll products={products}/>
+            {/* <div>items at the bottom</div>
             <div>items at the bottom</div>
             <div>items at the bottom</div>
             <div>items at the bottom</div>
-            <div>items at the bottom</div>
-            <div>items at the bottom</div>
+            <div>items at the bottom</div> */}
         </div>
     </div>
   )

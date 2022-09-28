@@ -1,13 +1,14 @@
 .product-page-container {
     display: grid;
-    /* height: 100%; */
-    grid-template-rows: 90% 10%;
+    height: 100%;
+    /* width: 100%/; */
+    grid-template-rows: 50% 50%;
     justify-content: center;
 }
 
 .product-container {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 45% 55%;
     margin: 2rem;
 }
 
@@ -39,13 +40,7 @@
 .product-page-bottom {
     display: flex;
     justify-content: center;
-    margin: 2rem;
+    height: fit-content;
+    width: auto;
+    margin: 5rem;
 }
-
-.product-page-bottom > * {
-    margin: 0 1rem;
-}
-
-/* .product-container > *{
-    margin: auto;
-} */

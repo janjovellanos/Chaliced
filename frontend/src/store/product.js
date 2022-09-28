@@ -6,9 +6,9 @@ export const LOAD_USER_PRODUCTS = 'users/loadUserProducts';
 export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
 export const CREATE_PRODUCT = 'products/createProduct';
 export const CREATE_PRODUCT_IMAGE = 'products/createProductImage';
-
 export const UPDATE_PRODUCT = 'products/updateProduct';
 export const DELETE_PRODUCT = 'products/deleteProduct';
+export const LOAD_CATEGORY = 'products/loadCategory';
 
 const loadProducts = (data) => ({
     type: LOAD_PRODUCTS,
@@ -48,6 +48,11 @@ const deleteProduct = (id) => ({
 const updateProduct = (product) => ({
     type: UPDATE_PRODUCT,
     product
+})
+
+const loadCategory = (data) => ({
+    type: LOAD_CATEGORY,
+    data
 })
 
 export const getProducts = () => async dispatch => {
@@ -163,6 +168,14 @@ export const removeProduct = (productId) => async (dispatch) => {
     }
 };
 
+export const getCategory = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/products/category/${id}`);
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadCategory(data));
+    }
+}
+
 const productsReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
@@ -211,10 +224,16 @@ const productsReducer = (state = {}, action) => {
                 [action.product.id]: action.product
             };
         case DELETE_PRODUCT:
-            console.log(action);
+            // console.log(action);
             newState = { ...state };
             delete newState[action.id];
             return newState;
+        case LOAD_CATEGORY:
+            newState = {};
+            action.data.forEach(product => {
+                newState[product.id] = product;
+            });
+            return newState
         default:
             return state;
     }
