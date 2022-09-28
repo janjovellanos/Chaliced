@@ -13,8 +13,6 @@ export default function ProductPage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    console.log(product);
-
     useEffect(() => {
         dispatch(productActions.getProduct(productId))
         dispatch(productActions.getCategory(product?.categoryId))

@@ -1,8 +1,8 @@
 import { csrfFetch } from "./csrf";
 
 export const LOAD_PROD_FAVS = 'favorites/loadProdFavs';
-// export const LOAD_AVAIL_PRODUCTS = 'products/loadAvailProducts';
-// export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
+export const CREATE_FAV = 'favorites/createFav';
+export const DELETE_FAV = 'favorites/deleteFav';
 // export const CREATE_PRODUCT = 'products/createProduct';
 // export const UPDATE_PRODUCT = 'products/updateProduct';
 // export const DELETE_PRODUCT = 'products/deleteProduct';
@@ -12,6 +12,15 @@ const loadProdFavs = (data) => ({
     data
 })
 
+const createFav = (data) => ({
+    type: CREATE_FAV,
+    data
+})
+
+const deleteFav = (data) => ({
+    type: DELETE_FAV,
+    data
+})
 // const loadAvailProducts = (data) => ({
 //     type: LOAD_AVAIL_PRODUCTS,
 //     data
@@ -42,6 +51,33 @@ export const getProdFavs = (productId) => async dispatch => {
     if (res.ok) {
         const data = await res.json();
         dispatch(loadProdFavs(data));
+    }
+}
+
+export const addFav = (productId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/products/${productId}/favorites`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (res.ok) {
+        const favorite = await res.json();
+        dispatch(createFav(favorite));
+
+        return favorite;
+    }
+}
+
+export const removeFav = (productId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/products/${productId}/favorites`, {
+        method: 'DELETE',
+    });
+
+    if (res.ok) {
+        const deletedFavorite = await res.json();
+        dispatch(deleteFav(deletedFavorite));
     }
 }
 
@@ -125,11 +161,18 @@ const favoritesReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_PROD_FAVS:
             newState = { ...state };
-            // console.log(action);
             action.data.Favorites.forEach(fav => {
                 newState[fav.id] = fav;
             });
             return newState
+        case CREATE_FAV:
+            newState = {...state};
+            newState[action.data.id] = action.data
+            return newState;
+        case DELETE_FAV:
+            newState = { ...state };
+            delete newState[action.data.deletedFav.id];
+            return newState;
         // case LOAD_AVAIL_PRODUCTS:
         //     newState = {};
         //     console.log(action);

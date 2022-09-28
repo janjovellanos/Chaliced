@@ -5,20 +5,33 @@ import './ProductDetails.css'
 import ProductButtons from '../ProductButtons';
 
 export default function ProductDetails({product}) {
+    const user = useSelector(state => state.session.user);
     const favorites = useSelector(state => Object.values(state.favorites));
+    const favUserIds = favorites.map(fav => fav?.userId)
+    const currUserLiked = favUserIds.includes(user?.id);
+    const [faved, setFaved] = useState('fa-regular fa-heart product-favs');
     const [name, setName] = useState(product?.name);
     const [size, setSize] = useState(product?.size);
     const [price, setPrice] = useState(product?.price);
     const [description, setDescription] = useState(product?.description);
     const [editing, setEditing] = useState(false);
-
     const dispatch = useDispatch();
+
+    const handleFavButton = () => {
+        if (!currUserLiked) {
+            dispatch(favActions.addFav(product?.id))
+            setFaved('fa-solid fa-heart product-favs')
+        } else {
+            dispatch(favActions.removeFav(product?.id))
+            setFaved('fa-regular fa-heart product-favs')
+        }
+    }
 
     useEffect(() => {
         if (product) {
             dispatch(favActions.getProdFavs(product?.id))
         }
-    }, [dispatch]);
+    }, [dispatch, currUserLiked]);
 
     const productEdits = {name, size, price, description};
 
@@ -29,7 +42,10 @@ export default function ProductDetails({product}) {
                 {product?.name}
             </div>
             <div className='product-favs'>
-                <i className="fa-regular fa-heart product-favs"></i>
+                <i
+                onClick={async () => await handleFavButton()}
+                className={faved}
+                />
                 <div className='favs-counter'>{favorites?.length}</div>
             </div>
         </div>

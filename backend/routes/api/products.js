@@ -77,8 +77,10 @@ router.delete('/:productId/favorites', requireAuth, async (req, res, next) => {
     });
 
     if (favorite) {
+        const deletedFav = favorite;
         await favorite.destroy();
             res.json({
+                deletedFav: deletedFav,
                 message: 'Successfully deleted',
                 statusCode: 200
             })
