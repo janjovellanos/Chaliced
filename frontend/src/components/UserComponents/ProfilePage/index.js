@@ -18,6 +18,8 @@ export default function ProfilePage() {
     const [listingsClicked, setListingsClicked] = useState('profile-listings-clicked')
     const [reviewsClicked, setReviewsClicked] = useState('');
     const [transactionsClicked, setTransactionsClicked] = useState('');
+    const [favoritesClicked, setFavoritesClicked] = useState('my-favs');
+    const [heart, setHeart] = useState(<i className='fa-regular fa-heart' />)
 
 
     const availProducts = seller?.Products?.filter(product => product.sold === false)
@@ -29,12 +31,16 @@ export default function ProfilePage() {
     const handleListingsClicked = () => {
         setListingsClicked('profile-listings-clicked')
         setReviewsClicked('')
+        setHeart(<i className='fa-regular fa-heart' />)
+        setFavoritesClicked('my-favs')
         setTransactionsClicked('')
         setBottomView(<ProfileListings availProducts={availProducts} />)
     };
 
     const handleReviewsClicked = () => {
         setReviewsClicked('profile-reviews-clicked')
+        setHeart(<i className='fa-regular fa-heart' />)
+        setFavoritesClicked('my-favs')
         setListingsClicked('')
         setTransactionsClicked('')
         setBottomView(<ProfileReviews sellerReviews={sellerReviews} seller={seller} />)
@@ -42,6 +48,17 @@ export default function ProfilePage() {
 
     const handleTransactionsClicked = () => {
         setTransactionsClicked('profile-orders-clicked')
+        setListingsClicked('')
+        setReviewsClicked('')
+        setHeart(<i className='fa-regular fa-heart' />)
+        setFavoritesClicked('my-favs')
+        setBottomView(<ProfileTransactions myOrders={myOrders} mySold={mySold}/>)
+    };
+
+    const handleFavoritesClicked = () => {
+        setFavoritesClicked('my-favs profile-favs-clicked')
+        setHeart(<i className='fa-solid fa-heart' />)
+        setTransactionsClicked('')
         setListingsClicked('')
         setReviewsClicked('')
         setBottomView(<ProfileTransactions myOrders={myOrders} mySold={mySold}/>)
@@ -84,7 +101,11 @@ export default function ProfilePage() {
         <div className='profile-listings-reviews-btns'>
             <div onClick={() => handleListingsClicked()} className={listingsClicked}>Listings ({availProducts?.length})</div>
             <div onClick={() => handleReviewsClicked()} className={reviewsClicked}>Reviews ({sellerReviews?.length})</div>
-            {user?.id === +userId && <div onClick={() => handleTransactionsClicked()} className={transactionsClicked}>Your Orders</div>}
+            {user?.id === +userId &&
+            <>
+                <div onClick={() => handleTransactionsClicked()} className={transactionsClicked}>Your Orders</div>
+                <div onClick={() => handleFavoritesClicked()} className={favoritesClicked}>{heart}</div>
+            </>}
         </div>
         <div className='listings-or-reviews'>
             {bottomView || <ProfileListings availProducts={availProducts} />}

@@ -16,6 +16,7 @@ export default function HomePage() {
 
   return (
     <div className='home-page-container'>
+        <div className='featured-container'>
         <div className='featured'>
             <div className='featured-description-container'>
                 <div className='featured-logo-container'>
@@ -29,6 +30,7 @@ export default function HomePage() {
             <div className='featured-image-container'>
                 <img className='featured-image' src='https://www.highsnobiety.com/static-assets/wp-content/uploads/2022/08/15142054/ezgif.com-gif-maker-69.gif'></img>
             </div>
+        </div>
         </div>
         <div className='items-container-scroll'>
             {/* Get 5 Newest Listings */}

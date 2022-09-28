@@ -24,7 +24,7 @@ function Navigation({ isLoaded }) {
           <CreateProductModal />
           {/* <NavLink to='/sell' className="sell-btn">Sell</NavLink> */}
           <div className="favs-and-profile">
-            <i className="fa-regular fa-heart"></i> || <ProfileButton user={sessionUser} />
+            <i className="fa-regular fa-heart"></i><ProfileButton user={sessionUser} />
           </div>
         </div>
       </div>

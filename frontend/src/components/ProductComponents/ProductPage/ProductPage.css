@@ -2,7 +2,7 @@
     display: grid;
     height: 100%;
     /* width: 100%/; */
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 50% 10% 40%;
     justify-content: center;
 }
 
@@ -39,8 +39,18 @@
 
 .product-page-bottom {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     height: fit-content;
     width: auto;
-    margin: 5rem;
+    margin: 0.5rem;
+}
+
+.scroll-label {
+    height: fit-content;
+    display: flex;
+    /* align-items: flex-end; */
+    margin-top: 6rem;
+    margin-left: 1rem;
+    font-weight: bold;
+    text-decoration: underline;
 }

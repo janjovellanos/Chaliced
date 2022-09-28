@@ -30,15 +30,17 @@ export default function ProductPage() {
             </div>
             {product && <ProductDetails product={product}/>}
         </div>
+        <div className='scroll-label'>You may also like</div>
         <div className='product-page-bottom'>
             <ProductScroll products={products}/>
+        </div>
             {/* <div>items at the bottom</div>
             <div>items at the bottom</div>
             <div>items at the bottom</div>
             <div>items at the bottom</div>
             <div>items at the bottom</div> */}
         </div>
-    </div>
+    // </div>
   )
 
 }
