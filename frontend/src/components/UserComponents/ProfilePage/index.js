@@ -8,6 +8,7 @@ import './ProfilePage.css'
 import ProfileListings from '../ProfileListings';
 import ProfileReviews from '../ProfileReviews';
 import ProfileTransactions from '../ProfileTransactions';
+import ProfileFavorites from '../ProfileFavorites';
 
 export default function ProfilePage() {
     const { userId } = useParams();
@@ -61,7 +62,7 @@ export default function ProfilePage() {
         setTransactionsClicked('')
         setListingsClicked('')
         setReviewsClicked('')
-        setBottomView(<ProfileTransactions myOrders={myOrders} mySold={mySold}/>)
+        setBottomView(<ProfileFavorites />)
     };
 
     useEffect(() => {
@@ -71,6 +72,11 @@ export default function ProfilePage() {
         && window.location.href.includes(`${user?.id}`)) {
             //show purchases bottomview
             handleTransactionsClicked();
+        }
+        if (window.location.href.includes('favorites')
+        && window.location.href.includes(`${user?.id}`)) {
+            //show favorites bottomview
+            handleFavoritesClicked();
         }
     }, [dispatch]);
 

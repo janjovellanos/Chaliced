@@ -75,7 +75,7 @@ router.get('/favorites', requireAuth, async (req, res, next) => {
         where: { userId: user.id },
         include: [
             {
-                model: Product, attributes: ['id', 'name', 'size', 'price']
+                model: Product, attributes: ['id', 'name', 'size', 'price', 'sold', 'createdAt']
             }
         ]
     });

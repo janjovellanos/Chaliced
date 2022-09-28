@@ -42,7 +42,7 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <ul className={menuClass}>
-          <li key={user?.id}>{user?.username}</li>
+          <li key={user?.id} onClick={() => history.push(`/users/${user?.id}`)}>{user?.username}</li>
           <li key={user?.id}>{user?.email}</li>
           <li key={'favoritesfewvere'}>Favorites</li>
           <li>

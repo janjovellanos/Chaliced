@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 export const LOAD_MY_ORDERS = 'my/loadMyOrders';
 export const LOAD_MY_SOLD = 'my/loadMySold';
 export const LOAD_MY_REVIEWS = 'my/loadMyReviews';
+export const LOAD_MY_FAVS = 'my/loadMyFavs';
 export const CREATE_ORDER = 'my/createOrder';
 // export const CREATE_PRODUCT = 'products/createProduct';
 // export const UPDATE_PRODUCT = 'products/updateProduct';
@@ -22,6 +23,11 @@ const loadMyReviews = (data) => ({
     type: LOAD_MY_REVIEWS,
     data
 });
+
+const loadMyFavs = (data) => ({
+    type: LOAD_MY_FAVS,
+    data
+})
 
 const createOrder = (data) => ({
     type: CREATE_ORDER,
@@ -58,6 +64,14 @@ export const getMyReviews = () => async (dispatch) => {
         dispatch(loadMyReviews(data));
     }
 };
+
+export const getMyFavs = () => async dispatch => {
+    const res = await csrfFetch(`/api/my/favorites`);
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadMyFavs(data));
+    }
+}
 
 export const addOrder = (productId) => async (dispatch) => {
 
@@ -137,7 +151,7 @@ export const addOrder = (productId) => async (dispatch) => {
 //     }
 // };
 
-const myReducer = (state = {Orders: {}, Sold: {}, Reviews: {}}, action) => {
+const myReducer = (state = {Orders: {}, Sold: {}, Reviews: {}, Favorites: {}}, action) => {
     let newState;
     switch (action.type) {
         case LOAD_MY_ORDERS:
@@ -155,8 +169,13 @@ const myReducer = (state = {Orders: {}, Sold: {}, Reviews: {}}, action) => {
             newState = {...state};
             action.data.forEach(review => newState.Reviews[review.id]= review)
             return newState
+        case LOAD_MY_FAVS:
+            // console.log('FAVORITES', action);
+            newState = {...state};
+            action.data.forEach(favorite => newState.Favorites[favorite.id]= favorite)
+            return newState
         case CREATE_ORDER:
-            console.log(action);
+            // console.log(action);
             newState = {...state};
             newState.Orders[action.data.id] = action.data
             return newState

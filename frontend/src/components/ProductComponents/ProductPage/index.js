@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import * as productActions from '../../../store/product';
 import './ProductPage.css'
 import ProductDetails from '../ProductDetails';
@@ -11,13 +11,19 @@ export default function ProductPage() {
     const product = useSelector(state => (state.products))[productId];
     const products = useSelector(state => Object.values(state.products));
     const dispatch = useDispatch();
+    const history = useHistory();
+
+    console.log(product);
 
     useEffect(() => {
         dispatch(productActions.getProduct(productId))
         dispatch(productActions.getCategory(product?.categoryId))
     }, [dispatch, product?.name, product?.size, product?.price, product?.description]);
-    // console.log(product);
-  return (
+
+
+    if (product?.sold) history.push(`/unavailable`)
+
+    return (
     <div className='product-page-container'>
         <div className='product-container'>
             <div className='product-container-left'>
@@ -34,13 +40,6 @@ export default function ProductPage() {
         <div className='product-page-bottom'>
             <ProductScroll products={products}/>
         </div>
-            {/* <div>items at the bottom</div>
-            <div>items at the bottom</div>
-            <div>items at the bottom</div>
-            <div>items at the bottom</div>
-            <div>items at the bottom</div> */}
-        </div>
-    // </div>
+    </div>
   )
-
 }

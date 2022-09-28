@@ -3,3 +3,14 @@
 * {
     font-family: 'Montserrat', sans-serif;
 }
+
+.item-not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-not-found > * {
+    color: rgb(0, 0, 0, 0.8);
+    margin: 0.5rem;
+}

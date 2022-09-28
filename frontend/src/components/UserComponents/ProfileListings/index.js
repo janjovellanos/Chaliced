@@ -18,7 +18,7 @@ export default function ProfileListings({availProducts}) {
             </div>
         </div>
     <div className='seller-explore-page-container'>
-        <div className='items-container-scroll'>
+        <div className='items-container-scroll profile-listing-scroll'>
             {availProducts?.map(product => (
                 <div key={product?.id} className='seller-item-preview'>
                     <NavLink to={`/products/${product?.id}`} className='preview-image-container'>

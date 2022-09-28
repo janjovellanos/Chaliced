@@ -44,6 +44,15 @@ function App() {
           <Route exact path="/users/:userId/transactions">
             <ProfilePage />
           </Route>
+          <Route exact path="/users/:userId/favorites">
+            <ProfilePage />
+          </Route>
+          <Route exact path="/unavailable">
+            <h1 className="item-not-found">
+              <div>This listing has sold</div>
+              <div><i class="fa-regular fa-face-sad-cry" /></div>
+            </h1>
+          </Route>
           </>
           }
         </Switch>

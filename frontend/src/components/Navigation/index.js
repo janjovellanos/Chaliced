@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
@@ -9,6 +9,7 @@ import CreateProductModal from "../ProductComponents/CreateProduct";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const history = useHistory();
 
   let sessionLinks;
   if (sessionUser) {
@@ -24,7 +25,10 @@ function Navigation({ isLoaded }) {
           <CreateProductModal />
           {/* <NavLink to='/sell' className="sell-btn">Sell</NavLink> */}
           <div className="favs-and-profile">
-            <i className="fa-regular fa-heart"></i><ProfileButton user={sessionUser} />
+            <i
+              onClick={() => history.push(`/users/${sessionUser?.id}/favorites`)}
+              className="fa-regular fa-heart"></i>
+            <ProfileButton user={sessionUser} />
           </div>
         </div>
       </div>
