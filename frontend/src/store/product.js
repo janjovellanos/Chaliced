@@ -10,6 +10,8 @@ export const UPDATE_PRODUCT = 'products/updateProduct';
 export const DELETE_PRODUCT = 'products/deleteProduct';
 export const LOAD_CATEGORY = 'products/loadCategory';
 
+
+
 const loadProducts = (data) => ({
     type: LOAD_PRODUCTS,
     data
@@ -54,6 +56,8 @@ const loadCategory = (data) => ({
     type: LOAD_CATEGORY,
     data
 })
+
+
 
 export const getProducts = () => async dispatch => {
     const res = await csrfFetch('/api/products');
@@ -114,8 +118,6 @@ export const addProduct = (data) => async (dispatch) => {
 };
 
 export const addProductImage = (productId, url) => async (dispatch) => {
-    // const { url } = data;
-
     const res = await csrfFetch(`/api/products/${productId}/images`, {
         method: 'POST',
         headers: {
@@ -137,7 +139,6 @@ export const addProductImage = (productId, url) => async (dispatch) => {
 
 export const editProduct = (product, productId) => async (dispatch) => {
     const { name, description, size, price, categoryId } = product;
-
 
     const res = await csrfFetch(`/api/products/${productId}`, {
         method: 'PUT',
@@ -175,6 +176,8 @@ export const getCategory = (id) => async (dispatch) => {
         dispatch(loadCategory(data));
     }
 }
+
+
 
 const productsReducer = (state = {}, action) => {
     let newState;
@@ -224,7 +227,6 @@ const productsReducer = (state = {}, action) => {
                 [action.product.id]: action.product
             };
         case DELETE_PRODUCT:
-            // console.log(action);
             newState = { ...state };
             delete newState[action.id];
             return newState;

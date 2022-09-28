@@ -7,7 +7,7 @@ import DeleteButtonModal from './DeleteButton';
 import './ProductButtons.css'
 import PurchaseButtonModal from './PurchaseButton';
 
-export default function ProductButtons({product, editing, setEditing, productEdits}) {
+export default function ProductButtons({product, editing, setEditing, productEdits, currUserLiked, faved, setFaved}) {
     const user = useSelector(state => state.session.user);
     const [editBtnText, setEditBtnText] = useState('EDIT LISTING')
     const dispatch = useDispatch();
@@ -35,6 +35,16 @@ export default function ProductButtons({product, editing, setEditing, productEdi
         }
     };
 
+    const handleFavButton = () => {
+        if (!currUserLiked) {
+            dispatch(favActions.addFav(product?.id))
+            setFaved('fa-solid fa-heart product-favs')
+        } else {
+            dispatch(favActions.removeFav(product?.id))
+            setFaved('fa-regular fa-heart product-favs')
+        }
+    }
+
 
     let sellerBtns = (
         <>
@@ -53,7 +63,7 @@ export default function ProductButtons({product, editing, setEditing, productEdi
                <PurchaseButtonModal product={product}/>
             </div>
             <div className='product-favorite-btn'>
-                <button>FAVORITE</button>
+                <button onClick={() => handleFavButton()} >FAVORITE</button>
             </div>
         </>
     )

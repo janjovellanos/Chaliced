@@ -51,7 +51,7 @@ export default function ProductDetails({product}) {
         </div>
         <div className='product-size'>Size: {product?.size}</div>
         <div className='product-price'>${product?.price}</div>
-        <ProductButtons product={product} editing={editing} setEditing={setEditing} productEdits={productEdits}/>
+        <ProductButtons product={product} editing={editing} setEditing={setEditing} productEdits={productEdits} currUserLiked={currUserLiked} faved={faved} setFaved={setFaved}/>
         <div className='product-description-container'>
             <div className='description-header'>Description</div>
             <div className='description-body'>{product?.description}</div>
