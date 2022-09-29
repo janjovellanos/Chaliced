@@ -30,13 +30,13 @@
 .featured-description-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     padding: 0;
 }
 
 .featured-description {
-    width: 70%;
+    width: 90%;
 }
 
 .featured-logo-container {
