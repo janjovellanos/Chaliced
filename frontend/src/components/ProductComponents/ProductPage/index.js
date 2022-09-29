@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 import * as productActions from '../../../store/product';
@@ -8,10 +8,10 @@ import ProductScroll from '../ProductScroll';
 
 export default function ProductPage() {
     const { productId } = useParams();
-    const product = useSelector(state => (state.products))[productId];
     const products = useSelector(state => Object.values(state.products));
-    const productImages = product.Images.map(image => image.url);
-    // console.log(productImages);
+    const product = useSelector(state => (state.products))[productId];
+    const productImages = product?.Images?.map(image => image?.url);
+    const [mainImage, setMainImage] = useState(product?.Images[0]?.url);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -27,14 +27,12 @@ export default function ProductPage() {
     <div className='product-page-container'>
         <div className='product-container'>
             <div className='product-container-left'>
-                <img className='product-image' src={productImages[0]}></img>
+                <img className='product-image' src={mainImage ? mainImage : product?.Images[0]?.url}></img>
                 <div className='product-images-small'>
                     {productImages?.map(image => (
-                        <img className='product-image' src={image}></img>
+                        <img onClick={() => setMainImage(image)} className='product-image small-pic' src={image}></img>
                         ))
                     }
-                    {/* <img className='product-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
-                    <img className='product-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img> */}
                 </div>
             </div>
             {product && <ProductDetails product={product}/>}

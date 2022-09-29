@@ -22,8 +22,8 @@
 }
 
 .product-image {
-    width: 25rem;
-    height: 25rem;
+    width: 27rem;
+    height: 27rem;
     object-fit: contain;
 }
 
@@ -39,6 +39,10 @@
 
 .product-images-small > * {
     margin: 0.5rem 1rem 0;
+}
+
+.small-pic:hover {
+    cursor: pointer;
 }
 
 .product-page-bottom {
