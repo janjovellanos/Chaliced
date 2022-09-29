@@ -8,8 +8,8 @@ export default function ProductDetails({product}) {
     const user = useSelector(state => state.session.user);
     const favorites = useSelector(state => Object.values(state.favorites));
     const favUserIds = favorites.map(fav => fav?.userId)
-    const currUserLiked = favUserIds.includes(user?.id);
-    const [faved, setFaved] = useState('fa-regular fa-heart product-favs');
+    const currUserLiked = favUserIds?.includes(user?.id);
+    const [faved, setFaved] = useState(currUserLiked);
     const [name, setName] = useState(product?.name);
     const [size, setSize] = useState(product?.size);
     const [price, setPrice] = useState(product?.price);
@@ -17,13 +17,15 @@ export default function ProductDetails({product}) {
     const [editing, setEditing] = useState(false);
     const dispatch = useDispatch();
 
+    console.log(faved);
+
     const handleFavButton = () => {
         if (!currUserLiked) {
             dispatch(favActions.addFav(product?.id))
-            setFaved('fa-solid fa-heart product-favs')
+            setFaved(true)
         } else {
             dispatch(favActions.removeFav(product?.id))
-            setFaved('fa-regular fa-heart product-favs')
+            setFaved(false)
         }
     }
 
@@ -44,7 +46,7 @@ export default function ProductDetails({product}) {
             <div className='product-favs'>
                 <i
                 onClick={async () => await handleFavButton()}
-                className={faved}
+                className={faved ? 'fa-solid fa-heart product-favs' : 'fa-regular fa-heart product-favs'}
                 />
                 <div className='favs-counter'>{favorites?.length}</div>
             </div>
