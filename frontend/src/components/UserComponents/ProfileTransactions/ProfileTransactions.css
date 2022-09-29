@@ -92,6 +92,7 @@
 }
 
 .order-item-description {
+    width: 23rem;
     font-size: 9pt;
     font-weight: bold;
     color: rgb(0, 0, 0, 0.7);
@@ -194,6 +195,9 @@
 }
 
 .sold-item-description {
+    display: flex;
+    flex-wrap: wrap;
+    width: 20rem;
     font-size: 9pt;
     font-weight: bold;
     color: rgb(0, 0, 0, 0.7);

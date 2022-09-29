@@ -24,7 +24,7 @@ export default function ProfileListings({availProducts}) {
                     <NavLink to={`/products/${product?.id}`} className='preview-image-container'>
                         {/* {product?.Images[0]?.url} */}
                         <img
-                            className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'>
+                            className='preview-image' src={product?.Images[0]?.url}>
                         </img>
                     </NavLink>
                     <div className='seller-item-preview-bottom'>

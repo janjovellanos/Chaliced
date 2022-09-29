@@ -44,7 +44,7 @@ export default function ProfileReviews({sellerReviews, seller}) {
                         </div>
                     </div>
                 <div className='review-right'>
-                    <img src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
+                    <img src={review?.Product?.Images[0]?.url}></img>
                 </div>
         </div>
             ))}

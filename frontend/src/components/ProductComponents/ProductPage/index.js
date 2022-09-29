@@ -10,6 +10,8 @@ export default function ProductPage() {
     const { productId } = useParams();
     const product = useSelector(state => (state.products))[productId];
     const products = useSelector(state => Object.values(state.products));
+    const productImages = product.Images.map(image => image.url);
+    // console.log(productImages);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -25,11 +27,14 @@ export default function ProductPage() {
     <div className='product-page-container'>
         <div className='product-container'>
             <div className='product-container-left'>
-                <img className='product-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
+                <img className='product-image' src={productImages[0]}></img>
                 <div className='product-images-small'>
-                    <img className='product-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
-                    <img className='product-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
-                    <img className='product-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
+                    {productImages?.map(image => (
+                        <img className='product-image' src={image}></img>
+                        ))
+                    }
+                    {/* <img className='product-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
+                    <img className='product-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img> */}
                 </div>
             </div>
             {product && <ProductDetails product={product}/>}

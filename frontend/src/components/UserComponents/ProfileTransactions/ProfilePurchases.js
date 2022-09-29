@@ -30,7 +30,7 @@ export default function ProfilePurchases({seller}) {
             {myOrders && myOrders?.map(order => (
                 <div key={order?.id} className='order-container'>
                     <div className='order-image'>
-                        <img className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
+                        <img className='preview-image' src={order?.Product?.Images[0]?.url}></img>
                     </div>
                     <div className='order-details'>
                         <div className='order-details-top'>

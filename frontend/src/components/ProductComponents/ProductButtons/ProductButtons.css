@@ -52,10 +52,33 @@
     border-top: 1px solid rgb(0, 0, 0, 0.15);
 }
 
+
+.seller-profile-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    height: 100%;
+    overflow: hidden;
+}
+
 .seller-profile-pic img {
+    object-fit: cover;
+    width: 4rem;
+    border-radius: 50%;
+    height: 4rem;
+    display: block;
+    image-rendering: crisp-edges;
+}
+
+
+
+
+/* .seller-profile-pic img {
     width: 4rem;
     height: 4rem;
-}
+} */
 
 .seller-stats {
     display: grid;

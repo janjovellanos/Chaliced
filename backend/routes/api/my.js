@@ -140,6 +140,9 @@ router.get('/sold', requireAuth, async (req, res, next) => {
             {
                 model: Order, attributes: ['id', 'userId', 'productId'],
                 include: {model: User}
+            },
+            {
+                model: Image, attributes: ['url']
             }
         ]
     });

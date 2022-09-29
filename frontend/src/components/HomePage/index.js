@@ -39,7 +39,7 @@ export default function HomePage() {
                     <div className='preview-image-container'>
                         {/* {product?.Images[0]?.url} */}
                         <NavLink to={`/products/${product?.id}`}>
-                            <img className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
+                            <img className='preview-image' src={product?.Images[0]?.url}></img>
                         </NavLink>
                     </div>
                     <div className='item-preview-bottom'>
@@ -47,7 +47,7 @@ export default function HomePage() {
                         <NavLink to={`/products/${product?.id}`}>
                             <div className='item-name-and-size'><p>{product?.name}</p><p>{product?.size}</p></div>
                         </NavLink>
-                        <div className='item-description'>{product?.description}</div>
+                        <div className='item-description'>{product?.description.slice(0,28)}...</div>
                         <div className='item-price-and-fav'><p>${product?.price}</p><p><i className="fa-regular fa-heart"></i></p></div>
                     </div>
                 </div>

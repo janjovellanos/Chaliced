@@ -73,7 +73,7 @@ export default function ProductButtons({product, editing, setEditing, productEdi
             <div className='product-seller-info'>
                 <div className='seller-profile-pic'>
                     <NavLink to={`/users/${product?.userId}`}>
-                        <img src='https://cdn3.iconfinder.com/data/icons/office-485/100/ICON_BASIC-11-512.png'></img>
+                        <img src={product?.Seller?.profileImage}></img>
                     </NavLink>
                 </div>
                 <div className='seller-stats'>

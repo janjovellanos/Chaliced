@@ -37,7 +37,7 @@ export default function ProductScroll({products}) {
                         {/* {product?.Images[0]?.url} */}
                         <img
                             // onClick={() => history.push(`/products/${product?.id}`)}
-                            className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'>
+                            className='preview-image' src={product?.Images[0]?.url}>
                         </img>
                     </NavLink>
                     <div className='item-preview-bottom'>
@@ -48,7 +48,7 @@ export default function ProductScroll({products}) {
                                 <p>{product?.name}</p>
                                 <p>{product?.size}</p>
                         </NavLink>
-                        <div className='item-description'>{product?.description}</div>
+                        <div className='item-description'>{product?.description.slice(0,28)}...</div>
                         <div className='item-price-and-fav'><p>${product?.price}</p><p>{currUserLiked(product?.id) ? <i onClick={() => handleFavButton(product?.id)} className="fa-solid fa-heart" /> : <i onClick={() => handleFavButton(product?.id)} className="fa-regular fa-heart" />}</p></div>
                     </div>
                 </div>

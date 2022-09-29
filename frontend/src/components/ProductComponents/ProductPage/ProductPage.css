@@ -23,6 +23,8 @@
 
 .product-image {
     width: 25rem;
+    height: 25rem;
+    object-fit: contain;
 }
 
 .product-images-small {
@@ -30,7 +32,9 @@
 }
 
 .product-images-small img {
-    width: 5rem;
+    height: 6rem;
+    width: 6rem;
+    object-fit: cover;
 }
 
 .product-images-small > * {

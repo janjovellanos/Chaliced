@@ -45,7 +45,7 @@ export default function ProfileSales() {
                         </div>
                     </div>
                     <div className='sold-image'>
-                        <img className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
+                        <img className='preview-image' src={product?.Images[0]?.url}></img>
                     </div>
                 </div>
             ))}
