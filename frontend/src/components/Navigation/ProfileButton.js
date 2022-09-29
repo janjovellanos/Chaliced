@@ -43,8 +43,8 @@ function ProfileButton({ user }) {
       {showMenu && (
         <ul className={menuClass}>
           <li key={user?.id} onClick={() => history.push(`/users/${user?.id}`)}>{user?.username}</li>
-          <li key={user?.id}>{user?.email}</li>
-          <li key={'favoritesfewvere'}>Favorites</li>
+          <li key={user?.id + 31431098}>{user?.email}</li>
+          {/* <li key={'favoritesfewvere'}>Favorites</li> */}
           <li>
             <button onClick={logout}>Log Out</button>
           </li>

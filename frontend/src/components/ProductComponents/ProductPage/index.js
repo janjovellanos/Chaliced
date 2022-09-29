@@ -16,8 +16,9 @@ export default function ProductPage() {
     const history = useHistory();
 
     useEffect(() => {
-        dispatch(productActions.getProduct(productId))
-        dispatch(productActions.getCategory(product?.categoryId))
+        dispatch(productActions.getProduct(productId));
+        // dispatch(productActions.getProducts());
+        dispatch(productActions.getCategory(product?.categoryId));
     }, [dispatch, product?.name, product?.size, product?.price, product?.description]);
 
 
