@@ -9,6 +9,8 @@
 .top-nav {
     display: grid;
     grid-template-columns: 20% 60% 20%;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
     margin-left: 1rem;
 }
@@ -171,4 +173,111 @@
 
 .favs-and-profile > * {
     margin: 0 0.125rem;
+}
+
+/* searchbar css */
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    /* height: 3rem; */
+}
+
+.searchbar {
+    width: 100%;
+}
+
+.search-bar > input {
+    height: 1rem;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-result-link {
+    background: none;
+    border: none !important;
+    display: block;
+    padding: 0 !important;
+    transition: none !important;
+}
+
+.search-result-link>div {
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+}
+
+.search-bar-form {
+    padding: 0;
+    width: 100%;
+}
+
+.search-bar-form input {
+    border: none;
+    display: flex;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    padding: 0.4em;
+    transition: border 200ms;
+    min-width: 275px;
+}
+
+.search-bar-form>div {
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+
+.search-results {
+    color: black;
+    background: white;
+    margin-top: 1rem;
+    top: 50px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgb(0 0 0 / 30%), 0 20px 48px rgb(0 0 0 / 16%),
+        0 1px 4px rgb(0 0 0 / 12%);
+    max-height: 20em;
+    opacity: 0;
+    overflow-y: scroll;
+    padding: 16px;
+    position: absolute;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: all 350ms;
+    max-width: 15em;
+    color: black;
+    z-index: 1;
+    /* right: 44.5%; */
+}
+
+.results-active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.search-result-li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+
+.search-results a>div:hover {
+    background-color: rgb(0, 0, 0, 0.1);
+}
+
+.search-results a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 11pt;
+    margin: 1rem;
+    border-color: black;
 }

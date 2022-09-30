@@ -18,10 +18,8 @@ export default function ProductScroll({products}) {
     const handleFavButton = (id) => {
         if (!currUserLiked(id)) {
             dispatch(favActions.addFav(id))
-            // setFaved('fa-solid fa-heart')
         } else {
             dispatch(favActions.removeFav(id))
-            // setFaved('fa-regular fa-heart')
         }
     }
 
@@ -49,7 +47,13 @@ export default function ProductScroll({products}) {
                                 <p>{product?.size}</p>
                         </NavLink>
                         <div className='item-description'>{product?.description.slice(0,28)}...</div>
-                        <div className='item-price-and-fav'><p>${product?.price}</p><p>{currUserLiked(product?.id) ? <i onClick={() => handleFavButton(product?.id)} className="fa-solid fa-heart" /> : <i onClick={() => handleFavButton(product?.id)} className="fa-regular fa-heart" />}</p></div>
+                        <div className='item-price-and-fav'>
+                            <p>${product?.price}</p>
+                            <p>
+                                {currUserLiked(product?.id) ?
+                                    <i onClick={() => handleFavButton(product?.id)} className="fa-solid fa-heart" />
+                                : <i onClick={() => handleFavButton(product?.id)} className="fa-regular fa-heart" />}</p>
+                        </div>
                     </div>
                 </div>
             ))}

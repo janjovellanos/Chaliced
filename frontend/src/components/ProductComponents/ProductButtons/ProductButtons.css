@@ -53,10 +53,20 @@
     font-family: 'Roboto Mono', monospace;
     font-weight: bold;
     font-size: 12pt;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     border: 2px solid black;
     border-radius: 4px;
     border-color: rgb(0, 0, 0, 0.2);
+}
+
+.product-sold-div > div {
+    cursor: pointer;
+}
+
+.product-sold-div > div:hover {
+    font-size: 12.1pt;
+    text-decoration: underline;
+    color: rgb(0, 0, 0, 0.7);
 }
 
 .product-seller-info {

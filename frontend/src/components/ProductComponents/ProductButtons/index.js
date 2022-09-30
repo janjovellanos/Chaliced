@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import * as favActions from '../../../store/favorite';
 import * as productActions from '../../../store/product';
 import DeleteButtonModal from './DeleteButton';
@@ -11,6 +11,7 @@ export default function ProductButtons({product, editing, setEditing, productEdi
     const user = useSelector(state => state.session.user);
     const [editBtnText, setEditBtnText] = useState('EDIT LISTING')
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         if (product) {
@@ -71,11 +72,8 @@ export default function ProductButtons({product, editing, setEditing, productEdi
     let soldBtns =
         <>
             <div className='product-sold-div'>
-                <div disabled>FIND SIMILAR PRODUCTS</div>
+                <div onClick={() => history.push('/shop')}>FIND SIMILAR PRODUCTS</div>
             </div>
-            {/* <div className='product-delete-btn'>
-                <button disabled>HAHA</button>
-            </div> */}
         </>
 
         return (<div className='product-buttons'>

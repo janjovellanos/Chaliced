@@ -6,6 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import "./Navigation.css";
 import SignupFormModal from "../SignupFormPage";
 import CreateProductModal from "../ProductComponents/CreateProduct";
+import SearchBar from "./Searchbar";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -18,7 +19,8 @@ function Navigation({ isLoaded }) {
       <div className="top-nav">
         <NavLink to='/' className="home-logo">Chaliced</NavLink>
         <div className="searchbar">
-          <input type="search" placeholder="Search"></input>
+          {/* <input type="search" placeholder="Search"></input> */}
+          <SearchBar />
         </div>
         <div className="nav-right">
           <NavLink to='/shop' className="shop-btn">Shop</NavLink>
@@ -43,7 +45,8 @@ function Navigation({ isLoaded }) {
         <div className="top-nav">
         <NavLink to='/' className="home-logo">Chaliced</NavLink>
           <div className="searchbar">
-            <input type="search" placeholder="Search"></input>
+            {/* <input type="search" placeholder="Search"></input> */}
+            <SearchBar />
           </div>
           <div className="nav-right">
             <LoginFormModal />
