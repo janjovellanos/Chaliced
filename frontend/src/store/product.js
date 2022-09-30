@@ -231,7 +231,7 @@ const productsReducer = (state = {}, action) => {
             delete newState[action.id];
             return newState;
         case LOAD_CATEGORY:
-            newState = {};
+            newState = { ...state};
             action.data.forEach(product => {
                 newState[product.id] = product;
             });

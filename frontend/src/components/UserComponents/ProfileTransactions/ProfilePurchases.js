@@ -30,7 +30,7 @@ export default function ProfilePurchases({seller}) {
             {myOrders && myOrders?.map(order => (
                 <div key={order?.id} className='order-container'>
                     <div className='order-image'>
-                        <img className='preview-image' src={order?.Product?.Images[0]?.url}></img>
+                        <img className='preview-image' onClick={() => history.push(`/products/${order?.Product?.id}`)} src={order?.Product?.Images[0]?.url}></img>
                     </div>
                     <div className='order-details'>
                         <div className='order-details-top'>

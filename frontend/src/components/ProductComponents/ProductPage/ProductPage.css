@@ -34,7 +34,16 @@
 .product-images-small img {
     height: 6rem;
     width: 6rem;
+    /* opacity: 0.7; */
     object-fit: cover;
+}
+
+/* .small-image {
+    opacity: 0.7;
+} */
+
+.small-clicked {
+    opacity: 1;
 }
 
 .product-images-small > * {

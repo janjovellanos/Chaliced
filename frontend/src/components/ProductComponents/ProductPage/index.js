@@ -12,6 +12,7 @@ export default function ProductPage() {
     const product = useSelector(state => (state.products))[productId];
     const productImages = product?.Images?.map(image => image?.url);
     const [mainImage, setMainImage] = useState(product?.Images[0]?.url);
+    const [smallImageClass, setSmallImageClass] = useState('small-image')
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -21,17 +22,26 @@ export default function ProductPage() {
         dispatch(productActions.getCategory(product?.categoryId));
     }, [dispatch, product?.name, product?.size, product?.price, product?.description]);
 
-
-    if (product?.sold) history.push(`/unavailable`)
+    const handleSmallImgClick = (image) => {
+        setMainImage(image);
+        // setSmallImageClass('small-clicked')
+    }
 
     return (
+    <>
+    {product?.sold &&
+        <h1 className="item-not-found">
+            <div>This listing has sold</div>
+            <div><i class="fa-regular fa-face-sad-cry" /></div>
+        </h1>
+    }
     <div className='product-page-container'>
         <div className='product-container'>
             <div className='product-container-left'>
                 <img className='product-image' src={mainImage ? mainImage : product?.Images[0]?.url}></img>
                 <div className='product-images-small'>
                     {productImages?.map(image => (
-                        <img onClick={() => setMainImage(image)} className='product-image small-pic' src={image}></img>
+                        <img onClick={(e) => handleSmallImgClick(image)} className={smallImageClass} src={image}></img>
                         ))
                     }
                 </div>
@@ -43,5 +53,6 @@ export default function ProductPage() {
             <ProductScroll products={products}/>
         </div>
     </div>
+    </>
   )
 }
