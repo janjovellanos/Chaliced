@@ -31,7 +31,7 @@ function CreateProductForm({setShowModal}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
+
     return dispatch(productActions.addProduct({ name, size, categoryId, price, description }))
         .then(data => dispatch(productActions.addProductImage(data.id, images[0])))
         .then(() => {
@@ -41,8 +41,17 @@ function CreateProductForm({setShowModal}) {
         })
         .catch(async (res) => {
             const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-            else history.push(`/users/${user?.id}`)
+            if (data && data.errors) {
+              // setErrors(data.errors)
+              const valErrors = []
+              //validations
+              if (name.length > 50) valErrors.push('Name must be less than 50 characters');
+              if (typeof price !== 'number') valErrors.push('Price must be a number');
+
+    setErrors(valErrors);
+
+
+            } else history.push(`/users/${user?.id}`)
         }
     );
   };
@@ -58,7 +67,7 @@ function CreateProductForm({setShowModal}) {
       <div className="create-listing-header">New Listing</div>
         <ul>
           {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
+              <li key={idx} className='errors'>{error}</li>
             ))}
         </ul>
       <form onSubmit={handleSubmit} className="create-listing-form">

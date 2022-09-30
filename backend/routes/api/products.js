@@ -243,7 +243,9 @@ router.put('/:productId', requireAuth, async (req, res, next) => {
     const { user } = req;
     let { name, description, size, price, categoryId } = req.body;
 
-    const product = await Product.findByPk(productId);
+    const product = await Product.findByPk(productId, {
+        include: {model: Image, attributes: ['id', 'url']}
+    });
 
     if (product) {
         if (product.userId === user.id) {

@@ -124,8 +124,7 @@ export const addProductImage = (productId, url) => async (dispatch) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            url,
-            productId
+            url
         })
     });
 
@@ -221,7 +220,9 @@ const productsReducer = (state = {}, action) => {
             } else {
                 productImageState[action.payload.productId].Images = [action.payload.image]
             }
+            return productImageState;
         case UPDATE_PRODUCT:
+            console.log(action);
             return {
                 ...state,
                 [action.product.id]: action.product
@@ -232,6 +233,7 @@ const productsReducer = (state = {}, action) => {
             return newState;
         case LOAD_CATEGORY:
             newState = { ...state};
+            // newState = {};
             action.data.forEach(product => {
                 newState[product.id] = product;
             });

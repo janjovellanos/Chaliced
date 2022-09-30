@@ -41,7 +41,7 @@ export default function ProductPage() {
                 <img className='product-image' src={mainImage ? mainImage : product?.Images[0]?.url}></img>
                 <div className='product-images-small'>
                     {productImages?.map(image => (
-                        <img onClick={(e) => handleSmallImgClick(image)} className={smallImageClass} src={image}></img>
+                        <img key={image?.url} onClick={(e) => handleSmallImgClick(image)} className={smallImageClass} src={image}></img>
                         ))
                     }
                 </div>

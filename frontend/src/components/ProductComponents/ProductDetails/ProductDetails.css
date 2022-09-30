@@ -1,11 +1,11 @@
 .product-container-right {
     display: grid;
-    grid-template-rows: 10% 10% 10%;
+    grid-template-rows: 10% 10% 10% 40% 40%;
     grid-template-columns: auto;
     height: auto;
     width: fit-content;
     justify-content: flex-start;
-    align-items: center;
+    align-items: start;
     padding: 0 0 0 2rem;
 }
 
@@ -55,8 +55,9 @@
 .product-description-container {
     /* margin-top: 0; */
     width: 20rem;
-    margin-bottom: 7rem;
-    overflow-y: auto
+    margin-top: 0rem;
+    /* position: fixed; */
+    overflow-y: auto;
 }
 
 .description-header {

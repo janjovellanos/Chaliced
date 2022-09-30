@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false
       },
       description: {
-        type: Sequelize.STRING(256)
+        type: Sequelize.TEXT,
       },
       size: {
         type: Sequelize.STRING,

@@ -17,8 +17,6 @@ export default function ProductDetails({product}) {
     const [editing, setEditing] = useState(false);
     const dispatch = useDispatch();
 
-    console.log(faved);
-
     const handleFavButton = () => {
         if (!currUserLiked) {
             dispatch(favActions.addFav(product?.id))
