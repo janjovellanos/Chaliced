@@ -19,7 +19,9 @@ export default function ProductPage() {
     useEffect(() => {
         dispatch(productActions.getProduct(productId));
         // dispatch(productActions.getProducts());
-        dispatch(productActions.getCategory(product?.categoryId));
+        if (product) {
+            dispatch(productActions.getCategory(product?.categoryId));
+        }
     }, [dispatch, product?.name, product?.size, product?.price, product?.description]);
 
     const handleSmallImgClick = (image) => {
@@ -40,8 +42,8 @@ export default function ProductPage() {
             <div className='product-container-left'>
                 <img className='product-image' src={mainImage ? mainImage : product?.Images[0]?.url}></img>
                 <div className='product-images-small'>
-                    {productImages?.map(image => (
-                        <img key={image?.url} onClick={(e) => handleSmallImgClick(image)} className={smallImageClass} src={image}></img>
+                    {productImages?.map((image, idx) => (
+                        <img key={idx} onClick={(e) => handleSmallImgClick(image)} className={smallImageClass} src={image}></img>
                         ))
                     }
                 </div>

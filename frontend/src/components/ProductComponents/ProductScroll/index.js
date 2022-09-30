@@ -35,7 +35,7 @@ export default function ProductScroll({products}) {
                 <div key={product?.id} className='item-preview'>
                     <NavLink to={`/products/${product?.id}`} className='preview-image-container'>
                         {/* {product?.Images[0]?.url} */}
-                        <img
+                        <img key={product?.id}
                             // onClick={() => history.push(`/products/${product?.id}`)}
                             className='preview-image' src={product?.Images[0]?.url}>
                         </img>

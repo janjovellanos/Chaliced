@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { getCreatedDate } from '../../../utils/helpers';
 import * as sellerActions from '../../../store/seller';
 import './ProfileReviews.css'
 
 export default function ProfileReviews({sellerReviews, seller}) {
     const { userId } = useParams();
+    const history = useHistory();
 
     let total = 0;
     sellerReviews?.forEach(review => {
@@ -44,7 +45,7 @@ export default function ProfileReviews({sellerReviews, seller}) {
                         </div>
                     </div>
                 <div className='review-right'>
-                    <img src={review?.Product?.Images[0]?.url}></img>
+                    <img onClick={() => history.push(`/products/${review?.Product?.id}`)} src={review?.Product?.Images[0]?.url}></img>
                 </div>
         </div>
             ))}

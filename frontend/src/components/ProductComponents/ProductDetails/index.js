@@ -31,7 +31,7 @@ export default function ProductDetails({product}) {
         if (product) {
             dispatch(favActions.getProdFavs(product?.id))
         }
-    }, [dispatch, currUserLiked]);
+    }, [dispatch, product, currUserLiked]);
 
     const productEdits = {name, size, price, description};
 

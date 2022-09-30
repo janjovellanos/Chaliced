@@ -68,8 +68,18 @@ export default function ProductButtons({product, editing, setEditing, productEdi
         </>
     )
 
+    let soldBtns =
+        <>
+            <div className='product-sold-div'>
+                <div disabled>FIND SIMILAR PRODUCTS</div>
+            </div>
+            {/* <div className='product-delete-btn'>
+                <button disabled>HAHA</button>
+            </div> */}
+        </>
+
         return (<div className='product-buttons'>
-            {user?.id === product?.userId ? sellerBtns : buyerBtns}
+            {product?.sold ? (soldBtns) : user?.id === product?.userId ? sellerBtns : buyerBtns}
             <div className='product-seller-info'>
                 <div className='seller-profile-pic'>
                     <NavLink to={`/users/${product?.userId}`}>

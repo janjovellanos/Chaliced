@@ -205,7 +205,7 @@ const productsReducer = (state = {}, action) => {
             return newState;
         case LOAD_ONE_PRODUCT:
             return {
-                ...state,
+                // ...state,
                 [action.product.id]: action.product
             }
         case CREATE_PRODUCT:
