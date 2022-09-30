@@ -85,7 +85,6 @@ export default function ProfilePage() {
         <div className='profile-page-header'>
             <div className='profile-header-left'>
                 <div className='profile-pic'>
-                    {/* <img src='https://cdn3.iconfinder.com/data/icons/office-485/100/ICON_BASIC-11-512.png'></img> */}
                     <img src={seller?.profileImage}></img>
                 </div>
                 <div className='profile-info'>

@@ -5,8 +5,9 @@
 }
 
 .profile-listing-scroll {
-    width: 80rem;
+    width: 70rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: start;
 }
 

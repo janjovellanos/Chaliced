@@ -29,14 +29,15 @@ function CreateProductForm({setShowModal}) {
     ])
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log({ name, size, categoryId, price, description }, 'images', images);
+    history.push(`/users/${user?.id}`)
     return dispatch(productActions.addProduct({ name, size, categoryId, price, description }))
         .then(data => dispatch(productActions.addProductImage(data?.id, images[0])))
         .then(() => {
             setShowModal(false);
-            history.push(`/users/${user?.id}`);
+            history.go();
             reset();
         })
         .catch(async (res) => {
