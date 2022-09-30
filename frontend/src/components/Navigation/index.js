@@ -35,7 +35,11 @@ function Navigation({ isLoaded }) {
         </div>
       </div>
       <div className="bottom-nav">
-        <div className="nav-categories">Categories</div>
+        <div className="nav-categories">
+          <div>Tops</div>
+          <div>Bottoms</div>
+          <div>Shoes</div>
+        </div>
       </div>
       {/* <ProfileButton user={sessionUser} /> */}
     </div>
@@ -54,7 +58,11 @@ function Navigation({ isLoaded }) {
           </div>
         </div>
         <div className="bottom-nav">
-          <div className="nav-categories">Categories</div>
+          <div className="nav-categories">
+            <div>Tops</div>
+              <div>Bottoms</div>
+                <div>Shoes</div>
+          </div>
         </div>
         {/* <LoginFormModal />
         <NavLink to="/signup">Sign Up</NavLink> */}

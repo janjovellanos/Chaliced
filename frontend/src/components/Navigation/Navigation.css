@@ -175,6 +175,35 @@
     margin: 0 0.125rem;
 }
 
+.nav-categories {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-top: 2px solid rgb(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgb(0, 0, 0, 0.1);
+
+}
+
+.bottom-nav {
+    width: 100%;
+}
+
+.nav-categories > div {
+    display: flex;
+    justify-content: center;
+    margin: 0 2rem;
+    padding: 1rem 2rem;
+    font-weight: bold;
+}
+
+.nav-categories > div:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
 /* searchbar css */
 .search-bar-container {
     display: flex;
