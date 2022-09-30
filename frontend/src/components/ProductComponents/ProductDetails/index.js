@@ -42,10 +42,10 @@ export default function ProductDetails({product}) {
                 {product?.name}
             </div>
             <div className='product-favs'>
-                <i
+                {favorites && <i
                 onClick={async () => await handleFavButton()}
-                className={faved ? 'fa-solid fa-heart product-favs' : 'fa-regular fa-heart product-favs'}
-                />
+                className={favorites.find(fav => fav.userId === user?.id) ? 'fa-solid fa-heart product-favs' : 'fa-regular fa-heart product-favs'}
+                />}
                 <div className='favs-counter'>{favorites?.length}</div>
             </div>
         </div>

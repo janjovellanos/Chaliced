@@ -306,9 +306,12 @@ router.post('/', requireAuth, async (req, res, next) => {
         price,
         categoryId
     })
+    const newProductWithImages = Product.findByPk(newProduct.id, {include: [{model: Image, attributes: ['id', 'url']}]})
+    // console.log('THIS -----------------------',newProduct);
     res.status(201);
-    res.json(newProduct);
+    res.json(newProductWithImages);
 });
+
 
 //get all products
 router.get('/', requireAuth, async (req, res, next) => {

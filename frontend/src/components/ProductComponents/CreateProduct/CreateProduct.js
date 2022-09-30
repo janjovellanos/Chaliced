@@ -10,7 +10,7 @@ function CreateProductForm({setShowModal}) {
   const user = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [size, setSize] = useState("");
-  const [categoryId, setCategoryId] = useState(null);
+  const [categoryId, setCategoryId] = useState(0);
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([
@@ -21,7 +21,7 @@ function CreateProductForm({setShowModal}) {
   const reset = () => {
     setName("")
     setSize("")
-    setCategoryId(null)
+    setCategoryId(0)
     setPrice(0)
     setDescription("")
     setImages([
@@ -31,9 +31,9 @@ function CreateProductForm({setShowModal}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    // console.log({ name, size, categoryId, price, description }, 'images', images);
     return dispatch(productActions.addProduct({ name, size, categoryId, price, description }))
-        .then(data => dispatch(productActions.addProductImage(data.id, images[0])))
+        .then(data => dispatch(productActions.addProductImage(data?.id, images[0])))
         .then(() => {
             setShowModal(false);
             history.push(`/users/${user?.id}`);
@@ -47,10 +47,7 @@ function CreateProductForm({setShowModal}) {
               //validations
               if (name.length > 50) valErrors.push('Name must be less than 50 characters');
               if (typeof price !== 'number') valErrors.push('Price must be a number');
-
-    setErrors(valErrors);
-
-
+              setErrors(valErrors);
             } else history.push(`/users/${user?.id}`)
         }
     );
@@ -99,7 +96,7 @@ function CreateProductForm({setShowModal}) {
                 onChange={(e) => setCategoryId(e.target.value)}
                 required
             >
-                <option value="" disabled selected>Select a Category</option>
+                <option value='Select a Category' disabled>Select a Category</option>
                 <option value={1}>Tops</option>
                 <option value={2}>Bottoms</option>
                 <option value={3}>Shoes</option>
