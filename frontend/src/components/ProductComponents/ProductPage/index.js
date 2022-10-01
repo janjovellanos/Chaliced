@@ -35,7 +35,7 @@ export default function ProductPage() {
     {product?.sold &&
         <h1 className="item-not-found">
             <div>This listing has sold</div>
-            <div><i class="fa-regular fa-face-sad-cry" /></div>
+            <div><i className="fa-regular fa-face-sad-cry" /></div>
         </h1>
     }
     <div className='product-page-container'>

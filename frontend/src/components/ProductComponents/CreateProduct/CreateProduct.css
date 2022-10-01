@@ -8,7 +8,7 @@
 
 .errors {
     color: red;
-    list-style-type: circle;
+    /* list-style-type: circle; */
     font-weight: bold;
     font-size: 10pt;
 }

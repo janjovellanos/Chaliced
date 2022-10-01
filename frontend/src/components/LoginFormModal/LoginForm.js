@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import "./LoginForm.css";
 
 function LoginForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -16,6 +17,7 @@ function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    history.push('/')
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
@@ -28,7 +30,7 @@ function LoginForm() {
     <>
       <div className="login-header">Chaliced</div>
       <form className="login-form" onSubmit={handleSubmit}>
-        <ul>
+        <ul className="errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
             ))}

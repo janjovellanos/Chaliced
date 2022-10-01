@@ -27,7 +27,7 @@ export default function ProfileReviews({sellerReviews, seller}) {
     <div className='seller-reviews-container'>
         <div className='seller-reviews-header'>
             <div className='seller-score'>Seller Score</div>
-            <div className='seller-stars'>{starRating} *****</div>
+            <div className='seller-stars'>{starRating ? starRating : 0}<i className="fa-solid fa-star filled"></i></div>
             <div className='seller-review-ct'>{sellerReviews?.length} Reviews</div>
         </div>
         <div className='seller-reviews-list'>

@@ -29,14 +29,14 @@ function SignupForm() {
           if (data && data.errors) setErrors(data.errors);
         });
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    return setErrors(['Password must match']);
   };
 
   return (
 <>
     <div className="signup-header">Chaliced</div>
     <form className='signup-form' onSubmit={handleSubmit}>
-      <ul>
+      <ul className="errors">
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
     <div className="form-inputs">

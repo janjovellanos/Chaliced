@@ -222,7 +222,6 @@ const productsReducer = (state = {}, action) => {
             }
             return productImageState;
         case UPDATE_PRODUCT:
-            console.log(action);
             return {
                 ...state,
                 [action.product.id]: action.product

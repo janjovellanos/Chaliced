@@ -307,7 +307,6 @@ router.post('/', requireAuth, async (req, res, next) => {
         categoryId
     })
     // const newProductWithImages = Product.findByPk(newProduct.id, {include: [{model: Image, attributes: ['id', 'url']}]})
-    // console.log('THIS -----------------------',newProduct);
     res.status(201);
     res.json(newProduct);
 });
