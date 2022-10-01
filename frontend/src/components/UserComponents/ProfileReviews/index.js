@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 import { getCreatedDate } from '../../../utils/helpers';
@@ -15,7 +15,6 @@ export default function ProfileReviews({sellerReviews, seller}) {
     })
 
     let starRating = total / sellerReviews?.length
-
 
     const dispatch = useDispatch();
 
@@ -35,7 +34,7 @@ export default function ProfileReviews({sellerReviews, seller}) {
                 <div key={review?.id} className='review-li'>
                     <div className='review-left'>
                         <div className='review-date'>{getCreatedDate(review?.createdAt)}</div>
-                        <div className='review-stars'>{review?.stars} *****</div>
+                        <div className='review-stars'>{review?.stars}<i className="fa-solid fa-star filled"></i></div>
                         <div className='review-body'>
                             <div>{review?.body} -</div>
                             <div className='review-buyer'>{review?.Buyer?.username}</div>

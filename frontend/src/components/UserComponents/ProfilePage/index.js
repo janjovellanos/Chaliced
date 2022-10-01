@@ -24,9 +24,9 @@ export default function ProfilePage() {
 
 
     const availProducts = seller?.Products?.filter(product => product.sold === false)
+    const soldProducts = seller?.Products?.filter(product => product?.sold === true)
     const sellerReviews = seller?.Reviews
-    const sellerTransactions = sellerReviews?.length + myOrders?.length
-    // const sellerTransactions = mySold?.length + myOrders?.length
+    const sellerTransactions = soldProducts?.length + seller?.Orders?.length
     const [bottomView, setBottomView] = useState(null);
     const dispatch = useDispatch();
 
@@ -80,12 +80,6 @@ export default function ProfilePage() {
             handleFavoritesClicked();
         }
     }, [dispatch]);
-
-    // CHANGE TRANSACTIONS TO FIX THAT BUG!!! ----------------------------------------------------->
-    // CHANGE TRANSACTIONS TO FIX THAT BUG!!! ----------------------------------------------------->
-    // CHANGE TRANSACTIONS TO FIX THAT BUG!!! ----------------------------------------------------->
-    // CHANGE TRANSACTIONS TO FIX THAT BUG!!! ----------------------------------------------------->
-    // CHANGE TRANSACTIONS TO FIX THAT BUG!!! ----------------------------------------------------->
 
   return (
     <div className='profile-page-container'>

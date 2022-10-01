@@ -98,7 +98,7 @@ export default function ProductButtons({product, editing, setEditing, productEdi
                 </div>
                 <div className='seller-stats'>
                     <NavLink to={`/users/${product?.userId}`} className='product-seller-name'>{product?.Seller?.username}</NavLink>
-                    <div className='product-seller-rating'>***** {product?.Seller?.reviewCount} Reviews</div>
+                    <div className='product-seller-rating'><i className="fa-solid fa-star filled"></i> {product?.Seller?.reviewCount} Reviews</div>
                     <NavLink to={`/users/${product?.userId}`} className='product-seller-listings'>{product?.Seller?.productCount} listing for sale</NavLink>
                 </div>
             </div>

@@ -96,9 +96,9 @@ router.get("/:userId", requireAuth, async (req, res, next) => {
             }
         ]
         },
-        // {
-        //   model: Order, attributes: ['id', 'productId', 'createdAt']
-        // },
+        {
+          model: Order, attributes: ['id', 'productId', 'createdAt']
+        },
     ]
   });
 
