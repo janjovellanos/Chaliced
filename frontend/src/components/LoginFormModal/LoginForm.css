@@ -67,3 +67,18 @@
 #login-btn:hover {
     font-size: 12.5pt;
 }
+
+.nav-session-btn {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12pt;
+    font-weight: bold;
+    border: none;
+    margin: 0 0.5rem;
+    background-color: white;
+}
+
+.nav-session-btn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12.5pt;
+}
