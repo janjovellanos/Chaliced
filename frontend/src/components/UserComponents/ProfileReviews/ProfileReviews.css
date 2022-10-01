@@ -23,7 +23,7 @@
 .seller-stars {
     font-weight: bold;
     font-size: 18pt;
-    color: green;
+    color: rgb(0, 0, 0, 0.8);
 }
 
 .seller-review-ct {

@@ -44,7 +44,6 @@ export default function ProfileFavorites() {
             {myFavs?.map(fav => (
                 <div key={fav?.Product?.id} className='seller-item-preview'>
                     <NavLink to={`/products/${fav?.Product?.id}`} className='preview-image-container'>
-                        {/* {fav?.Product?.Images[0]?.url} */}
                         <img className='preview-image' src={fav?.Product?.Images[0]?.url}/>
                         {/* {fav?.Product?.sold ? soldItem : availableItem} */}
                     </NavLink>

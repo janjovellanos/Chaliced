@@ -10,12 +10,24 @@ import PurchaseButtonModal from './PurchaseButton';
 export default function ProductButtons({product, editing, setEditing, productEdits, currUserLiked, faved, setFaved}) {
     const user = useSelector(state => state.session.user);
     const [editBtnText, setEditBtnText] = useState('EDIT LISTING')
+    const [similarProducts, setSimilarProducts] = useState('tops')
     const dispatch = useDispatch();
     const history = useHistory();
 
     useEffect(() => {
         if (product) {
             dispatch(favActions.getProdFavs(product?.id));
+        }
+        if (product?.sold) {
+            if (product?.categoryId === 1) {
+                setSimilarProducts('tops')
+            }
+            if (product?.categoryId === 2) {
+                setSimilarProducts('bottoms')
+            }
+            if (product?.categoryId === 3) {
+                setSimilarProducts('shoes')
+            }
         }
     }, [dispatch]);
 
@@ -72,7 +84,7 @@ export default function ProductButtons({product, editing, setEditing, productEdi
     let soldBtns =
         <>
             <div className='product-sold-div'>
-                <div onClick={() => history.push('/shop')}>FIND SIMILAR PRODUCTS</div>
+                <div onClick={() => history.push(`/shop/${similarProducts}`)}>FIND SIMILAR PRODUCTS</div>
             </div>
         </>
 
