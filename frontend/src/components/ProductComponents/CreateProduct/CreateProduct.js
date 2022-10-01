@@ -31,7 +31,7 @@ function CreateProductForm({setShowModal}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log({ name, size, categoryId, price, description }, 'images', images);
+
     history.push(`/users/${user?.id}`)
     return dispatch(productActions.addProduct({ name, size, categoryId, price, description }))
         .then(data => dispatch(productActions.addProductImage(data?.id, images[0])))

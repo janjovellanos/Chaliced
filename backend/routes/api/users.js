@@ -133,7 +133,6 @@ router.get('/', requireAuth, async (req, res, next) => {
 //================== Sign up ==========================//
 router.post("/", validateSignup, async (req, res) => {
   const { email, password, username, firstName, lastName, address, bio, profileImage } = req.body;
-  // console.log('THIS-------------------', req.body);
   const user = await User.signup({ email, password, username, firstName, lastName, address, bio, profileImage });
 
   await setTokenCookie(res, user);

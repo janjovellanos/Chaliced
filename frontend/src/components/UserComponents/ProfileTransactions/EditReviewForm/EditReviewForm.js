@@ -17,7 +17,6 @@ export default function EditReviewForm({product, setShowModal}) {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    // console.log(stars);
 
     const handleStarClick = (id) => {
 

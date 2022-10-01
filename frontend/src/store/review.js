@@ -107,7 +107,6 @@ const reviewsReducer = (state = {}, action) => {
             newState = { ...state };
             return newState;
         case EDIT_REVIEW:
-            console.log(action);
             return {
                 ...state,
                 [action.data.id]: action.data
