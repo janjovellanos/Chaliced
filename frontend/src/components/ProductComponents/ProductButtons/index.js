@@ -7,7 +7,7 @@ import DeleteButtonModal from './DeleteButton';
 import './ProductButtons.css'
 import PurchaseButtonModal from './PurchaseButton';
 
-export default function ProductButtons({product, editing, setEditing, productEdits, currUserLiked, faved, setFaved}) {
+export default function ProductButtons({product, editing, setEditing, productEdits, currUserLiked, setFaved}) {
     const user = useSelector(state => state.session.user);
     const [editBtnText, setEditBtnText] = useState('EDIT LISTING')
     const [similarProducts, setSimilarProducts] = useState('tops')
@@ -29,7 +29,7 @@ export default function ProductButtons({product, editing, setEditing, productEdi
                 setSimilarProducts('shoes')
             }
         }
-    }, [dispatch]);
+    }, [dispatch, product]);
 
     const handleEditBtn = async () => {
         if (!editing) {
@@ -93,7 +93,7 @@ export default function ProductButtons({product, editing, setEditing, productEdi
             <div className='product-seller-info'>
                 <div className='seller-profile-pic'>
                     <NavLink to={`/users/${product?.userId}`}>
-                        <img src={product?.Seller?.profileImage}></img>
+                        <img alt='seller' src={product?.Seller?.profileImage}></img>
                     </NavLink>
                 </div>
                 <div className='seller-stats'>

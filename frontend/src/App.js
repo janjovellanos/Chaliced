@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch, useHistory } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
+import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
@@ -13,11 +12,9 @@ function App() {
   const sessionUser = useSelector(state => state.session.user);
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
-  // const history = useHistory();
 
 
   useEffect(() => {
-    // if (!sessionUser) history.push('/'); // KEEP???
     dispatch(sessionActions.restoreUser())
     .then(() => setIsLoaded(true));
   }, [dispatch]);

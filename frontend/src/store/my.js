@@ -108,6 +108,7 @@ const myReducer = (state = {Orders: {}, Sold: {}, Reviews: {}, Favorites: {}}, a
             return newState
         case LOAD_MY_FAVS:
             newState = {...state};
+            newState.Favorites = {};
             action.data.forEach(favorite => newState.Favorites[favorite.id]= favorite)
             return newState
         case CREATE_ORDER:

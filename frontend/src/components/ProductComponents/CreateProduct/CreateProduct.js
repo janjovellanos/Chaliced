@@ -132,7 +132,7 @@ function CreateProductForm({setShowModal}) {
                     required
                     />
             <div className="create-listing-image-container">
-                <img src={images[images?.length - 1]}></img>
+                <img alt='product for sale' src={images[images?.length - 1]}></img>
             </div>
         </div>
         <div className="create-listing-btn-container">

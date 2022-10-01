@@ -30,6 +30,7 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
+    history.push('/')
     dispatch(sessionActions.logout());
   };
 

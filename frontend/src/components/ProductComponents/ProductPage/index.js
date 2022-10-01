@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import * as productActions from '../../../store/product';
 import './ProductPage.css'
 import ProductDetails from '../ProductDetails';
@@ -13,16 +13,29 @@ export default function ProductPage() {
     const productImages = product?.Images?.map(image => image?.url);
     const [mainImage, setMainImage] = useState(product?.Images[0]?.url);
     const [smallImageClass, setSmallImageClass] = useState('small-image')
+    // get similar products, excluding current product
+    const similarProducts = products?.filter(prod => prod?.categoryId === product?.categoryId)
+    const idx = similarProducts.indexOf(product);
+    similarProducts.splice(idx, 1);
     const dispatch = useDispatch();
-    const history = useHistory();
 
     useEffect(() => {
         dispatch(productActions.getProduct(productId))
         // dispatch(productActions.getProducts());
-        if (product?.id === productId) {
+        if (product?.id === +productId) {
             dispatch(productActions.getCategory(product?.categoryId));
         }
-    }, [dispatch, product?.name, product?.size, product?.price, product?.description]);
+    }, [
+        dispatch,
+        productId,
+        product?.name,
+        product?.size,
+        product?.price,
+        product?.description,
+        product?.categoryId,
+        product?.id
+        ]
+    );
 
     const handleSmallImgClick = (image) => {
         setMainImage(image);
@@ -41,19 +54,19 @@ export default function ProductPage() {
     <div className='product-page-container'>
         <div className='product-container'>
             <div className='product-container-left'>
-                <img className='product-image' src={mainImage ? mainImage : product?.Images[0]?.url}></img>
+                <img alt='current item' className='product-image' src={mainImage ? mainImage : product?.Images[0]?.url}></img>
                 <div className='product-images-small'>
                     {productImages?.map((image, idx) => (
-                        <img key={idx} onClick={(e) => handleSmallImgClick(image)} className={smallImageClass} src={image}></img>
+                        <img alt='other items' key={idx} onClick={(e) => handleSmallImgClick(image)} className={smallImageClass} src={image}></img>
                         ))
                     }
                 </div>
             </div>
             {product && <ProductDetails product={product}/>}
         </div>
-        <div className='scroll-label'>You may also like</div>
+        {similarProducts?.length ? <div className='scroll-label'>You may also like</div> : <div></div>}
         <div className='product-page-bottom'>
-            <ProductScroll products={products}/>
+            <ProductScroll products={similarProducts}/>
         </div>
     </div>
     </>

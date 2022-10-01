@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { timeAgo } from '../../../utils/helpers';
 import * as productActions from '../../../store/product';
 import './Explore.css'
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ProductScroll from '../ProductScroll';
 
 export default function Explore() {
-    const user = useSelector(state => state.session.user);
     let products = useSelector(state => Object.values(state.products));
     const dispatch = useDispatch();
-    const history = useHistory();
 
     useEffect(() => {
         dispatch(productActions.getAvailProducts())

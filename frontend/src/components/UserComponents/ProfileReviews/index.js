@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useHistory, useParams } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory, useParams } from 'react-router-dom';
 import { getCreatedDate } from '../../../utils/helpers';
 import * as sellerActions from '../../../store/seller';
 import './ProfileReviews.css'
@@ -21,7 +21,7 @@ export default function ProfileReviews({sellerReviews, seller}) {
 
     useEffect(() => {
         dispatch(sellerActions.getUserDetails(userId))
-    }, [dispatch]);
+    }, [dispatch, userId]);
 
   return (
     <div className='seller-reviews-container'>
@@ -45,7 +45,7 @@ export default function ProfileReviews({sellerReviews, seller}) {
                         </div>
                     </div>
                 <div className='review-right'>
-                    <img onClick={() => history.push(`/products/${review?.Product?.id}`)} src={review?.Product?.Images[0]?.url}></img>
+                    <img alt='reviewed product' onClick={() => history.push(`/products/${review?.Product?.id}`)} src={review?.Product?.Images[0]?.url}></img>
                 </div>
         </div>
             ))}

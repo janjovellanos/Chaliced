@@ -10,26 +10,15 @@ export default function ProfileFavorites() {
     const dispatch = useDispatch();
     const history = useHistory();
     const myFavs = useSelector(state => Object.values(state.my.Favorites))
-    const favs = useSelector(state => state.my.Favorites);
-
 
     useEffect(() => {
         dispatch(myActions.getMyFavs());
-    }, [dispatch, favs])
+    }, [dispatch])
 
     const handleUnFavorite = (id) => {
         dispatch(favActions.removeFav(id));
         history.go();
     }
-
-    let soldItem =  <>
-                      <div className='this-item-sold'>
-                          SOLD <i className="fa-regular fa-face-frown"></i>
-                      </div>
-                      <img className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
-                    </>
-
-    let availableItem = <img className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>;
 
   return (
     <>
@@ -44,7 +33,7 @@ export default function ProfileFavorites() {
             {myFavs?.map(fav => (
                 <div key={fav?.Product?.id} className='seller-item-preview'>
                     <NavLink to={`/products/${fav?.Product?.id}`} className='preview-image-container'>
-                        <img className='preview-image' src={fav?.Product?.Images[0]?.url}/>
+                        <img alt='item preview' className='preview-image' src={fav?.Product?.Images[0]?.url}/>
                         {/* {fav?.Product?.sold ? soldItem : availableItem} */}
                     </NavLink>
                     <div className='seller-item-preview-bottom'>
