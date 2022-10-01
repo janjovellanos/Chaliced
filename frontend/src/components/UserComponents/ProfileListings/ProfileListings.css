@@ -8,7 +8,7 @@
     width: 70rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
 }
 
 .seller-item-preview {

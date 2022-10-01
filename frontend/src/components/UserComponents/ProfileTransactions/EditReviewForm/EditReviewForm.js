@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import * as reviewActions from '../../../../store/review';
-// import './ReviewForm.css'
 
 export default function EditReviewForm({product, setShowModal}) {
-    const user = useSelector(state => state.session.user);
     let filledStar = `fa-solid fa-star filled`
     let hollowStar = `fa-regular fa-star hollow`
     const [star2, setStar2] = useState("fa-regular fa-star hollow");
@@ -15,7 +12,6 @@ export default function EditReviewForm({product, setShowModal}) {
     const [stars, setStars] = useState(1);
     const [body, setBody] = useState(product?.Review?.body);
     const dispatch = useDispatch();
-    const history = useHistory();
 
 
     const handleStarClick = (id) => {
@@ -61,11 +57,8 @@ export default function EditReviewForm({product, setShowModal}) {
     const review = {body, stars, id: product?.Review?.id}
     await dispatch(reviewActions.updateReview(review))
     setShowModal(false);
-    // history.push(`/users/${user?.id}/transactions`)
-    // alert(`Congratulations on your ${product?.name}!`)
   };
 
-  {/* style={{ backgroundImage: `url(${product?.Image?.url})` }}> */}
   return (
     <div className='review-modal-container'>
         <div className='review-modal-header'

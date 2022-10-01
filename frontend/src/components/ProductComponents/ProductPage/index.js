@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import * as productActions from '../../../store/product';
 import './ProductPage.css'
 import ProductDetails from '../ProductDetails';
@@ -14,7 +14,6 @@ export default function ProductPage() {
     const [mainImage, setMainImage] = useState(product?.Images[0]?.url);
     const [smallImageClass, setSmallImageClass] = useState('small-image')
     const dispatch = useDispatch();
-    const history = useHistory();
 
     useEffect(() => {
         dispatch(productActions.getProduct(productId))
@@ -22,7 +21,17 @@ export default function ProductPage() {
         if (product?.id === productId) {
             dispatch(productActions.getCategory(product?.categoryId));
         }
-    }, [dispatch, product?.name, product?.size, product?.price, product?.description]);
+    }, [
+        dispatch,
+        productId,
+        product?.name,
+        product?.size,
+        product?.price,
+        product?.description,
+        product?.categoryId,
+        product?.id
+        ]
+    );
 
     const handleSmallImgClick = (image) => {
         setMainImage(image);
@@ -41,10 +50,10 @@ export default function ProductPage() {
     <div className='product-page-container'>
         <div className='product-container'>
             <div className='product-container-left'>
-                <img className='product-image' src={mainImage ? mainImage : product?.Images[0]?.url}></img>
+                <img alt='current item' className='product-image' src={mainImage ? mainImage : product?.Images[0]?.url}></img>
                 <div className='product-images-small'>
                     {productImages?.map((image, idx) => (
-                        <img key={idx} onClick={(e) => handleSmallImgClick(image)} className={smallImageClass} src={image}></img>
+                        <img alt='other items' key={idx} onClick={(e) => handleSmallImgClick(image)} className={smallImageClass} src={image}></img>
                         ))
                     }
                 </div>
