@@ -11,7 +11,7 @@ module.exports = {
         email: "demo@user.io",
         hashedPassword: bcrypt.hashSync("password"),
         address: '123 Demo Lane',
-        profileimage: 'https://chaliced-images.s3.us-west-1.amazonaws.com/profile-demo.jpeg'
+        profileImage: 'https://chaliced-images.s3.us-west-1.amazonaws.com/profile-demo.jpeg'
       },
       {
         username: "Jan",
@@ -20,7 +20,7 @@ module.exports = {
         email: "jan@user.io",
         hashedPassword: bcrypt.hashSync("password2"),
         address: '123 Jan Street',
-        profileimage: 'https://chaliced-images.s3.us-west-1.amazonaws.com/profile-jan.jpg'
+        profileImage: 'https://chaliced-images.s3.us-west-1.amazonaws.com/profile-jan.jpg'
       },
       {
         username: "TonyHawk",
@@ -29,7 +29,7 @@ module.exports = {
         email: "tonyhawk@user.io",
         hashedPassword: bcrypt.hashSync("password3"),
         address: '123 Hawk Peak',
-        profileimage: 'https://chaliced-images.s3.us-west-1.amazonaws.com/profile-tony.jpeg'
+        profileImage: 'https://chaliced-images.s3.us-west-1.amazonaws.com/profile-tony.jpeg'
       }
     ]);
   },
