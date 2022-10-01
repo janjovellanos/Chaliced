@@ -7,11 +7,9 @@ import * as favActions from '../../../store/favorite';
 
 export default function ProductScroll({products}) {
     const userFavs = useSelector(state => Object.values(state.my.Favorites));
-    const myFavs = useSelector(state => state.my.Favorites);
     const favorites = useSelector(state => state.favorites)
     const dispatch = useDispatch();
     const favProductIds = userFavs.map(fav => fav?.productId);
-    console.log(favorites);
 
     const currUserLiked = (id) => {
         return favProductIds.includes(id);
@@ -21,9 +19,6 @@ export default function ProductScroll({products}) {
         if (!currUserLiked(id)) {
             await dispatch(favActions.addFav(id))
         } else {
-            const idx = favProductIds.indexOf(id)
-            console.log(idx);
-            favProductIds.splice(idx, 1)
             await dispatch(favActions.removeFav(id))
         }
     }
@@ -37,16 +32,13 @@ export default function ProductScroll({products}) {
             {products?.map(product => (
                 <div key={product?.id} className='item-preview'>
                     <NavLink to={`/products/${product?.id}`} className='preview-image-container'>
-                        {/* {product?.Images[0]?.url} */}
                         <img key={product?.id}
-                            // onClick={() => history.push(`/products/${product?.id}`)}
                             className='preview-image' src={product?.Images[0]?.url}>
                         </img>
                     </NavLink>
                     <div className='item-preview-bottom'>
                         <div className='item-post-date'>{timeAgo(new Date(product?.createdAt))}</div>
                         <NavLink to={`/products/${product?.id}`}
-                            // onClick={() => history.push(`/products/${product?.id}`)}
                             className='item-name-and-size'>
                                 <p>{product?.name}</p>
                                 <p>{product?.size}</p>

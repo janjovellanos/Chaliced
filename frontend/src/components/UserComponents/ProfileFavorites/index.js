@@ -10,8 +10,6 @@ export default function ProfileFavorites() {
     const dispatch = useDispatch();
     const history = useHistory();
     const myFavs = useSelector(state => Object.values(state.my.Favorites))
-    const favs = useSelector(state => state.my.Favorites);
-
 
     useEffect(() => {
         dispatch(myActions.getMyFavs());
