@@ -92,6 +92,7 @@
 }
 
 .order-item-description {
+    width: 23rem;
     font-size: 9pt;
     font-weight: bold;
     color: rgb(0, 0, 0, 0.7);
@@ -113,7 +114,7 @@
     display: flex;
 }
 
-.order-leave-review button {
+.order-leave-review > button {
     width: 25rem;
     height: 2rem;
     font-family: 'Roboto Mono', monospace;
@@ -125,8 +126,9 @@
 }
 
 .order-leave-review button:hover {
-    font-size: 11pt;
+    /* font-size: 10pt; */
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .solds-list {
@@ -193,6 +195,9 @@
 }
 
 .sold-item-description {
+    display: flex;
+    flex-wrap: wrap;
+    width: 20rem;
     font-size: 9pt;
     font-weight: bold;
     color: rgb(0, 0, 0, 0.7);
@@ -201,4 +206,48 @@
 
 .sold-details-top div > * {
     margin: 0.5rem 0;
+}
+
+.current-review-stars {
+    font-weight: bold;
+    color: rgb(0, 0, 0, 0.8);
+}
+
+.current-review-body {
+    /* display: flex; */
+    /* align-items: flex-end; */
+    font-style: italic;
+    /* font-weight: bold; */
+    font-size: 10pt;
+    color: rgb(0, 0, 0, 0.65);
+}
+
+.review-edit-delete {
+    display: flex;
+    justify-content: flex-start;
+    width: 25rem;
+    height: 2rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 10pt;
+    background-color: white;
+    border-color: rgb(0, 0, 0, 0.1);
+    color: white;
+}
+
+.review-edit-delete button {
+    /* background: linear-gradient(45deg, white, rgb(211, 210, 210), rgb(176, 176, 176), rgb(180, 180, 180) 80%) no-repeat; */
+    margin-right: 1rem;
+    width: 15rem;
+    border-radius: 3px;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: white;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 10pt;
+    color: rgb(0, 0, 0, 0.9);
+}
+
+.delete-review-btn {
+    /* width: 3rem; */
 }

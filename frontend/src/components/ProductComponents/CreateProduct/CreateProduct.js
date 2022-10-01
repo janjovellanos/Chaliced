@@ -10,7 +10,7 @@ function CreateProductForm({setShowModal}) {
   const user = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [size, setSize] = useState("");
-  const [categoryId, setCategoryId] = useState(null);
+  const [categoryId, setCategoryId] = useState(1);
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([
@@ -21,7 +21,7 @@ function CreateProductForm({setShowModal}) {
   const reset = () => {
     setName("")
     setSize("")
-    setCategoryId(null)
+    setCategoryId(1)
     setPrice(0)
     setDescription("")
     setImages([
@@ -29,20 +29,27 @@ function CreateProductForm({setShowModal}) {
     ])
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
+    // console.log({ name, size, categoryId, price, description }, 'images', images);
+    history.push(`/users/${user?.id}`)
     return dispatch(productActions.addProduct({ name, size, categoryId, price, description }))
-        .then(data => dispatch(productActions.addProductImage(data.id, images[0])))
+        .then(data => dispatch(productActions.addProductImage(data?.id, images[0])))
         .then(() => {
             setShowModal(false);
-            history.push(`/users/${user?.id}`);
+            history.go();
             reset();
         })
         .catch(async (res) => {
             const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-            else history.push(`/users/${user?.id}`)
+            if (data && data.errors) {
+              // setErrors(data.errors)
+              const valErrors = []
+              //validations
+              if (name.length > 50) valErrors.push('Name must be less than 50 characters');
+              if (typeof price !== 'number') valErrors.push('Price must be a number');
+              setErrors(valErrors);
+            } else history.push(`/users/${user?.id}`)
         }
     );
   };
@@ -58,7 +65,7 @@ function CreateProductForm({setShowModal}) {
       <div className="create-listing-header">New Listing</div>
         <ul>
           {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
+              <li key={idx} className='errors'>{error}</li>
             ))}
         </ul>
       <form onSubmit={handleSubmit} className="create-listing-form">
@@ -90,7 +97,7 @@ function CreateProductForm({setShowModal}) {
                 onChange={(e) => setCategoryId(e.target.value)}
                 required
             >
-                <option value="" disabled selected>Select a Category</option>
+                <option disabled='disabled'>Select a Category</option>
                 <option value={1}>Tops</option>
                 <option value={2}>Bottoms</option>
                 <option value={3}>Shoes</option>

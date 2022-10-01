@@ -21,12 +21,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* height: 100%; */
+    /* width: 8rem; */
     width: 100%;
+
+    height: 100%;
+    overflow: hidden;
 }
 
 .profile-pic img {
-    width: 4rem;
-    border-radius: 30px;
+    /* height: fit-content;
+    width: 100%;
+    border-radius: 50px; */
+    object-fit: cover;
+    width: 7rem;
+    border-radius: 50%;
+    border: 2px solid rgb(0, 0, 0, 0.3);
+    height: 7rem;
+    display: block;
+    image-rendering: crisp-edges;
 }
 
 .profile-info {
@@ -89,7 +102,7 @@
 
 .profile-listings-reviews-btns {
     display: grid;
-    grid-template-columns: 15% 15% 15%;
+    grid-template-columns: 15% 15% 15% 5%;
     border-bottom: 1px solid rgb(0, 0, 0, 0.2);
 }
 
@@ -100,7 +113,14 @@
     cursor: pointer;
 }
 
-.profile-listings-clicked, .profile-reviews-clicked, .profile-orders-clicked {
+.my-favs {
+    font-size: 20pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-listings-clicked, .profile-reviews-clicked, .profile-orders-clicked, .profile-favs-clicked {
     font-weight: bold;
     border-bottom: 2px solid rgb(0, 0, 0);
 }
@@ -109,8 +129,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    /* width: 100%; */
     margin: 5px auto;
+    width: 80rem;
+    /* display: flex; */
+    /* justify-content: center; */
 }
 
 .profile-item-count {

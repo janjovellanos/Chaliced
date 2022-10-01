@@ -12,9 +12,9 @@ export default function DeleteButton({product, setShowModal}) {
     const history = useHistory();
 
   const handleDeleteBtn = async () => {
-    await dispatch(productActions.removeProduct(product?.id))
-    setShowModal(false);
     history.push(`/users/${user.id}`)
+    dispatch(productActions.removeProduct(product?.id))
+    setShowModal(false);
     alert(`${productName} has been removed`)
   };
 

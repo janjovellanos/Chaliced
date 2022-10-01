@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import * as myActions from '../../../store/my';
 import { getCreatedDate } from '../../../utils/helpers';
 
 export default function ProfileSales() {
     const mySold = useSelector(state => Object.values(state.my.Sold));
+    const history = useHistory();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -45,7 +47,7 @@ export default function ProfileSales() {
                         </div>
                     </div>
                     <div className='sold-image'>
-                        <img className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
+                        <img onClick={() => history.push(`/products/${product?.id}`)} className='preview-image' src={product?.Images[0]?.url}></img>
                     </div>
                 </div>
             ))}

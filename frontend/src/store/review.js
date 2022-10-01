@@ -2,11 +2,10 @@ import { csrfFetch } from "./csrf";
 
 export const LOAD_USER_REVIEWS = 'reviews/loadUserReviews';
 export const CREATE_REVIEW = 'reviews/createReview';
-// export const LOAD_AVAIL_PRODUCTS = 'products/loadAvailProducts';
-// export const LOAD_ONE_PRODUCT = 'products/loadOneProduct';
-// export const CREATE_PRODUCT = 'products/createProduct';
-// export const UPDATE_PRODUCT = 'products/updateProduct';
-// export const DELETE_PRODUCT = 'products/deleteProduct';
+export const EDIT_REVIEW = 'reviews/editReview';
+export const DELETE_REVIEW = 'reviews/deleteReview';
+
+
 
 const loadUserReviews = (data) => ({
     type: LOAD_USER_REVIEWS,
@@ -18,25 +17,17 @@ const createReview = (data) => ({
     data
 })
 
-// const loadOneProduct = (product) => ({
-//     type: LOAD_ONE_PRODUCT,
-//     product
-// });
+const editReview = (data) => ({
+    type: EDIT_REVIEW,
+    data
+})
 
-// const createProduct = (product) => ({
-//     type: CREATE_PRODUCT,
-//     product
-// });
+const deleteReview = (id) => ({
+    type: DELETE_REVIEW,
+    id
+});
 
-// const deleteProduct = (id) => ({
-//     type: DELETE_PRODUCT,
-//     id
-// });
 
-// const updateProduct = (song) => ({
-//     type: UPDATE_PRODUCT,
-//     song
-// })
 
 export const getUserReviews = (userId) => async dispatch => {
     const res = await csrfFetch(`/api/users/${userId}/reviews`);
@@ -69,72 +60,39 @@ export const addReview = (data) => async dispatch => {
     }
 }
 
-// export const getProduct = (productId) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/products/${productId}`);
+export const updateReview = (data) => async dispatch => {
+    const { stars, body, id } = data;
 
-//     if (res.ok) {
-//         const data = await res.json();
-//         dispatch(loadOneProduct(data));
-//     }
-// };
+    const res = await csrfFetch(`/api/reviews/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            stars,
+            body,
+        })
+    });
 
-// export const addProduct = (data) => async (dispatch) => {
-//     const { name, description, size, price, categoryId } = data;
+    if (res.ok) {
+        const review = await res.json();
+        dispatch(editReview(review));
 
-//     const res = await csrfFetch('/api/products', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             name,
-//             description,
-//             size,
-//             price,
-//             categoryId
-//         })
-//     });
+        return review;
+    }
+}
 
-//     if (res.ok) {
-//         const product = await res.json();
-//         dispatch(createProduct(product));
+export const removeReview = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${id}`, {
+        method: 'DELETE'
+    });
 
-//         return product;
-//     }
-// };
-
-// export const editProduct = (product, productId) => async (dispatch) => {
-//     const { name, description, size, price, categoryId } = product;
+    if (res.ok) {
+        dispatch(deleteReview(id));
+    }
+};
 
 
-//     const res = await csrfFetch(`/api/product/${productId}`, {
-//         method: 'PUT',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             name,
-//             description,
-//             size,
-//             price,
-//             categoryId
-//         })
-//     });
-//     if (res.ok) {
-//         const data = await res.json();
-//         dispatch(updateProduct(data))
-//     }
-// }
-
-// export const removeProduct = (productId) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/products/${productId}`, {
-//         method: 'DELETE'
-//     });
-
-//     if (res.ok) {
-//         dispatch(deleteProduct(productId));
-//     }
-// };
 
 const reviewsReducer = (state = {}, action) => {
     let newState;
@@ -147,27 +105,17 @@ const reviewsReducer = (state = {}, action) => {
             return newState
         case CREATE_REVIEW:
             newState = { ...state };
-            console.log(action);
             return newState;
-        // case LOAD_ONE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         [action.product.id]: action.product
-        //     }
-        // case CREATE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         [action.song.id]: action.song
-        //     }
-        // case UPDATE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         [action.song.id]: action.song
-        //     };
-        // case DELETE_PRODUCT:
-        //     newState = { ...state };
-        //     delete newState[action.id];
-        //     return newState;
+        case EDIT_REVIEW:
+            console.log(action);
+            return {
+                ...state,
+                [action.data.id]: action.data
+            }
+            case DELETE_REVIEW:
+                newState = { ...state };
+                delete newState[action.id];
+                return newState;
         default:
             return state;
     }

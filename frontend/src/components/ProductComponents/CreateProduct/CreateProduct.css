@@ -1,8 +1,16 @@
 .create-listing-header {
+    margin-top: 0.5rem;
     font-size: 14pt;
     font-style: italic;
     font-weight: bold;
     border-bottom: 2px solid rgb(0, 0, 0, 0.2);
+}
+
+.errors {
+    color: red;
+    list-style-type: circle;
+    font-weight: bold;
+    font-size: 10pt;
 }
 
 .create-listing-form {

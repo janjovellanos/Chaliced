@@ -1,22 +1,30 @@
 .main-nav {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: space-around;
+    max-width: 159rem;
 }
 
 .top-nav {
     display: grid;
     grid-template-columns: 20% 60% 20%;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
+    margin-left: 1rem;
 }
 
 .home-logo {
     display: flex;
+    width: fit-content;
     text-decoration: none;
     color: black;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     font-size: 21px;
+    margin-left: 2rem;
 }
 
 .home-logo:hover {
@@ -62,16 +70,11 @@
 .profile-btn {
     border-radius: 4px;
     background-color: white;
-    border-color: rgb(0, 0, 0, 0.4);
+    border: none;
 }
 
 .profile-btn:hover {
     cursor: pointer;
-}
-
-.profile-dropdown {
-    list-style: none;
-    padding-left: 0;
 }
 
 .profile-dropdown li {
@@ -79,6 +82,7 @@
 }
 
 .profile-dropdown {
+    list-style: none;
     background-color: rgb(51, 51, 51, 0.8);
     border: 1px solid rgb(51, 51, 51);
     color: #fff;
@@ -90,17 +94,22 @@
     padding: 5px;
     height: 5em;
     top: 4%;
-    right: 6%;
+    right: -100%;
     font-family: sans-serif;
     font-size: 12px;
     border-radius: 6px;
-    list-style: none;
-    z-index: 1;
+    /* z-index: 1; */
+}
+
+.activated {
+    top: 3.5rem;
+    right: 2.7rem;
+    transition: 350ms;
 }
 /*//////////////////////////////*/
 
 .nav-right > * {
-    margin: 0 20px 0 20px;
+    margin: 0 0 0 1rem;
     font-weight: bold;
     font-size: 16px;
 }
@@ -120,7 +129,7 @@
     color: white;
     margin: 0 0.5rem;
     cursor: pointer;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
 }
 
 .nav-right a+button {
@@ -147,4 +156,157 @@
 .sell-btn:hover {
     text-decoration: underline;
     font-size: 9.2pt;
+}
+
+.favs-and-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    /* padding: 0 0.5rem; */
+}
+
+.favs-and-profile > i, .profile-btn {
+    font-size: 20pt;
+}
+
+
+.favs-and-profile > * {
+    margin: 0 0.125rem;
+}
+
+.nav-categories {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-top: 2px solid rgb(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgb(0, 0, 0, 0.1);
+
+}
+
+.bottom-nav {
+    width: 100%;
+}
+
+.nav-categories > div {
+    display: flex;
+    justify-content: center;
+    margin: 0 2rem;
+    padding: 1rem 2rem;
+    font-weight: bold;
+}
+
+.nav-categories > div:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* searchbar css */
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+    /* height: 3rem; */
+}
+
+.searchbar {
+    width: 100%;
+}
+
+.search-bar > input {
+    height: 1rem;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-result-link {
+    background: none;
+    border: none !important;
+    display: block;
+    padding: 0 !important;
+    transition: none !important;
+}
+
+.search-result-link>div {
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+}
+
+.search-bar-form {
+    padding: 0;
+    width: 100%;
+}
+
+.search-bar-form input {
+    border: none;
+    display: flex;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    padding: 0.4em;
+    transition: border 200ms;
+    min-width: 275px;
+}
+
+.search-bar-form>div {
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+
+.search-results {
+    color: black;
+    background: white;
+    margin-top: 1rem;
+    top: 50px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgb(0 0 0 / 30%), 0 20px 48px rgb(0 0 0 / 16%),
+        0 1px 4px rgb(0 0 0 / 12%);
+    max-height: 20em;
+    opacity: 0;
+    overflow-y: scroll;
+    padding: 16px;
+    position: absolute;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: all 350ms;
+    max-width: 15em;
+    color: black;
+    z-index: 1;
+    /* right: 44.5%; */
+}
+
+.results-active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.search-result-li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+
+.search-results a>div:hover {
+    background-color: rgb(0, 0, 0, 0.1);
+}
+
+.search-results a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 11pt;
+    margin: 1rem;
+    border-color: black;
 }

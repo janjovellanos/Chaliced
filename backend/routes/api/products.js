@@ -77,8 +77,10 @@ router.delete('/:productId/favorites', requireAuth, async (req, res, next) => {
     });
 
     if (favorite) {
+        const deletedFav = favorite;
         await favorite.destroy();
             res.json({
+                deletedFav: deletedFav,
                 message: 'Successfully deleted',
                 statusCode: 200
             })
@@ -241,7 +243,9 @@ router.put('/:productId', requireAuth, async (req, res, next) => {
     const { user } = req;
     let { name, description, size, price, categoryId } = req.body;
 
-    const product = await Product.findByPk(productId);
+    const product = await Product.findByPk(productId, {
+        include: {model: Image, attributes: ['id', 'url']}
+    });
 
     if (product) {
         if (product.userId === user.id) {
@@ -302,9 +306,12 @@ router.post('/', requireAuth, async (req, res, next) => {
         price,
         categoryId
     })
+    // const newProductWithImages = Product.findByPk(newProduct.id, {include: [{model: Image, attributes: ['id', 'url']}]})
+    // console.log('THIS -----------------------',newProduct);
     res.status(201);
     res.json(newProduct);
 });
+
 
 //get all products
 router.get('/', requireAuth, async (req, res, next) => {

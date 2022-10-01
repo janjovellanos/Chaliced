@@ -8,6 +8,7 @@ import './ProfilePage.css'
 import ProfileListings from '../ProfileListings';
 import ProfileReviews from '../ProfileReviews';
 import ProfileTransactions from '../ProfileTransactions';
+import ProfileFavorites from '../ProfileFavorites';
 
 export default function ProfilePage() {
     const { userId } = useParams();
@@ -18,6 +19,8 @@ export default function ProfilePage() {
     const [listingsClicked, setListingsClicked] = useState('profile-listings-clicked')
     const [reviewsClicked, setReviewsClicked] = useState('');
     const [transactionsClicked, setTransactionsClicked] = useState('');
+    const [favoritesClicked, setFavoritesClicked] = useState('my-favs');
+    const [heart, setHeart] = useState(<i className='fa-regular fa-heart' />)
 
 
     const availProducts = seller?.Products?.filter(product => product.sold === false)
@@ -29,12 +32,16 @@ export default function ProfilePage() {
     const handleListingsClicked = () => {
         setListingsClicked('profile-listings-clicked')
         setReviewsClicked('')
+        setHeart(<i className='fa-regular fa-heart' />)
+        setFavoritesClicked('my-favs')
         setTransactionsClicked('')
         setBottomView(<ProfileListings availProducts={availProducts} />)
     };
 
     const handleReviewsClicked = () => {
         setReviewsClicked('profile-reviews-clicked')
+        setHeart(<i className='fa-regular fa-heart' />)
+        setFavoritesClicked('my-favs')
         setListingsClicked('')
         setTransactionsClicked('')
         setBottomView(<ProfileReviews sellerReviews={sellerReviews} seller={seller} />)
@@ -44,7 +51,18 @@ export default function ProfilePage() {
         setTransactionsClicked('profile-orders-clicked')
         setListingsClicked('')
         setReviewsClicked('')
+        setHeart(<i className='fa-regular fa-heart' />)
+        setFavoritesClicked('my-favs')
         setBottomView(<ProfileTransactions myOrders={myOrders} mySold={mySold}/>)
+    };
+
+    const handleFavoritesClicked = () => {
+        setFavoritesClicked('my-favs profile-favs-clicked')
+        setHeart(<i className='fa-solid fa-heart' />)
+        setTransactionsClicked('')
+        setListingsClicked('')
+        setReviewsClicked('')
+        setBottomView(<ProfileFavorites />)
     };
 
     useEffect(() => {
@@ -55,6 +73,11 @@ export default function ProfilePage() {
             //show purchases bottomview
             handleTransactionsClicked();
         }
+        if (window.location.href.includes('favorites')
+        && window.location.href.includes(`${user?.id}`)) {
+            //show favorites bottomview
+            handleFavoritesClicked();
+        }
     }, [dispatch]);
 
   return (
@@ -62,8 +85,7 @@ export default function ProfilePage() {
         <div className='profile-page-header'>
             <div className='profile-header-left'>
                 <div className='profile-pic'>
-                    <img src='https://cdn3.iconfinder.com/data/icons/office-485/100/ICON_BASIC-11-512.png'></img>
-                    {/* <img src={seller?.profileImage}></img> */}
+                    <img src={seller?.profileImage}></img>
                 </div>
                 <div className='profile-info'>
                     <div className='profile-username'>{seller?.username}</div>
@@ -84,7 +106,11 @@ export default function ProfilePage() {
         <div className='profile-listings-reviews-btns'>
             <div onClick={() => handleListingsClicked()} className={listingsClicked}>Listings ({availProducts?.length})</div>
             <div onClick={() => handleReviewsClicked()} className={reviewsClicked}>Reviews ({sellerReviews?.length})</div>
-            {user?.id === +userId && <div onClick={() => handleTransactionsClicked()} className={transactionsClicked}>Your Orders</div>}
+            {user?.id === +userId &&
+            <>
+                <div onClick={() => handleTransactionsClicked()} className={transactionsClicked}>Your Orders</div>
+                <div onClick={() => handleFavoritesClicked()} className={favoritesClicked}>{heart}</div>
+            </>}
         </div>
         <div className='listings-or-reviews'>
             {bottomView || <ProfileListings availProducts={availProducts} />}

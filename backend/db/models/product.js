@@ -28,10 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     description: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [1, 256]
-      }
+      type: DataTypes.TEXT,
     },
     size: {
       type: DataTypes.STRING,

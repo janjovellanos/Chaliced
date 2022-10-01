@@ -4,11 +4,19 @@
     justify-content: center;
 }
 
-.profile-listing-scroll {
-    width: 70rem;
+.favorite-bar {
+    /* justify-content: center; */
+}
+
+.fav-item-scroll {
+    width: 80rem;
     display: flex;
-    flex-wrap: wrap;
     justify-content: start;
+    flex-wrap: wrap;
+}
+
+.favorite-bar > * {
+    margin-top: 0.5rem;
 }
 
 .seller-item-preview {
@@ -61,4 +69,26 @@
 
 .seller-item-price-and-fav > * {
     margin-top: 0;
+}
+
+.this-item-sold {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 12rem;
+    width: 12rem;
+    text-decoration: none;
+    background-color: rgb(0, 0, 0, 0.1);
+    color: black;
+    font-weight: bold;
+}
+
+.this-item-sold:hover {
+    background-color: rgb(0, 0, 0, 0.3);
+    font-size: 14pt;
+}
+
+.this-item-sold > * {
+    margin: 0.25rem;
 }

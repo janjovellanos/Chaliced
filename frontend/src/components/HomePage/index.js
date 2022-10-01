@@ -16,19 +16,24 @@ export default function HomePage() {
 
   return (
     <div className='home-page-container'>
+        <div className='featured-container'>
         <div className='featured'>
             <div className='featured-description-container'>
                 <div className='featured-logo-container'>
-                    <img className='featured-logo' src='https://media.giphy.com/avatars/salomonsports/tuElID8qd30z.gif'></img>
+                    <img className='featured-logo' src='https://chaliced-images.s3.us-west-1.amazonaws.com/featured2.gif'></img>
                 </div>
                 <div className='featured-description'>
-                    Men's hiking shoes designed to go the distance with sturdy construction, exceptional support, weatherproof protection, and versatile grip
-                    Men's hiking shoes designed to go the distance with sturdy construction, exceptional support, weatherproof protection, and versatile grip
+                The gorpcore explosion has made us all look at technically-produced hiker gear a bit differently.
+                Suddenly wearing a waterproof Arc'teryx jacket isn't only done by outdoorsy folk, but also by
+                fashion-conscious Instagram users who show off the waterproof technology while standing in the shower.
+                The influence this has had on footwear has been that hiking and trail-running shoes are generating
+                hype like Jordans always have, and <strong>Salomon</strong> is at the forefront of it all.
                 </div>
             </div>
             <div className='featured-image-container'>
-                <img className='featured-image' src='https://www.highsnobiety.com/static-assets/wp-content/uploads/2022/08/15142054/ezgif.com-gif-maker-69.gif'></img>
+                <img className='featured-image' src='https://chaliced-images.s3.us-west-1.amazonaws.com/featured.gif'></img>
             </div>
+        </div>
         </div>
         <div className='items-container-scroll'>
             {/* Get 5 Newest Listings */}
@@ -37,7 +42,7 @@ export default function HomePage() {
                     <div className='preview-image-container'>
                         {/* {product?.Images[0]?.url} */}
                         <NavLink to={`/products/${product?.id}`}>
-                            <img className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
+                            <img className='preview-image' src={product?.Images[0]?.url}></img>
                         </NavLink>
                     </div>
                     <div className='item-preview-bottom'>
@@ -45,7 +50,7 @@ export default function HomePage() {
                         <NavLink to={`/products/${product?.id}`}>
                             <div className='item-name-and-size'><p>{product?.name}</p><p>{product?.size}</p></div>
                         </NavLink>
-                        <div className='item-description'>{product?.description}</div>
+                        <div className='item-description'>{product?.description.slice(0,28)}...</div>
                         <div className='item-price-and-fav'><p>${product?.price}</p><p><i className="fa-regular fa-heart"></i></p></div>
                     </div>
                 </div>

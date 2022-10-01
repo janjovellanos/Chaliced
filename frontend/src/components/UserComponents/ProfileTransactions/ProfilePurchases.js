@@ -1,30 +1,36 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import * as productActions from '../../../store/product';
+import * as reviewActions from '../../../store/review';
 import * as myActions from '../../../store/my';
 import { getCreatedDate } from '../../../utils/helpers';
 import CreateReviewButtonModal from './ReviewForm';
+import EditReviewButtonModal from './EditReviewForm';
 
 export default function ProfilePurchases({seller}) {
     const myOrders = useSelector(state => Object.values(state.my.Orders));
+    const reviews = useSelector(state => state.reviews);
     const history = useHistory();
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(myActions.getMyOrders());
-    }, [dispatch])
+    }, [dispatch, reviews])
 
     myOrders?.sort((a, b) => {
         return b.id - a.id;
     })
+
+    const handleDeleteReview = (id) => {
+        dispatch(reviewActions.removeReview(id));
+    }
 
     return (
         <div className='orders-list'>
             {myOrders && myOrders?.map(order => (
                 <div key={order?.id} className='order-container'>
                     <div className='order-image'>
-                        <img className='preview-image' src='https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533'></img>
+                        <img className='preview-image' onClick={() => history.push(`/products/${order?.Product?.id}`)} src={order?.Product?.Images[0]?.url}></img>
                     </div>
                     <div className='order-details'>
                         <div className='order-details-top'>
@@ -49,12 +55,16 @@ export default function ProfilePurchases({seller}) {
                                 {order?.Product?.description}
                             </div>
                             {order?.Product?.Review && <div className='current-review'>
-                                <div>{order?.Product?.Review?.stars}* - {order?.Product?.Review?.body}</div>
+                                <div className='current-review-stars'>{order?.Product?.Review?.stars}<i className="fa-solid fa-star filled"></i> </div>
+                                <div className='current-review-body'>"{order?.Product?.Review?.body.slice(0, 40) + '...'}"</div>
                             </div>}
                         </div>
                         <div className='order-leave-review'>
                             {!order?.Product?.Review && <CreateReviewButtonModal product={order?.Product}/>
-                                                    || <button>EDIT REVIEW</button>}
+                                                    || <div className='review-edit-delete'>
+                                                         <EditReviewButtonModal product={order?.Product} />
+                                                         <button onClick={e => handleDeleteReview(order?.Product?.Review?.id)} className='delete-review-btn'>REMOVE REVIEW</button>
+                                                       </div>}
                         </div>
                     </div>
                 </div>
