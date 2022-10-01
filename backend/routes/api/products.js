@@ -1,6 +1,7 @@
 const express = require('express');
 const { requireAuth } = require('../../utils/auth');
 const { Product, Image, Favorite, Review, User } = require('../../db/models');
+const { multipleMulterUpload, multiplePublicFileUpload } = require('../../awsS3');
 const router = express.Router();
 
 
@@ -111,10 +112,13 @@ router.get('/:productId/images', requireAuth, async (req, res, next) => {
 });
 
 //create/upload an image to a product
-router.post('/:productId/images', requireAuth, async (req, res, next) => {
+router.post('/:productId/images', requireAuth, multipleMulterUpload("url"), async (req, res, next) => {
     const { productId } = req.params;
     const { user } = req;
     let { url } = req.body;
+    console.log(req.files);
+    if (req.files) url = await multiplePublicFileUpload(req.files);
+
 
     const product = await Product.findByPk(productId)
 

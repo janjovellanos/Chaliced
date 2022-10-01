@@ -34,7 +34,7 @@ function CreateProductForm({setShowModal}) {
 
     history.push(`/users/${user?.id}`)
     return dispatch(productActions.addProduct({ name, size, categoryId, price, description }))
-        .then(data => dispatch(productActions.addProductImage(data?.id, images[0])))
+        .then(data => dispatch(productActions.addProductImage(data?.id, images)))
         .then(() => {
             setShowModal(false);
             history.go();
@@ -54,11 +54,18 @@ function CreateProductForm({setShowModal}) {
     );
   };
 
-    let uploadedImages = [];
-    const addImages = (url) => {
-        uploadedImages.push(url);
-        setImages(uploadedImages);
-    }
+    // let uploadedImages = [];
+    // const addImages = (url) => {
+    //     uploadedImages.push(url);
+    //     setImages(uploadedImages);
+    // }
+
+      // for multiple file upload
+      const updateFiles = (e) => {
+        const files = e.target.files;
+        setImages(files);
+        console.log(images);
+      };
 
   return (
     <>
@@ -126,11 +133,16 @@ function CreateProductForm({setShowModal}) {
                 Images
                 </label>
                 <input
+                  type="file"
+                  // value={images}
+                  multiple
+                  onChange={updateFiles} />
+                {/* <input
                     type="text"
                     value={images}
                     onChange={(e) => addImages(e.target.value)}
                     required
-                    />
+                    /> */}
             <div className="create-listing-image-container">
                 <img alt='product for sale' src={images[images?.length - 1]}></img>
             </div>
