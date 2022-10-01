@@ -14,7 +14,7 @@ function SignupForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
-  const [profileImage, setProfileImage] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -30,6 +30,12 @@ function SignupForm() {
         });
     }
     return setErrors(['Password must match']);
+  };
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    if (file) setProfileImage(file);
   };
 
   return (
@@ -110,9 +116,9 @@ function SignupForm() {
                 Profile Image
                 </label>
                 <input
-                type="text"
-                value={profileImage}
-                onChange={(e) => setProfileImage(e.target.value)}
+                type="file"
+                // value={profileImage}
+                onChange={updateFile}
                 required
                 />
         </div>
