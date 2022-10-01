@@ -44,8 +44,9 @@ export default function ProfileFavorites() {
             {myFavs?.map(fav => (
                 <div key={fav?.Product?.id} className='seller-item-preview'>
                     <NavLink to={`/products/${fav?.Product?.id}`} className='preview-image-container'>
-                        {/* {product?.Images[0]?.url} */}
-                        {fav?.Product?.sold ? soldItem : availableItem}
+                        {/* {fav?.Product?.Images[0]?.url} */}
+                        <img className='preview-image' src={fav?.Product?.Images[0]?.url}/>
+                        {/* {fav?.Product?.sold ? soldItem : availableItem} */}
                     </NavLink>
                     <div className='seller-item-preview-bottom'>
                         <div className='seller-item-post-date'>{timeAgo(new Date(fav?.Product?.createdAt))}</div>

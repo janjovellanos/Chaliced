@@ -14,8 +14,8 @@ export default function ProfilePage() {
     const { userId } = useParams();
     const user = useSelector(state => state.session.user);
     const seller = useSelector(state => (state.sellers))[userId];
-    const myOrders = useSelector(state => Object.values(state.my.Orders));
-    const mySold = useSelector(state => Object.values(state.my.Sold));
+    const myOrders = useSelector(state => Object.values(state?.my?.Orders));
+    const mySold = useSelector(state => Object.values(state?.my?.Sold));
     const [listingsClicked, setListingsClicked] = useState('profile-listings-clicked')
     const [reviewsClicked, setReviewsClicked] = useState('');
     const [transactionsClicked, setTransactionsClicked] = useState('');
@@ -26,6 +26,7 @@ export default function ProfilePage() {
     const availProducts = seller?.Products?.filter(product => product.sold === false)
     const sellerReviews = seller?.Reviews
     const sellerTransactions = sellerReviews?.length + myOrders?.length
+    // const sellerTransactions = mySold?.length + myOrders?.length
     const [bottomView, setBottomView] = useState(null);
     const dispatch = useDispatch();
 
@@ -80,6 +81,12 @@ export default function ProfilePage() {
         }
     }, [dispatch]);
 
+    // CHANGE TRANSACTIONS TO FIX THAT BUG!!! ----------------------------------------------------->
+    // CHANGE TRANSACTIONS TO FIX THAT BUG!!! ----------------------------------------------------->
+    // CHANGE TRANSACTIONS TO FIX THAT BUG!!! ----------------------------------------------------->
+    // CHANGE TRANSACTIONS TO FIX THAT BUG!!! ----------------------------------------------------->
+    // CHANGE TRANSACTIONS TO FIX THAT BUG!!! ----------------------------------------------------->
+
   return (
     <div className='profile-page-container'>
         <div className='profile-page-header'>
@@ -98,7 +105,7 @@ export default function ProfilePage() {
                     <div>Reviews</div>
                 </div>
                 <div className='profile-transactions'>
-                    <div className='profile-transactions-count'>{sellerTransactions}</div>
+                    <div className='profile-transactions-count'>{sellerTransactions > 0 ? sellerTransactions : 0}</div>
                     <div>Transactions</div>
                 </div>
             </div>
