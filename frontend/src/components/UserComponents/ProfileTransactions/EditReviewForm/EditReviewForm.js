@@ -62,7 +62,7 @@ export default function EditReviewForm({product, setShowModal}) {
   return (
     <div className='review-modal-container'>
         <div className='review-modal-header'
-          style={{ backgroundImage: `url(https://cdn.shopify.com/s/files/1/0013/1111/3328/products/HTGWEATHEREDT-SHIRT_CREAM_BACK.jpg?v=1639536822&width=533)`}}>
+          style={{ backgroundImage: `url(${product?.Images[0]?.url})`}}>
           <div className='review-product-item'>{product?.name}</div>
           <div className='review-product-details'>{product?.size} / ${product?.price}</div>
           <div className='review-product-description'>{product?.description}</div>

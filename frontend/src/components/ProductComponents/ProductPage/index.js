@@ -13,12 +13,16 @@ export default function ProductPage() {
     const productImages = product?.Images?.map(image => image?.url);
     const [mainImage, setMainImage] = useState(product?.Images[0]?.url);
     const [smallImageClass, setSmallImageClass] = useState('small-image')
+    // get similar products, excluding current product
+    const similarProducts = products?.filter(prod => prod?.categoryId === product?.categoryId)
+    const idx = similarProducts.indexOf(product);
+    similarProducts.splice(idx, 1);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(productActions.getProduct(productId))
         // dispatch(productActions.getProducts());
-        if (product?.id === productId) {
+        if (product?.id === +productId) {
             dispatch(productActions.getCategory(product?.categoryId));
         }
     }, [
@@ -60,9 +64,9 @@ export default function ProductPage() {
             </div>
             {product && <ProductDetails product={product}/>}
         </div>
-        <div className='scroll-label'>You may also like</div>
+        {similarProducts?.length ? <div className='scroll-label'>You may also like</div> : <div></div>}
         <div className='product-page-bottom'>
-            <ProductScroll products={products}/>
+            <ProductScroll products={similarProducts}/>
         </div>
     </div>
     </>
