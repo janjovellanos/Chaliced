@@ -8,6 +8,7 @@ import * as favActions from '../../../store/favorite';
 export default function ProductScroll({products}) {
     const userFavs = useSelector(state => Object.values(state.my.Favorites));
     const myFavs = useSelector(state => state.my.Favorites);
+    // const myStuff = useSelector(state => state.my);
     const dispatch = useDispatch();
 
     const currUserLiked = (id) => {
@@ -49,10 +50,11 @@ export default function ProductScroll({products}) {
                         <div className='item-description'>{product?.description.slice(0,28)}...</div>
                         <div className='item-price-and-fav'>
                             <p>${product?.price}</p>
-                            <p>
+                            {/* <p>
                                 {currUserLiked(product?.id) ?
                                     <i onClick={() => handleFavButton(product?.id)} className="fa-solid fa-heart" />
-                                : <i onClick={() => handleFavButton(product?.id)} className="fa-regular fa-heart" />}</p>
+                                : <i onClick={() => handleFavButton(product?.id)} className="fa-regular fa-heart" />}
+                            </p> */}
                         </div>
                     </div>
                 </div>

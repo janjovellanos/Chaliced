@@ -32,6 +32,15 @@ function App() {
           <Route exact path="/shop">
             <Explore />
           </Route>
+          <Route exact path="/shop/tops">
+            <Explore />
+          </Route>
+          <Route exact path="/shop/bottoms">
+            <Explore />
+          </Route>
+          <Route exact path="/shop/shoes">
+            <Explore />
+          </Route>
           <Route exact path="/products/:productId">
             <ProductPage />
           </Route>

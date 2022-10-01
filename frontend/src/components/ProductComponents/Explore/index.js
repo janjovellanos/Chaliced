@@ -8,13 +8,23 @@ import ProductScroll from '../ProductScroll';
 
 export default function Explore() {
     const user = useSelector(state => state.session.user);
-    const products = useSelector(state => Object.values(state.products));
+    let products = useSelector(state => Object.values(state.products));
     const dispatch = useDispatch();
     const history = useHistory();
 
     useEffect(() => {
         dispatch(productActions.getAvailProducts())
+
     }, [dispatch]);
+
+    if (window.location.href.includes('tops')) {
+        // filter products by category
+        products = products?.filter(product => product?.categoryId === 1)
+    } else if (window.location.href.includes('bottoms')) {
+        products = products?.filter(product => product?.categoryId === 2)
+    } else if (window.location.href.includes('shoes')) {
+        products = products?.filter(product => product?.categoryId === 3)
+    }
 
     products?.sort((a, b) => {
         return b.id - a.id;

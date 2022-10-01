@@ -19,13 +19,11 @@ function Navigation({ isLoaded }) {
       <div className="top-nav">
         <NavLink to='/' className="home-logo">Chaliced</NavLink>
         <div className="searchbar">
-          {/* <input type="search" placeholder="Search"></input> */}
           <SearchBar />
         </div>
         <div className="nav-right">
           <NavLink to='/shop' className="shop-btn">Shop</NavLink>
           <CreateProductModal />
-          {/* <NavLink to='/sell' className="sell-btn">Sell</NavLink> */}
           <div className="favs-and-profile">
             <i
               onClick={() => history.push(`/users/${sessionUser?.id}/favorites`)}
@@ -36,12 +34,11 @@ function Navigation({ isLoaded }) {
       </div>
       <div className="bottom-nav">
         <div className="nav-categories">
-          <div>Tops</div>
-          <div>Bottoms</div>
-          <div>Shoes</div>
+          <div onClick={() => history.push('/shop/tops')} >Tops</div>
+          <div onClick={() => history.push('/shop/bottoms')} >Bottoms</div>
+          <div onClick={() => history.push('/shop/shoes')} >Shoes</div>
         </div>
       </div>
-      {/* <ProfileButton user={sessionUser} /> */}
     </div>
   } else {
     sessionLinks = (
@@ -49,7 +46,6 @@ function Navigation({ isLoaded }) {
         <div className="top-nav">
         <NavLink to='/' className="home-logo">Chaliced</NavLink>
           <div className="searchbar">
-            {/* <input type="search" placeholder="Search"></input> */}
             <SearchBar />
           </div>
           <div className="nav-right">
@@ -59,13 +55,11 @@ function Navigation({ isLoaded }) {
         </div>
         <div className="bottom-nav">
           <div className="nav-categories">
-            <div>Tops</div>
+              <div>Tops</div>
               <div>Bottoms</div>
-                <div>Shoes</div>
+              <div>Shoes</div>
           </div>
         </div>
-        {/* <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink> */}
       </div>
     );
   }

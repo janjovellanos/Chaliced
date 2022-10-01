@@ -10,7 +10,7 @@ function CreateProductForm({setShowModal}) {
   const user = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [size, setSize] = useState("");
-  const [categoryId, setCategoryId] = useState(0);
+  const [categoryId, setCategoryId] = useState(1);
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([
@@ -21,7 +21,7 @@ function CreateProductForm({setShowModal}) {
   const reset = () => {
     setName("")
     setSize("")
-    setCategoryId(0)
+    setCategoryId(1)
     setPrice(0)
     setDescription("")
     setImages([
@@ -97,7 +97,7 @@ function CreateProductForm({setShowModal}) {
                 onChange={(e) => setCategoryId(e.target.value)}
                 required
             >
-                <option value='Select a Category' disabled>Select a Category</option>
+                <option disabled='disabled'>Select a Category</option>
                 <option value={1}>Tops</option>
                 <option value={2}>Bottoms</option>
                 <option value={3}>Shoes</option>
