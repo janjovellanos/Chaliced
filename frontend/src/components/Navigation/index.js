@@ -46,20 +46,20 @@ function Navigation({ isLoaded }) {
         <div className="top-nav">
         <NavLink to='/' className="home-logo">Chaliced</NavLink>
           <div className="searchbar">
-            <SearchBar />
+            {/* <SearchBar /> */}
           </div>
           <div className="nav-right">
             <LoginFormModal />
             <SignupFormModal />
           </div>
         </div>
-        <div className="bottom-nav">
+        {/* <div className="bottom-nav">
           <div className="nav-categories">
               <div>Tops</div>
               <div>Bottoms</div>
               <div>Shoes</div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

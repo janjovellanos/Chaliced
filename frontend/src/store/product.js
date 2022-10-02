@@ -117,22 +117,28 @@ export const addProduct = (data) => async (dispatch) => {
     }
 };
 
-export const addProductImage = (productId, url) => async (dispatch) => {
+export const addProductImage = (productId, urls) => async (dispatch) => {
+    const formData = new FormData();
+
+    if (urls && urls.length !== 0) {
+        for (var i = 0; i < urls.length; i++) {
+            formData.append("urls", urls[i]);
+        }
+    }
+
     const res = await csrfFetch(`/api/products/${productId}/images`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         },
-        body: JSON.stringify({
-            url
-        })
+        body: formData
     });
 
     if (res.ok) {
-        const image = await res.json();
-        dispatch(createProductImage(productId, image));
+        const images = await res.json();
+        dispatch(createProductImage(productId, images));
 
-        return image;
+        return images;
     }
 };
 

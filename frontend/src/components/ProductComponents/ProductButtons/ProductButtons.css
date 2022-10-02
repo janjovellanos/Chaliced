@@ -100,16 +100,13 @@
     image-rendering: crisp-edges;
 }
 
-
-
-
-/* .seller-profile-pic img {
-    width: 4rem;
-    height: 4rem;
-} */
-
 .seller-stats {
     display: grid;
+}
+
+.product-seller-name {
+    font-weight: bold;
+    font-size: 11pt;
 }
 
 .seller-stats a, .seller-stats div {

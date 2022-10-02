@@ -64,7 +64,7 @@ export default function ProductPage() {
             </div>
             {product && <ProductDetails product={product}/>}
         </div>
-        {similarProducts?.length ? <div className='scroll-label'>You may also like</div> : <div></div>}
+        {similarProducts?.length ? <div className='scroll-label'>You may also like</div> : ''}
         <div className='product-page-bottom'>
             <ProductScroll products={similarProducts}/>
         </div>

@@ -35,8 +35,6 @@
     align-items: flex-start;
 }
 
-
-
 .signup-form > * {
     margin: 5px 0;
 }
@@ -45,7 +43,7 @@
     font-style: italic;
 }
 
-.credential-label + input {
+.credential-label + input:not(.image-upload) {
     border: 1px solid white;
     border-radius: 4px;
     height: 1.5rem;
@@ -58,7 +56,7 @@
     font-style: italic;
 }
 
-.password-label + input {
+.password-label + input:not(.image-upload) {
     border: 1px solid white;
     border-radius: 4px;
     height: 1.5rem;
@@ -67,9 +65,23 @@
     background-color: rgb(0, 0, 0, 0.05);
 }
 
-/* .signup-btn {
-    color: rgb(0, 0, 0, 0.05);
-} */
+.image-upload {
+    display: flex;
+    margin: 0.7rem;
+    width: 6rem;
+    justify-content: center;
+    color: transparent;
+    border-radius: 5px;
+}
+
+input::file-selector-button {
+    font-weight: bold;
+    color: rgb(0, 0, 0, 0.65);
+    padding: 0.25em;
+    margin-left: 0.4rem;
+    border: thin solid grey;
+    border-radius: 3px;
+}
 
 #signup-btn {
     /* color: rgb(0, 0, 0, 0.05);

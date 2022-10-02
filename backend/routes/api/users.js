@@ -5,6 +5,7 @@ const { User, Review, Product, Image, Order } = require("../../db/models");
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
+const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
 
 //
 // =====================================================
@@ -96,9 +97,9 @@ router.get("/:userId", requireAuth, async (req, res, next) => {
             }
         ]
         },
-        // {
-        //   model: Order, attributes: ['id', 'productId', 'createdAt']
-        // },
+        {
+          model: Order, attributes: ['id', 'productId', 'createdAt']
+        },
     ]
   });
 
@@ -131,8 +132,10 @@ router.get('/', requireAuth, async (req, res, next) => {
 
 
 //================== Sign up ==========================//
-router.post("/", validateSignup, async (req, res) => {
-  const { email, password, username, firstName, lastName, address, bio, profileImage } = req.body;
+router.post("/", singleMulterUpload("profileImage"), validateSignup, async (req, res) => {
+  let { email, password, username, firstName, lastName, address, bio, profileImage } = req.body;
+  if (req.file) profileImage = await singlePublicFileUpload(req.file);
+
   const user = await User.signup({ email, password, username, firstName, lastName, address, bio, profileImage });
 
   await setTokenCookie(res, user);
@@ -141,7 +144,6 @@ router.post("/", validateSignup, async (req, res) => {
     user
   });
 });
-//
-//
-//
+
+
 module.exports = router;
