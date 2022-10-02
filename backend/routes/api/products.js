@@ -99,7 +99,6 @@ router.get('/:productId/images', requireAuth, async (req, res, next) => {
     const product = await Product.findByPk(productId, {
         include: Image
     });
-        console.log(product);
     if (product) {
         const images = product.Images
         res.json(images);
@@ -116,7 +115,6 @@ router.post('/:productId/images', requireAuth, multipleMulterUpload("urls"), asy
     const { productId } = req.params;
     const { user } = req;
     let { urls } = req.body;
-    console.log(req.files);
     if (req.files) urls = await multiplePublicFileUpload(req.files);
 
 

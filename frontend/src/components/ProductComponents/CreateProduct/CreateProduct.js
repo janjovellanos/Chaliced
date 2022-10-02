@@ -60,7 +60,6 @@ function CreateProductForm({setShowModal}) {
       // for multiple file upload
       const updateFiles = (e) => {
         const files = e.target.files;
-        console.log(files);
         if (files) {
           const arrFiles = Array.from(files)
           const previewUrls = [];

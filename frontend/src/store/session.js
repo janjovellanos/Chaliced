@@ -61,7 +61,6 @@ export const signup = (user) => async (dispatch) => {
   formData.append('password', password)
 
   if (profileImage) formData.append('profileImage', profileImage);
-  // console.log(profileImage);
   const response = await csrfFetch(`/api/users/`, {
     method: "POST",
     headers: {

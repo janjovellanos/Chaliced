@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export default function SearchBar() {
+    const user = useSelector(state => state.session.user);
     const [search, setSearch] = useState('');
     const [results, setResults] = useState('');
     const products = useSelector(state => Object.values(state.products));
 
     const activeResults = products.filter(product => (
         product?.name?.toLowerCase().includes(search.toLowerCase())
-        // || product?.price === (search)
     ));
 
     const listResults = activeResults.map(product => (
@@ -20,7 +20,6 @@ export default function SearchBar() {
         >
             <div>
                 <div>{product?.name}</div>
-                {/* <div>{product?.price}</div> */}
             </div>
         </Link>
     ))
@@ -34,13 +33,14 @@ export default function SearchBar() {
                         type="text"
                         placeholder="Search"
                         value={search}
+                        disabled={!user}
                         onChange={(e) => setSearch(e.target.value)}
                         onClick={() => setResults("results-active")}
                         onBlur={() => setResults("")}
                         />
                  </div>
             </form>
-            <div className={`search-results ${results}`}>{listResults}</div>
+            {user ? <div className={`search-results ${results}`}>{listResults}</div> : ''}
         </div>
     )
 }

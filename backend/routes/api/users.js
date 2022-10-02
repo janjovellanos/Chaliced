@@ -134,7 +134,6 @@ router.get('/', requireAuth, async (req, res, next) => {
 //================== Sign up ==========================//
 router.post("/", singleMulterUpload("profileImage"), validateSignup, async (req, res) => {
   let { email, password, username, firstName, lastName, address, bio, profileImage } = req.body;
-  // console.log(req.body);
   if (req.file) profileImage = await singlePublicFileUpload(req.file);
 
   const user = await User.signup({ email, password, username, firstName, lastName, address, bio, profileImage });
