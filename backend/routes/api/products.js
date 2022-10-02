@@ -99,7 +99,7 @@ router.get('/:productId/images', requireAuth, async (req, res, next) => {
     const product = await Product.findByPk(productId, {
         include: Image
     });
-
+        console.log(product);
     if (product) {
         const images = product.Images
         res.json(images);
@@ -112,25 +112,30 @@ router.get('/:productId/images', requireAuth, async (req, res, next) => {
 });
 
 //create/upload an image to a product
-router.post('/:productId/images', requireAuth, multipleMulterUpload("url"), async (req, res, next) => {
+router.post('/:productId/images', requireAuth, multipleMulterUpload("urls"), async (req, res, next) => {
     const { productId } = req.params;
     const { user } = req;
-    let { url } = req.body;
+    let { urls } = req.body;
     console.log(req.files);
-    if (req.files) url = await multiplePublicFileUpload(req.files);
+    if (req.files) urls = await multiplePublicFileUpload(req.files);
 
 
     const product = await Product.findByPk(productId)
 
     if (product) {
         if (product.userId === user.id) {
-            const newImage = await Image.create({
-                url,
-                userId: user.id,
-                productId: +productId
+            urls.forEach(async (url) => {
+                await Image.create({
+                    url,
+                    userId: user.id,
+                    productId: +productId
+                })
+            })
+            const newImages = await Product.findByPk(productId, {
+                include: Image
             })
             res.status(201);
-            res.json(newImage);
+            res.json(newImages);
         } else {
             const err = new Error('Not Authorized');
             err.status = 403;

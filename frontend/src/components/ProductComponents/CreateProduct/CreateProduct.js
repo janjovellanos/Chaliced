@@ -63,6 +63,7 @@ function CreateProductForm({setShowModal}) {
       // for multiple file upload
       const updateFiles = (e) => {
         const files = e.target.files;
+        console.log(files);
         setImages(files);
         console.log(images);
       };
@@ -136,7 +137,7 @@ function CreateProductForm({setShowModal}) {
                   type="file"
                   // value={images}
                   multiple
-                  onChange={updateFiles} />
+                  onChange={e => updateFiles(e)} />
                 {/* <input
                     type="text"
                     value={images}

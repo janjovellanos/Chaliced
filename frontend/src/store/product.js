@@ -129,16 +129,16 @@ export const addProductImage = (productId, urls) => async (dispatch) => {
     const res = await csrfFetch(`/api/products/${productId}/images`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         },
         body: formData
     });
 
     if (res.ok) {
-        const image = await res.json();
-        dispatch(createProductImage(productId, image));
+        const images = await res.json();
+        dispatch(createProductImage(productId, images));
 
-        return image;
+        return images;
     }
 };
 
