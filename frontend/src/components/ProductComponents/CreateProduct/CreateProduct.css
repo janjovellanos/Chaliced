@@ -45,7 +45,7 @@
     font-weight: bold;
 }
 
-.listing-label + input {
+.listing-label + input:not(.image-upload) {
     border: 1px solid white;
     border-radius: 4px;
     height: 1.5rem;
@@ -80,7 +80,7 @@
     font-style: italic;
 }
 
-.password-label + input {
+.password-label + input:not(.image-upload) {
     border: 1px solid white;
     border-radius: 4px;
     height: 1.5rem;
@@ -118,4 +118,8 @@
 
 #create-listing-btn:hover {
     font-size: 12.5pt;
+}
+
+.product-image-upload {
+    width: 6.5rem;
 }

@@ -116,6 +116,7 @@ function SignupForm() {
                 Profile Image
                 </label>
                 <input
+                className="image-upload"
                 type="file"
                 // value={profileImage}
                 onChange={updateFile}

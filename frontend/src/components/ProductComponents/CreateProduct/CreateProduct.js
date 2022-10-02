@@ -16,6 +16,9 @@ function CreateProductForm({setShowModal}) {
   const [images, setImages] = useState([
     'https://montevista.greatheartsamerica.org/wp-content/uploads/sites/2/2016/11/default-placeholder.png'
   ]);
+  const [imagePreviews, setImagePreviews] = useState([
+    'https://montevista.greatheartsamerica.org/wp-content/uploads/sites/2/2016/11/default-placeholder.png'
+  ]);
   const [errors, setErrors] = useState([]);
 
   const reset = () => {
@@ -54,18 +57,17 @@ function CreateProductForm({setShowModal}) {
     );
   };
 
-    // let uploadedImages = [];
-    // const addImages = (url) => {
-    //     uploadedImages.push(url);
-    //     setImages(uploadedImages);
-    // }
-
       // for multiple file upload
       const updateFiles = (e) => {
         const files = e.target.files;
         console.log(files);
-        setImages(files);
-        console.log(images);
+        if (files) {
+          const arrFiles = Array.from(files)
+          const previewUrls = [];
+          arrFiles.forEach(file => previewUrls.push(URL.createObjectURL(file)));
+          setImagePreviews(previewUrls);
+          setImages(files);
+        }
       };
 
   return (
@@ -134,6 +136,7 @@ function CreateProductForm({setShowModal}) {
                 Images
                 </label>
                 <input
+                  className="image-upload product-image-upload"
                   type="file"
                   // value={images}
                   multiple
@@ -145,7 +148,7 @@ function CreateProductForm({setShowModal}) {
                     required
                     /> */}
             <div className="create-listing-image-container">
-                <img alt='product for sale' src={images[images?.length - 1]}></img>
+                <img alt='product for sale' src={imagePreviews[imagePreviews?.length - 1]}></img>
             </div>
         </div>
         <div className="create-listing-btn-container">
