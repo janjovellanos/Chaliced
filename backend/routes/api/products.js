@@ -183,10 +183,10 @@ router.get('/category/:categoryId', requireAuth, async (req, res, next) => {
         where: {categoryId: categoryId, sold: false},
         include: [
             { model: Image, attributes: ['id', 'url'] },
-            // {
-            //     model: User, as: 'Seller',
-            //     attributes: ['id', 'username', 'profileImage'],
-            // }
+            {
+                model: User, as: 'Seller',
+                attributes: ['id', 'username', 'profileImage'],
+            }
         ]
     });
 
