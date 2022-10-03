@@ -191,14 +191,14 @@ router.get('/category/:categoryId', requireAuth, async (req, res, next) => {
     });
 
     if (product) {
-        // const reviews = await Review.findAndCountAll({
-        //     where: {sellerId: product.userId}
-        // })
-        // const products = await Product.findAndCountAll({
-        //     where: {userId: product.userId, sold: false}
-        // })
-        // product.dataValues.Seller.dataValues.reviewCount = reviews.count
-        // product.dataValues.Seller.dataValues.productCount = products.count
+        const reviews = await Review.findAndCountAll({
+            where: {sellerId: product.userId}
+        })
+        const products = await Product.findAndCountAll({
+            where: {userId: product.userId, sold: false}
+        })
+        product.dataValues.Seller.dataValues.reviewCount = reviews.count
+        product.dataValues.Seller.dataValues.productCount = products.count
         res.json(product);
     } else {
         const err = new Error("Category couldn't be found");
