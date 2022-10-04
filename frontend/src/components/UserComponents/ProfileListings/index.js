@@ -21,7 +21,7 @@ export default function ProfileListings({availProducts}) {
         <div className='listing-filter-bar'>
             <div className='profile-item-count'>{availProducts?.length} Listings</div>
             <div className='profile-filter-btn'>
-                <button>FILTER</button>
+                {/* <button>FILTER</button> */}
             </div>
         </div>
     <div className='seller-explore-page-container'>

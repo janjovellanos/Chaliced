@@ -4,7 +4,8 @@
     /* justify-content: center;
     align-items: center; */
     text-align: center;
-    /* height: 8rem; */
+    height: 10rem;
+    width: 14rem;
 }
 
 .delete-modal-container > * {
@@ -12,6 +13,7 @@
 }
 
 .delete-modal-header {
+    margin-top: 0.75rem;
     font-weight: bold;
     font-size: 14pt;
 }
@@ -37,7 +39,7 @@
     font-size: 11pt;
     font-weight: bold;
     /* font-style: italic; */
-    margin: 2px 5px;
+    margin: 3px 6px;
     color: rgb(182, 5, 5);
 }
 
@@ -45,7 +47,7 @@
     display: flex;
     align-items: center;
     font-size: 7.5pt;
-    margin: 2px 5px;
+    margin: 3px 6px;
     color: rgb(0, 0, 0, 0.6);
     text-decoration: underline;
 }
