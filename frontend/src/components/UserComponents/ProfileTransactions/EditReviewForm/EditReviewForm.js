@@ -5,12 +5,12 @@ import * as reviewActions from '../../../../store/review';
 export default function EditReviewForm({product, setShowModal}) {
     let filledStar = `fa-solid fa-star filled`
     let hollowStar = `fa-regular fa-star hollow`
-    const [star2, setStar2] = useState("fa-regular fa-star hollow");
-    const [star3, setStar3] = useState("fa-regular fa-star hollow");
-    const [star4, setStar4] = useState("fa-regular fa-star hollow");
-    const [star5, setStar5] = useState("fa-regular fa-star hollow");
-    const [stars, setStars] = useState(1);
+    const [stars, setStars] = useState(product?.Review?.stars);
     const [body, setBody] = useState(product?.Review?.body);
+    const [star2, setStar2] = useState(stars >= 2 ? filledStar : hollowStar);
+    const [star3, setStar3] = useState(stars >= 3 ? filledStar : hollowStar);
+    const [star4, setStar4] = useState(stars >= 4 ? filledStar : hollowStar);
+    const [star5, setStar5] = useState(stars >= 5 ? filledStar : hollowStar);
     const dispatch = useDispatch();
 
 
