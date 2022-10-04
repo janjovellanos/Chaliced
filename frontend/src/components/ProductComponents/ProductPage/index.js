@@ -20,11 +20,10 @@ export default function ProductPage() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(productActions.getProduct(productId))
-        // dispatch(productActions.getProducts());
         if (product && product?.id === +productId) {
             dispatch(productActions.getCategory(product?.categoryId));
         }
+        dispatch(productActions.getProduct(productId))
     }, [
         dispatch,
         productId,
