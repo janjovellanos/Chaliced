@@ -82,3 +82,15 @@
     text-decoration: underline;
     font-size: 12.5pt;
 }
+
+.demo-login {
+    font-size: 9.5pt;
+    margin-bottom: 0.5rem;
+    color: rgb(0, 0, 0, 0.8);
+}
+
+.demo-login:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(0, 0, 0, 0.5);
+}
