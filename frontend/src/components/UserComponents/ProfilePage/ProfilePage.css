@@ -129,9 +129,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* width: 100%; */
+    width: 100%;
     margin: 5px auto;
-    width: 80rem;
+    /* width: 70rem; */
     /* display: flex; */
     /* justify-content: center; */
 }

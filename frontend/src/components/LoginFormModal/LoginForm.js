@@ -28,6 +28,16 @@ function LoginForm() {
     );
   };
 
+  const handleDemoUser = (e) => {
+    e.preventDefault();
+    return dispatch(
+        sessionActions.login({ credential: "Demo-lition", password: "password" })
+    ).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+    });
+};
+
   return (
     <>
       <div className="login-header">Chaliced</div>
@@ -56,6 +66,7 @@ function LoginForm() {
             required
             />
         <button className="login-btn" id="login-btn" type="submit">Log In</button>
+        <div className="demo-login" onClick={handleDemoUser}>Try it as a guest</div>
       </form>
     </>
   );

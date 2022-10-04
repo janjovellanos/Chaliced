@@ -22,7 +22,7 @@ export default function ProductPage() {
     useEffect(() => {
         dispatch(productActions.getProduct(productId))
         // dispatch(productActions.getProducts());
-        if (product?.id === +productId) {
+        if (product && product?.id === +productId) {
             dispatch(productActions.getCategory(product?.categoryId));
         }
     }, [

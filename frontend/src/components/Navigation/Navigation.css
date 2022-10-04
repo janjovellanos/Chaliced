@@ -26,19 +26,20 @@
     font-weight: bold;
     font-size: 20px;
     margin-left: 2rem;
+    -webkit-transition: all ease-in-out .7s;
+    -moz-transition: all ease-in-out .7s;
+    -o-transition: all ease-in-out .7s;
+    transition: all ease-in-out .7s;
 }
 
 .home-logo:hover {
     color: rgb(0, 0, 0, 0.8);
+    font-size: 20.5px;
     text-shadow:
-    -0.6px -0.6px 0 rgb(0, 0, 0, 0.5),
-    0.6px -0.6px 0 rgb(0, 0, 0, 0.5),
-    -0.6px 0.6px 0 rgb(0, 0, 0, 0.5),
-    0.6px 0.6px 0 rgb(0, 0, 0, 0.5);
-    -webkit-transition: all ease .7s;
-    -moz-transition: all ease .7s;
-    -o-transition: all ease .7s;
-    transition: all ease .7s;
+    -0.4px -0.4px 0 rgb(0, 0, 0, 0.5),
+    0.4px -0.4px 0 rgb(0, 0, 0, 0.5),
+    -0.4px 0.4px 0 rgb(0, 0, 0, 0.5),
+    0.4px 0.4px 0 rgb(0, 0, 0, 0.5);
 }
 
 .searchbar {
@@ -180,7 +181,7 @@
     grid-template-columns: 33.3% 33.3% 33.3%;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 98%;
     border-top: 2px solid rgb(0, 0, 0, 0.1);
     border-bottom: 2px solid rgb(0, 0, 0, 0.1);
 

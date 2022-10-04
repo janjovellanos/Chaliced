@@ -4,8 +4,8 @@
     /* justify-content: center;
     align-items: center; */
     text-align: center;
-    height: 12rem;
-    width: 16rem;
+    height: 10rem;
+    width: 14rem;
 }
 
 .purchase-modal-container > * {
@@ -13,6 +13,7 @@
 }
 
 .purchase-modal-header {
+    margin-top: 0.75rem;
     font-weight: bold;
     font-size: 15pt;
 }
@@ -54,7 +55,7 @@
 }
 
 .purchase-modal-options > * {
-    width: 6rem;
+    width: 5rem;
     justify-content: center;
 }
 
@@ -70,7 +71,7 @@
 .dont-purchase {
     display: flex;
     align-items: center;
-    font-size: 11pt;
+    font-size: 12pt;
     margin: 2px 5px;
     color: rgb(0, 0, 0, 0.6);
     text-decoration: underline;
