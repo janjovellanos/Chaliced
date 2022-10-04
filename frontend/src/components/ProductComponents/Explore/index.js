@@ -21,6 +21,8 @@ export default function Explore() {
         products = products?.filter(product => product?.categoryId === 2)
     } else if (window.location.href.includes('shoes')) {
         products = products?.filter(product => product?.categoryId === 3)
+    } else if (window.location.href.includes('accessories')) {
+        products = products?.filter(product => product?.categoryId === 4)
     }
 
     products?.sort((a, b) => {

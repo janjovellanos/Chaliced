@@ -234,7 +234,7 @@
 
 .nav-categories {
     display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-columns: 25% 25% 25% 25%;
     align-items: center;
     justify-content: center;
     width: 98%;

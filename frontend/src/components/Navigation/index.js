@@ -37,6 +37,7 @@ function Navigation({ isLoaded }) {
           <div onClick={() => history.push('/shop/tops')} >Tops</div>
           <div onClick={() => history.push('/shop/bottoms')} >Bottoms</div>
           <div onClick={() => history.push('/shop/shoes')} >Shoes</div>
+          <div onClick={() => history.push('/shop/accessories')} >Accessories</div>
         </div>
       </div>
     </div>
