@@ -4,6 +4,11 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+body {
+    margin: 0px;
+    overflow-x: hidden;
+}
+
 .item-not-found {
     display: flex;
     justify-content: center;

@@ -41,16 +41,16 @@ function ProfileButton({ user }) {
         {/* <i className="fas fa-user-circle" /> */}
         <i className="fa-solid fa-user" />
       </button>
-      {showMenu && (
+      {/* {showMenu && ( */}
         <ul className={menuClass}>
-          <li key={user?.id} onClick={() => history.push(`/users/${user?.id}`)}>{user?.username}</li>
+          <li key={user?.id} onClick={() => history.push(`/users/${user?.id}`)}>My Profile</li>
           <li key={user?.id + 31431098}>{user?.email}</li>
           {/* <li key={'favoritesfewvere'}>Favorites</li> */}
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button onClick={logout}>Log Out <i className="fa-solid fa-right-from-bracket"></i></button>
           </li>
         </ul>
-      )}
+      {/* )} */}
     </>
   );
 }
