@@ -124,7 +124,7 @@
     border-radius: 3px;
     font-family: 'Roboto Mono', monospace;
     font-weight: bold;
-    font-size: 10pt;
+    font-size: 10.5pt;
     background-color: black;
     border-color: rgb(0, 0, 0, 0.2);
     color: white;
@@ -151,12 +151,12 @@
 
 .shop-btn:hover {
     text-decoration: underline;
-    font-size: 10.5pt;
+    /* font-size: 10.5pt; */
 }
 
 .sell-btn:hover {
     text-decoration: underline;
-    font-size: 10.5pt;
+    font-size: 11pt;
 }
 
 .favs-and-profile {
