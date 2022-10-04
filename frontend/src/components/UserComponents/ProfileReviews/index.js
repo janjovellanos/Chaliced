@@ -14,7 +14,7 @@ export default function ProfileReviews({sellerReviews, seller}) {
         total += review.stars
     })
 
-    let starRating = total / sellerReviews?.length
+    let starRating = Math.round((total / sellerReviews?.length) * 10) / 10;
 
     const dispatch = useDispatch();
 

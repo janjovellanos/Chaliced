@@ -19,6 +19,8 @@ export default function ProductPage() {
     similarProducts.splice(idx, 1);
     const dispatch = useDispatch();
 
+    console.log(mainImage);
+
     useEffect(() => {
         if (product && product?.id === +productId) {
             dispatch(productActions.getCategory(product?.categoryId));
@@ -65,7 +67,7 @@ export default function ProductPage() {
         </div>
         {similarProducts?.length ? <div className='scroll-label'>You may also like</div> : ''}
         <div className='product-page-bottom'>
-            <ProductScroll products={similarProducts}/>
+            <ProductScroll products={similarProducts} setMainImage={setMainImage}/>
         </div>
     </div>
     </>
