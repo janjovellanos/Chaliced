@@ -76,6 +76,19 @@
     text-align: center;
 }
 
+.image-listing-label {
+    display: flex;
+}
+
+.image-listing-label > * {
+    margin: 0 0.2rem;
+}
+
+.image-counter {
+    font-size: 10.5pt;
+    color: rgb(0, 0, 0, 0.7);
+}
+
 .password-label {
     font-style: italic;
 }
