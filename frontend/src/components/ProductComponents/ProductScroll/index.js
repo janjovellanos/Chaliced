@@ -5,7 +5,7 @@ import { timeAgo } from '../../../utils/helpers'
 import * as myActions from '../../../store/my';
 import * as favActions from '../../../store/favorite';
 
-export default function ProductScroll({products}) {
+export default function ProductScroll({products, setMainImage}) {
     const userFavs = useSelector(state => Object.values(state.my.Favorites));
     const favorites = useSelector(state => state.favorites)
     const dispatch = useDispatch();
@@ -33,6 +33,7 @@ export default function ProductScroll({products}) {
                 <div key={product?.id} className='item-preview'>
                     <NavLink to={`/products/${product?.id}`} className='preview-image-container'>
                         <img key={product?.id}
+                            onClick={() => setMainImage(product?.Images[0]?.url)}
                             className='preview-image' src={product?.Images[0]?.url}>
                         </img>
                     </NavLink>
