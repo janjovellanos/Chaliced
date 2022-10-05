@@ -35,7 +35,7 @@ export default function HomePage() {
             </div>
         </div>
         </div>
-        <div className='items-container-scroll'>
+        <div className='items-container-scroll-home'>
             {/* Get 5 Newest Listings */}
             {user && products?.slice(-5).reverse().map(product => (
                 <div key={product?.id} className='item-preview'>
