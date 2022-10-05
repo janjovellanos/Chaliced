@@ -35,7 +35,7 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <>
+    <div className="profile-btn-top-nav">
       <button className="profile-btn" onClick={openMenu}>
         <i className="fa-solid fa-user" />
       </button>
@@ -46,7 +46,7 @@ function ProfileButton({ user }) {
             <button onClick={logout}>Log Out <i className="fa-solid fa-right-from-bracket"></i></button>
           </li>
         </ul>
-    </>
+    </div>
   );
 }
 
