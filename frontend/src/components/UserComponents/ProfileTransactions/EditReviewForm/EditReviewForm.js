@@ -96,7 +96,6 @@ export default function EditReviewForm({product, setShowModal}) {
         </div>
         <div className='review-modal-options'>
             <div onClick={() => handleEditReview()} className='yes-review'>Submit</div>
-            {/* <div onClick={() => setShowModal(false)} className='dont-purchase'>Cancel</div> */}
         </div>
     </div>
   )

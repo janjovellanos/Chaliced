@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as productActions from '../../../store/product';
 import './Explore.css'
-import { useHistory } from 'react-router-dom';
 import ProductScroll from '../ProductScroll';
 
 export default function Explore() {

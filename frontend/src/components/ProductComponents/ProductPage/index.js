@@ -19,8 +19,6 @@ export default function ProductPage() {
     similarProducts.splice(idx, 1);
     const dispatch = useDispatch();
 
-    console.log(mainImage);
-
     useEffect(() => {
         if (product && product?.id === +productId) {
             dispatch(productActions.getCategory(product?.categoryId));

@@ -1,6 +1,4 @@
 .seller-explore-page-container {
-    /* display: grid;
-    grid-template-rows: 2.5rem; */
     justify-content: center;
 }
 
@@ -17,7 +15,6 @@
     margin: 8px;
     border-radius: 3px;
     padding: 8px;
-    /* max-width:100%; */
     max-height:100%;
     height: fit-content;
     width: 12rem;

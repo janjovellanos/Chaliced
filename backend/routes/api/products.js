@@ -189,7 +189,6 @@ router.get('/category/:categoryId', requireAuth, async (req, res, next) => {
             }
         ]
     });
-    console.log('got here ---------------------------------------->', product);
     if (product) {
         // const reviews = await Review.findAndCountAll({
         //     where: {sellerId: product.userId}
@@ -217,10 +216,6 @@ router.get('/:productId', requireAuth, async (req, res, next) => {
             {
                 model: User, as: 'Seller',
                 attributes: ['id', 'username', 'profileImage'],
-                // include: [
-                //     {model: Review, attributes: ['id', 'body', 'stars']},
-                //     {model: Product, attributes: ['id', 'name', 'price']}
-                // ]
             }
         ]
     });
@@ -313,7 +308,6 @@ router.post('/', requireAuth, async (req, res, next) => {
         price,
         categoryId
     })
-    // const newProductWithImages = Product.findByPk(newProduct.id, {include: [{model: Image, attributes: ['id', 'url']}]})
     res.status(201);
     res.json(newProduct);
 });
@@ -325,11 +319,11 @@ router.get('/', requireAuth, async (req, res, next) => {
         include: [
             {
                 model: Image, attributes: ['id', 'url']
-                // include: [{ model: Image, attributes: ['id', 'url'] }]
             }
         ]
     });
         res.json(products)
 });
+
 
 module.exports = router;

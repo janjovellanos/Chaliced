@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { timeAgo } from '../../../utils/helpers';
 import * as sellerActions from '../../../store/seller';
-import * as myActions from '../../../store/my';
 import './ProfilePage.css'
 import ProfileListings from '../ProfileListings';
 import ProfileReviews from '../ProfileReviews';

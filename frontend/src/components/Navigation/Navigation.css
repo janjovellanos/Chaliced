@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: space-around;
     max-width: 100vw;
-    /* width: 100vw; */
 }
 
 .top-nav {
@@ -65,7 +64,6 @@
 .bottom-nav {
     display: flex;
     justify-content: center;
-    /* padding: 10px; */
 }
 
 /* profile btn & dropdown css */
@@ -209,7 +207,6 @@
 
 .shop-btn:hover {
     text-decoration: underline;
-    /* font-size: 10.5pt; */
 }
 
 .sell-btn:hover {
@@ -266,7 +263,6 @@
     justify-content: center;
     align-items: center;
     width: 30rem;
-    /* height: 3rem; */
 }
 
 .searchbar {
@@ -337,7 +333,6 @@
     max-width: 15em;
     color: black;
     z-index: 1;
-    /* right: 44.5%; */
 }
 
 .results-active {

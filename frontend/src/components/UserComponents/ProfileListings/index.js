@@ -21,7 +21,6 @@ export default function ProfileListings({availProducts}) {
         <div className='listing-filter-bar'>
             <div className='profile-item-count'>{availProducts?.length} Listings</div>
             <div className='profile-filter-btn'>
-                {/* <button>FILTER</button> */}
             </div>
         </div>
     <div className='seller-explore-page-container'>
@@ -29,7 +28,6 @@ export default function ProfileListings({availProducts}) {
             {availProducts?.map(product => (
                 <div key={product?.id} className='seller-item-preview'>
                     <NavLink to={`/products/${product?.id}`} className='preview-image-container'>
-                        {/* {product?.Images[0]?.url} */}
                         <img
                             className='preview-image' src={product?.Images[0]?.url}>
                         </img>

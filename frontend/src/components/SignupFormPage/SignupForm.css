@@ -9,7 +9,6 @@
 .signup-form {
     display: flex;
     flex-direction: column;
-    /* grid-template-rows: 50% 50%; */
     justify-content: center;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
@@ -27,7 +26,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* width: fit-content; */
 }
 
 .form-left label, .form-right label {
@@ -84,9 +82,6 @@ input::file-selector-button {
 }
 
 #signup-btn {
-    /* color: rgb(0, 0, 0, 0.05);
-    font-weight: bold;
-    font-style: italic; */
     width: 5rem;
     height: 3rem;
     font-family: 'Roboto Mono', monospace;

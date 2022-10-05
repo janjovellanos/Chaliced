@@ -48,7 +48,6 @@ function CreateProductForm({setShowModal}) {
         .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
-              // setErrors(data.errors)
               const valErrors = []
               //validations
               if (name.length > 50) valErrors.push('Name must be less than 50 characters');
@@ -142,15 +141,8 @@ function CreateProductForm({setShowModal}) {
                 <input
                   className="image-upload product-image-upload"
                   type="file"
-                  // value={images}
                   multiple
                   onChange={e => updateFiles(e)} />
-                {/* <input
-                    type="text"
-                    value={images}
-                    onChange={(e) => addImages(e.target.value)}
-                    required
-                    /> */}
             <div className="create-listing-image-container">
                 <img alt='product for sale' src={imagePreviews[imagePreviews?.length - 1]}></img>
             </div>
