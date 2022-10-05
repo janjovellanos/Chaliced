@@ -7,7 +7,6 @@ const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
 
-//
 // =====================================================
 const validateSignup = [
   check("email")

@@ -126,7 +126,6 @@
 }
 
 .order-leave-review button:hover {
-    /* font-size: 10pt; */
     cursor: pointer;
     text-decoration: underline;
 }
@@ -214,10 +213,7 @@
 }
 
 .current-review-body {
-    /* display: flex; */
-    /* align-items: flex-end; */
     font-style: italic;
-    /* font-weight: bold; */
     font-size: 10pt;
     color: rgb(0, 0, 0, 0.65);
 }
@@ -236,7 +232,6 @@
 }
 
 .review-edit-delete button {
-    /* background: linear-gradient(45deg, white, rgb(211, 210, 210), rgb(176, 176, 176), rgb(180, 180, 180) 80%) no-repeat; */
     margin-right: 1rem;
     width: 15rem;
     border-radius: 3px;
@@ -246,8 +241,4 @@
     font-weight: bold;
     font-size: 10pt;
     color: rgb(0, 0, 0, 0.9);
-}
-
-.delete-review-btn {
-    /* width: 3rem; */
 }

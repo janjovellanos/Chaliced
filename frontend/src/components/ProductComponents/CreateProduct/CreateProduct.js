@@ -19,6 +19,7 @@ function CreateProductForm({setShowModal}) {
   const [imagePreviews, setImagePreviews] = useState([
     'https://montevista.greatheartsamerica.org/wp-content/uploads/sites/2/2016/11/default-placeholder.png'
   ]);
+  const [imageCount, setImageCount] = useState(0);
   const [errors, setErrors] = useState([]);
 
   const reset = () => {
@@ -30,11 +31,12 @@ function CreateProductForm({setShowModal}) {
     setImages([
         'https://montevista.greatheartsamerica.org/wp-content/uploads/sites/2/2016/11/default-placeholder.png'
     ])
+    setImageCount(0);
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const valErrors = []
     history.push(`/users/${user?.id}`)
     return dispatch(productActions.addProduct({ name, size, categoryId, price, description }))
         .then(data => dispatch(productActions.addProductImage(data?.id, images)))
@@ -46,11 +48,11 @@ function CreateProductForm({setShowModal}) {
         .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
-              // setErrors(data.errors)
               const valErrors = []
               //validations
               if (name.length > 50) valErrors.push('Name must be less than 50 characters');
               if (typeof price !== 'number') valErrors.push('Price must be a number');
+              if (imageCount > 4) valErrors.push('Please choose up to 4 images');
               setErrors(valErrors);
             } else history.push(`/users/${user?.id}`)
         }
@@ -66,6 +68,7 @@ function CreateProductForm({setShowModal}) {
           arrFiles.forEach(file => previewUrls.push(URL.createObjectURL(file)));
           setImagePreviews(previewUrls);
           setImages(files);
+          setImageCount(files?.length);
         }
       };
 
@@ -131,21 +134,15 @@ function CreateProductForm({setShowModal}) {
                     onChange={(e) => setDescription(e.target.value)}
                     required
                     />
-                <label className="listing-label">
+                <label className="listing-label image-listing-label">
                 Images
+                <div className="image-counter">{imageCount > 0 && `(${imageCount})`}</div>
                 </label>
                 <input
                   className="image-upload product-image-upload"
                   type="file"
-                  // value={images}
                   multiple
                   onChange={e => updateFiles(e)} />
-                {/* <input
-                    type="text"
-                    value={images}
-                    onChange={(e) => addImages(e.target.value)}
-                    required
-                    /> */}
             <div className="create-listing-image-container">
                 <img alt='product for sale' src={imagePreviews[imagePreviews?.length - 1]}></img>
             </div>

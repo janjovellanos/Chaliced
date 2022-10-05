@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as productActions from '../../../store/product';
 import './Explore.css'
-import { useHistory } from 'react-router-dom';
 import ProductScroll from '../ProductScroll';
 
 export default function Explore() {
@@ -21,6 +20,8 @@ export default function Explore() {
         products = products?.filter(product => product?.categoryId === 2)
     } else if (window.location.href.includes('shoes')) {
         products = products?.filter(product => product?.categoryId === 3)
+    } else if (window.location.href.includes('accessories')) {
+        products = products?.filter(product => product?.categoryId === 4)
     }
 
     products?.sort((a, b) => {

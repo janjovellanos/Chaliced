@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import * as reviewActions from '../../../../store/review';
@@ -60,11 +60,8 @@ export default function ReviewForm({product, setShowModal}) {
     const review = {body, stars, productId: product?.id}
     await dispatch(reviewActions.addReview(review))
     setShowModal(false);
-    // history.push(`/users/${user?.id}/transactions`)
-    // alert(`Congratulations on your ${product?.name}!`)
   };
 
-  {/* style={{ backgroundImage: `url(${product?.Image?.url})` }}> */}
   return (
     <div className='review-modal-container'>
         <div className='review-modal-header'
@@ -101,7 +98,6 @@ export default function ReviewForm({product, setShowModal}) {
         </div>
         <div className='review-modal-options'>
             <div onClick={() => handleCreateReview()} className='yes-review'>Submit</div>
-            {/* <div onClick={() => setShowModal(false)} className='dont-purchase'>Cancel</div> */}
         </div>
     </div>
   )

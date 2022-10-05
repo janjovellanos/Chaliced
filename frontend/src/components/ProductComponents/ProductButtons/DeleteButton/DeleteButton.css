@@ -1,8 +1,6 @@
 .delete-modal-container {
     display: grid;
     grid-template-rows: 40% 20% 40%;
-    /* justify-content: center;
-    align-items: center; */
     text-align: center;
     height: 10rem;
     width: 14rem;
@@ -38,7 +36,6 @@
     align-items: center;
     font-size: 11pt;
     font-weight: bold;
-    /* font-style: italic; */
     margin: 3px 6px;
     color: rgb(182, 5, 5);
 }

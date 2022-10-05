@@ -10,7 +10,6 @@ export default function ProfileSales() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // dispatch(myActions.getMyOrders());
         dispatch(myActions.getMySold());
     }, [dispatch])
 

@@ -1,6 +1,6 @@
 .explore-page-container {
     display: grid;
-    grid-template-rows: 5% 5% 90%;
+    grid-template-rows: 2.5rem 1rem;
     justify-content: center;
 }
 
@@ -10,7 +10,6 @@
     justify-content: space-between;
     width: 80rem;
     margin: auto;
-    /* margin: 1rem 0; */
 }
 
 .item-count {

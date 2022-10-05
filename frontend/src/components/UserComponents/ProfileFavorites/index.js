@@ -24,9 +24,6 @@ export default function ProfileFavorites() {
     <>
         <div className='listing-filter-bar favorite-bar'>
             <div className='profile-item-count'>{myFavs?.length} Favorites</div>
-            {/* <div className='profile-filter-btn'>
-                <button>FILTER</button>
-            </div> */}
         </div>
     <div className='seller-explore-page-container'>
         <div className='items-container-scroll fav-item-scroll'>

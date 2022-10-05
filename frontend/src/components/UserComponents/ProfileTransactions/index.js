@@ -17,7 +17,6 @@ export default function ProfileTransactions({myOrders, mySold}) {
         setPurchasesClicked('profile-purchases-clicked')
         setSalesClicked('')
         setBottomView(<ProfilePurchases myOrders={myOrders}/>)
-        // setBottomView(<ProfileListings availProducts={availProducts} />)
     };
 
     const handleSalesClicked = () => {

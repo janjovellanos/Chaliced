@@ -12,12 +12,15 @@ module.exports = {
       {
         name: 'Shoes'
       },
+      {
+        name: 'Accessories'
+      },
     ]);
   },
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('Categories', {
-      name: ['Tops', 'Bottoms', 'Shoes']
+      name: ['Tops', 'Bottoms', 'Shoes', 'Accessories']
     });
   }
 };

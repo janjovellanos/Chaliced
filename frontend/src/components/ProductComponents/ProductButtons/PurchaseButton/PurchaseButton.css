@@ -1,8 +1,6 @@
 .purchase-modal-container {
     display: grid;
     grid-template-rows: 40% 20% 40%;
-    /* justify-content: center;
-    align-items: center; */
     text-align: center;
     height: 10rem;
     width: 14rem;
@@ -25,7 +23,6 @@
     align-items: center;
     margin: 2px 1px 2px 1px;
     font-size: 12pt;
-    /* font-style: italic; */
 }
 
 .purchase-modal-second > div {

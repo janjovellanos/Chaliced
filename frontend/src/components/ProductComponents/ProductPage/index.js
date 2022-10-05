@@ -19,8 +19,6 @@ export default function ProductPage() {
     similarProducts.splice(idx, 1);
     const dispatch = useDispatch();
 
-    console.log(mainImage);
-
     useEffect(() => {
         if (product && product?.id === +productId) {
             dispatch(productActions.getCategory(product?.categoryId));
@@ -57,7 +55,7 @@ export default function ProductPage() {
             <div className='product-container-left'>
                 <img alt='current item' className='product-image' src={mainImage ? mainImage : product?.Images[0]?.url}></img>
                 <div className='product-images-small'>
-                    {productImages?.map((image, idx) => (
+                    {productImages?.slice(0, 4)?.map((image, idx) => (
                         <img alt='other items' key={idx} onClick={(e) => handleSmallImgClick(image)} className={smallImageClass} src={image}></img>
                         ))
                     }

@@ -1,5 +1,4 @@
 const router = require("express").Router();
-//
 const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 const productRouter = require("./products.js");
@@ -11,10 +10,6 @@ router.use("/users", usersRouter);
 router.use("/products", productRouter);
 router.use("/reviews", reviewRouter);
 router.use("/my", myRouter);
-
-// router.post("/test", (req, res) => {
-//   res.json({ requestBody: req.body });
-// });
 
 //=============== Test Routes ============================//
 // // GET /api/set-token-cookie
@@ -41,7 +36,6 @@ const { requireAuth } = require("../../utils/auth.js");
 router.get("/require-auth", requireAuth, (req, res) => {
   return res.json(req.user);
 });
-//
-//
-//
+
+
 module.exports = router;

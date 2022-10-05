@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { timeAgo } from '../../utils/helpers';
 import * as productActions from '../../store/product';
@@ -40,7 +40,6 @@ export default function HomePage() {
             {user && products?.slice(-5).reverse().map(product => (
                 <div key={product?.id} className='item-preview'>
                     <div className='preview-image-container'>
-                        {/* {product?.Images[0]?.url} */}
                         <NavLink to={`/products/${product?.id}`}>
                             <img className='preview-image' src={product?.Images[0]?.url}></img>
                         </NavLink>
