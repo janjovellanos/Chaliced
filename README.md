@@ -44,10 +44,9 @@ You can obtain the last two &uarr; when you create your own *[AWS](https://aws.a
 * Create, read, update, and delete reviews
 * Create, read, and delete favorited items
 * Create and read orders
-
 * Upload image files for products
 * Default basic image provided if not presented
-* Search for certain pieces
+* Search for specified apparrel
 
 ### Technical Implementation Details:
 Chaliced allows specified user manipulation on content by watching the current user and matching their identifier with that of a particular entity's -
