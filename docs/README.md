@@ -4,13 +4,13 @@
 
 Chaliced gives users the ability to:
 
-* Create an account
+* Create an account & upload a profile image
 * Log in and log out
 * Test the application as a guest user
 * List items they want to sell & upload product images
 * Shop items to buy from other sellers
 * Add items they want to their Favorites (Wishlist)
-* As a buyer, leave reviews for the seller
+* As a buyer, leave reviews on a product for the seller
 * Create, read, update, and delete products
 * Create, read, update, and delete reviews
 
@@ -32,7 +32,7 @@ require user authorization in routes which should only pertain to the logged in 
 [JWT](https://jwt.io/introduction)'s. I will also handle any validation errors within a POST or PUT requests
 using Express' [validator](https://express-validator.github.io/docs/).
 
-[*API Routes*](https://github.com/janjovellanos/SoundCloud/blob/main/backend/README.md)
+[*API Routes*](https://github.com/janjovellanos/Chaliced/blob/main/backend/README.md)
 
 ### Phase 3: Frontend Authentication and Setup  (2 days)
 
