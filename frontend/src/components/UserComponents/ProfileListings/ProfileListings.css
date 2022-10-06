@@ -3,7 +3,7 @@
 }
 
 .profile-listing-scroll {
-    width: 80rem;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;

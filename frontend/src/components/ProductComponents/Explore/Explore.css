@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80rem;
+    width: 90%;
     margin: auto;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .available {
-    width: 80rem;
+    /* width: 80rem; */
     display: flex;
     align-items: center;
     margin: 0 5rem;

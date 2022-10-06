@@ -3,7 +3,7 @@
 }
 
 .fav-item-scroll {
-    width: 80rem;
+    width: 80%;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
