@@ -32,10 +32,15 @@ export default function ProductScroll({products, setMainImage}) {
             {products?.map(product => (
                 <div key={product?.id} className='item-preview'>
                     <NavLink to={`/products/${product?.id}`} className='preview-image-container'>
+                        {setMainImage ?
                         <img key={product?.id}
                             onClick={() => setMainImage(product?.Images[0]?.url)}
                             className='preview-image' src={product?.Images[0]?.url}>
+                        </img> :
+                        <img key={product?.id}
+                            className='preview-image' src={product?.Images[0]?.url}>
                         </img>
+                        }
                     </NavLink>
                     <div className='item-preview-bottom'>
                         <div className='item-post-date'>{timeAgo(new Date(product?.createdAt))}</div>

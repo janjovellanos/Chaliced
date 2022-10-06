@@ -1,7 +1,7 @@
 .product-page-container {
     display: grid;
     height: 100%;
-    /* width: 100%/; */
+    width: 100%;
     grid-template-rows: 50% 10% 40%;
     justify-content: center;
 }
@@ -10,6 +10,7 @@
     display: grid;
     grid-template-columns: 45% 55%;
     margin: 2rem;
+    width: 93%;
 }
 
 .product-container-left {
@@ -22,7 +23,8 @@
 }
 
 .product-image {
-    width: 27rem;
+    max-width: 100%;
+    max-width: 27rem;
     height: 27rem;
     object-fit: contain;
 }
