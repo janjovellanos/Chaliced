@@ -43,7 +43,7 @@ function CreateProductForm({setShowModal}) {
     setDisabled(true);
     setBtnText(<div className="fa fa-circle-notch fa-spin"></div>)
     const valErrors = []
-    history.push(`/users/${user?.id}`)
+    // history.push(`/users/${user?.id}`)
     return dispatch(productActions.addProduct({ name, size, categoryId, price, description }))
         .then(data => dispatch(productActions.addProductImage(data?.id, images)))
         .then(() => {
