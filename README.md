@@ -19,13 +19,16 @@ You can obtain the last two &uarr; when you create your own *[AWS](https://aws.a
 
 
 ### Home:
-
-
-### Sell:
-
+<img width="800" alt="login" src="https://github.com/janjovellanos/Chaliced/blob/main/docs/images/chaliced-home.png">
 
 ### Shop:
+<img width="800" alt="login" src="https://github.com/janjovellanos/Chaliced/blob/main/docs/images/chaliced-shop.gif">
 
+### Sell:
+<img width="800" alt="login" src="https://github.com/janjovellanos/Chaliced/blob/main/docs/images/chaliced-sell.png">
+
+### Profile:
+<img width="800" alt="login" src="https://github.com/janjovellanos/Chaliced/blob/main/docs/images/chaliced-profile.gif">
 
 ### Technologies:
 * Express.js
