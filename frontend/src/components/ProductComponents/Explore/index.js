@@ -32,7 +32,7 @@ export default function Explore() {
     <div className='explore-page-container'>
         <div className='top-explore'>
             <div className='item-count'>{products?.length} Listings</div>
-            <div className='filter-btn'>Filter</div>
+            {/* <div className='filter-btn'>Filter</div> */}
         </div>
         <div className='available'>
             Available Listings {/* or "SearchWord" Listings */}
