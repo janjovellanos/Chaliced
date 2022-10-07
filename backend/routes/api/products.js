@@ -122,13 +122,21 @@ router.post('/:productId/images', requireAuth, multipleMulterUpload("urls"), asy
 
     if (product) {
         if (product.userId === user.id) {
-            urls.forEach(async (url) => {
+            for (let i = 0; i < urls.length; i++) {
                 await Image.create({
-                    url,
+                    url: urls[i],
                     userId: user.id,
                     productId: +productId
                 })
-            })
+            };
+
+            // urls.forEach(async (url) => {
+            //     await Image.create({
+            //         url,
+            //         userId: user.id,
+            //         productId: +productId
+            //     })
+            // })
             const newImages = await Product.findByPk(productId, {
                 include: Image
             })
