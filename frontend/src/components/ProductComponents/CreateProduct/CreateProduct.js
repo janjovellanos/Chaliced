@@ -20,6 +20,8 @@ function CreateProductForm({setShowModal}) {
     'https://montevista.greatheartsamerica.org/wp-content/uploads/sites/2/2016/11/default-placeholder.png'
   ]);
   const [imageCount, setImageCount] = useState(0);
+  const [disabled, setDisabled] = useState(false);
+  const [btnText, setBtnText] = useState(<div>List <i className="fa-regular fa-square-plus"></i></div>)
   const [errors, setErrors] = useState([]);
 
   const reset = () => {
@@ -32,10 +34,14 @@ function CreateProductForm({setShowModal}) {
         'https://montevista.greatheartsamerica.org/wp-content/uploads/sites/2/2016/11/default-placeholder.png'
     ])
     setImageCount(0);
+    setDisabled(false);
+    setBtnText(<div>List <i className="fa-regular fa-square-plus"></i></div>)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisabled(true);
+    setBtnText(<div className="fa fa-circle-notch fa-spin"></div>)
     const valErrors = []
     history.push(`/users/${user?.id}`)
     return dispatch(productActions.addProduct({ name, size, categoryId, price, description }))
@@ -148,7 +154,7 @@ function CreateProductForm({setShowModal}) {
             </div>
         </div>
         <div className="create-listing-btn-container">
-            <button className="create-listing-btn" id="create-listing-btn" type="submit">List <i className="fa-regular fa-square-plus"></i></button>
+            <button disabled={disabled} className="create-listing-btn" id="create-listing-btn" type="submit">{btnText}</button>
         </div>
       </form>
     </>
