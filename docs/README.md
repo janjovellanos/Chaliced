@@ -57,7 +57,7 @@ file uploads from the client through [AWS](https://aws.amazon.com/).
 
 *No empty Image!*
 I've provided a default image using state on the frontend for all creations. If an image is not provided, the uploaded song/album
-will have a neat default. The seller may add images after product creation.
+will have a neat default.
 ```
 // backend
     let { name, description, size, price, userId, categoryId, imageUrl } = req.body;
