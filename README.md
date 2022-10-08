@@ -2,7 +2,7 @@
 
 **Chaliced** is an e-commerce web application for connecting, selling and buying to designer clothing. Chaliced was inspired by Grailed.
 
-**Login, Explore, and Shop now at [chaliced.com](chaliced.herokuapp.com)**
+**Login, Explore, and Shop now at [chaliced.com](https://chaliced.herokuapp.com/)**
 
 ***or***
 
