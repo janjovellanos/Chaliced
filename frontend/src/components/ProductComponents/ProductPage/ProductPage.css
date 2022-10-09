@@ -71,3 +71,11 @@
     font-weight: bold;
     text-decoration: underline;
 }
+
+.not-found {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(0, 0, 0, 0.75);
+}
