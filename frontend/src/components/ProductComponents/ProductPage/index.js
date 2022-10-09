@@ -5,6 +5,7 @@ import * as productActions from '../../../store/product';
 import './ProductPage.css'
 import ProductDetails from '../ProductDetails';
 import ProductScroll from '../ProductScroll';
+import NotFound from '../../NotFound';
 
 export default function ProductPage() {
     const { productId } = useParams();
@@ -41,8 +42,7 @@ export default function ProductPage() {
         // setSmallImageClass('small-clicked')
     }
 
-
-    return (
+    if (product) return (
     <>
     {product?.sold &&
         <h1 className="item-not-found">
@@ -70,4 +70,5 @@ export default function ProductPage() {
     </div>
     </>
   )
+  else return <NotFound />
 }
