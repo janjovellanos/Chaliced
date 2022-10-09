@@ -8,6 +8,7 @@ import ProfileListings from '../ProfileListings';
 import ProfileReviews from '../ProfileReviews';
 import ProfileTransactions from '../ProfileTransactions';
 import ProfileFavorites from '../ProfileFavorites';
+import NotFound from '../../NotFound';
 
 export default function ProfilePage() {
     const { userId } = useParams();
@@ -80,7 +81,7 @@ export default function ProfilePage() {
         }
     }, [dispatch]);
 
-  return (
+  if (seller) return (
     <div className='profile-page-container'>
         <div className='profile-page-header'>
             <div className='profile-header-left'>
@@ -117,4 +118,5 @@ export default function ProfilePage() {
         </div>
     </div>
   )
+  else return <NotFound />
 }

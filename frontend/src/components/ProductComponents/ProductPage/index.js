@@ -5,6 +5,7 @@ import * as productActions from '../../../store/product';
 import './ProductPage.css'
 import ProductDetails from '../ProductDetails';
 import ProductScroll from '../ProductScroll';
+import NotFound from '../../NotFound';
 
 export default function ProductPage() {
     const { productId } = useParams();
@@ -69,10 +70,5 @@ export default function ProductPage() {
     </div>
     </>
   )
-  else return (
-    <div className='not-found'>
-        <h1>404</h1>
-        <h2>Oops... listing not found <i className="fa-regular fa-face-sad-cry"></i></h2>
-    </div>
-  )
+  else return <NotFound />
 }
