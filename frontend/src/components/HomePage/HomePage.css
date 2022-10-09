@@ -68,11 +68,11 @@
     display: flex;
     flex-wrap: wrap;
     grid-template-rows: auto;
-    justify-content: center;
+    justify-content: flex-start;
     margin: 8px;
     height: 100%;
     width: 80%;
-    min-width: 80%;
+    min-width: 75%;
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
