@@ -651,22 +651,10 @@ Returns all the reviews of current user.
              "size": "M",
              "price": 30,
           }
-        },
-        {
-          "id": 2,
-          "sellerId": 1,
-          "buyerId": 2,
-          "productId": 1
-          "body": "Good deal, will shop again",
-          "stars": 5
-          "createdAt": "2022-01-31 08:40:12",
-          "updatedAt": "2021-01-31 08:40:12",
-          "Product": {
-             "id": 1,
-             "name": "Salomon XT-4",
-             "description": "Good hiking shoe",
-             "size": "US10",
-             "price": 140,       
+          "Seller" : {
+             "id": 1
+             "username": "TonyHawk"
+             "profileImage": "profile pic"
           }
         }
       ]
