@@ -1,12 +1,22 @@
 .product-container-right {
-    display: grid;
-    grid-template-rows: 10% 10% 10% 40% 40%;
-    grid-template-columns: auto;
+    /* display: grid;
+    grid-template-rows: 10% 10% 10% 40%;
+    grid-template-columns: auto; */
+    display: flex;
+    flex-direction: column;
     height: auto;
     width: fit-content;
     justify-content: flex-start;
     align-items: flex-start;
     padding: 0 0 0 2rem;
+}
+
+.product-container-right > *:not(.product-description-container) {
+    margin-top: 1rem;
+}
+
+.product-container-right > *:not(.product-buttons) {
+    margin-bottom: 0.75rem;
 }
 
 .product-name-and-favs {
