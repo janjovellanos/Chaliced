@@ -192,12 +192,30 @@ module.exports = {
         categoryId: 1,
         sold: false,
       },
+      {
+        name: 'Small Font Tee',
+        description: 'makeup on my acnes like im trynna hide a zit',
+        size: 'L',
+        price: 65,
+        userId: 1,
+        categoryId: 1,
+        sold: false,
+      },
+      {
+        name: 'Spiridon',
+        description: "like new stu.",
+        size: '9',
+        price: 120,
+        userId: 2,
+        categoryId: 3,
+        sold: false,
+      },
     ]);
   },
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('Products', {
-      name: ['Salomon XT-4', 'Y2K Umbro Shirt', 'John Bull Pant', 'Doc Marten Loafers', 'Lululemon Sweatpant', 'CPFM Tee', 'Nike Mule', 'Human Made Cap', 'Vtg 80s Stussy', 'Smiley Bandana', 'Old Crewneck', 'Basketball Shorts', 'Asics GEL', 'Futura', 'CDG Bomber', 'Dream Team Shirt', 'Birkenstock', 'Lulu Lined Shorts', 'CPFM Chain', 'Yohji Pant', 'Nike Hoodie']
+      name: ['Salomon XT-4', 'Y2K Umbro Shirt', 'John Bull Pant', 'Doc Marten Loafers', 'Lululemon Sweatpant', 'CPFM Tee', 'Nike Mule', 'Human Made Cap', 'Vtg 80s Stussy', 'Smiley Bandana', 'Old Crewneck', 'Basketball Shorts', 'Asics GEL', 'Futura', 'CDG Bomber', 'Dream Team Shirt', 'Birkenstock', 'Lulu Lined Shorts', 'CPFM Chain', 'Yohji Pant', 'Nike Hoodie', 'Small Font Tee', 'Spiridon']
     });
   }
 };
