@@ -8,7 +8,6 @@ import ProfileListings from '../ProfileListings';
 import ProfileReviews from '../ProfileReviews';
 import ProfileTransactions from '../ProfileTransactions';
 import ProfileFavorites from '../ProfileFavorites';
-import NotFound from '../../NotFound';
 
 export default function ProfilePage() {
     const { userId } = useParams();
@@ -118,5 +117,4 @@ export default function ProfilePage() {
         </div>
     </div>
   )
-  else return <NotFound />
 }
