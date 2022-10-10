@@ -215,32 +215,32 @@ module.exports = {
       },
 
       {
-        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/spiridon1.webp',
-        userId: 1,
-        productId: 22
-      },
-      {
-        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/spiridon3.webp',
-        userId: 1,
-        productId: 22
-      },
-      {
-        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/spiridon2.webp',
-        userId: 1,
-        productId: 22
-      },
-      {
         url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/acne1.webp',
-        userId: 2,
-        productId: 23
+        userId: 1,
+        productId: 22
       },
       {
         url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/acne3.webp',
+        userId: 1,
+        productId: 22
+      },
+      {
+        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/acne2.webp',
+        userId: 1,
+        productId: 22
+      },
+      {
+        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/spiridon1.webp',
         userId: 2,
         productId: 23
       },
       {
-        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/acne2.webp',
+        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/spiridon3.webp',
+        userId: 2,
+        productId: 23
+      },
+      {
+        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/spiridon2.webp',
         userId: 2,
         productId: 23
       },
