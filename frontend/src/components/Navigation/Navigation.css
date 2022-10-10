@@ -221,7 +221,6 @@
 
 .sell-btn:hover {
     text-decoration: underline;
-    /* font-size: 11pt; */
 }
 
 .favs-and-profile {
@@ -326,7 +325,6 @@
     outline: none;
     padding: 0.4em;
     transition: border 200ms;
-    /* min-width: 275px; */
 }
 
 .search-bar-form>div {

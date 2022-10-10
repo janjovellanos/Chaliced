@@ -126,7 +126,6 @@ router.get('/', requireAuth, async (req, res, next) => {
         include: [
             {
                 model: Product, attributes: ['id', 'name', 'size', 'price']
-                // include: [{ model: Image, attributes: ['id', 'url'] }]
             }
         ]
     });
