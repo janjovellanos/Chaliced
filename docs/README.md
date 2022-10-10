@@ -46,14 +46,13 @@ Next I will begin setting up a React frontend that will employ the API's routes 
 ### Phase 4: Components (3 days)
 
 In this phase, I will create an app-wide navigation component with links that route to all components needed 
-to successfuly sign up, log in/out, and perform CRUD actions on products & reviews. In this phase, I will also style said components to create a layout similar to Grailed.
+to successfuly sign up, log in/out, and perform CRUD actions on products, reviews, favorites, & orders. In this phase, I will also style said components to create a layout similar to Grailed.
 
 [*Functional Component List*](link to components)
 
 ### Phase 5: File Uploads & Search for Clothes (1 day)
 
-By this phase, both create actions for products and reviews will be functioning and I will update them to accept image
-file uploads from the client through [AWS](https://aws.amazon.com/).
+By this phase, create actions for products, reviews, favorites, & orders will be functioning and I will update user profile images and product creation to accept image file uploads from the client through [AWS](https://aws.amazon.com/).
 
 *No empty Image!*
 I've provided a default image using state on the frontend for all creations. If an image is not provided, the uploaded song/album
