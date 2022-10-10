@@ -213,12 +213,43 @@ module.exports = {
         userId: 3,
         productId: 21
       },
+
+      {
+        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/spiridon1.webp',
+        userId: 1,
+        productId: 22
+      },
+      {
+        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/spiridon3.webp',
+        userId: 1,
+        productId: 22
+      },
+      {
+        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/spiridon2.webp',
+        userId: 1,
+        productId: 22
+      },
+      {
+        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/acne1.webp',
+        userId: 2,
+        productId: 23
+      },
+      {
+        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/acne3.webp',
+        userId: 2,
+        productId: 23
+      },
+      {
+        url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/acne2.webp',
+        userId: 2,
+        productId: 23
+      },
     ]);
   },
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('Images', {
-      productId: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+      productId: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
     });
   }
 };
