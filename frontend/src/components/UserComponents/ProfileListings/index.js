@@ -40,7 +40,7 @@ export default function ProfileListings({availProducts}) {
                                 <p>{product?.size}</p>
                         </NavLink>
                         <div className='seller-item-description'>{product?.description.slice(0,28)}...</div>
-                        <div className='seller-item-price-and-fav'><p>${product?.price}</p><p><i className="fa-regular fa-heart"></i></p></div>
+                        <div className='seller-item-price-and-fav'><p>${product?.price}</p></div>
                     </div>
                 </div>
             ))}
