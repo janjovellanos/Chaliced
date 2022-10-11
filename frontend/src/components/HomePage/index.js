@@ -50,7 +50,7 @@ export default function HomePage() {
                             <div className='item-name-and-size'><p>{product?.name}</p><p>{product?.size}</p></div>
                         </NavLink>
                         <div className='item-description'>{product?.description.slice(0,28)}...</div>
-                        <div className='item-price-and-fav'><p>${product?.price}</p><p><i className="fa-regular fa-heart"></i></p></div>
+                        <div className='item-price-and-fav'><p>${product?.price}</p></div>
                     </div>
                 </div>
             ))}
