@@ -172,6 +172,24 @@
 
 /*//////////////////////////////*/
 
+.fa-linkedin, .fa-github {
+    text-decoration: none;
+    color: rgb(0, 0, 0, 0.5);
+    font-size: 2rem;
+}
+
+.fa-linkedin {
+    margin-right: 1rem;
+}
+
+.fa-github:hover {
+    color: rgb(85,26,139);
+}
+
+.fa-linkedin:hover {
+    color: rgb(24,102,194);
+}
+
 .nav-right > *:not(.nav-session-btn) {
     margin: 0 0 0 1rem;
     font-weight: bold;

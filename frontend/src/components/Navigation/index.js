@@ -22,6 +22,8 @@ function Navigation({ isLoaded }) {
           <SearchBar />
         </div>
         <div className="nav-right">
+          <a href='https://github.com/janjovellanos'><i className='fa-brands fa-github'></i></a>
+          <a href='https://www.linkedin.com/in/jan-michael-jovellanos-b30322242/'><i className='fa-brands fa-linkedin'></i></a>
           <NavLink to='/shop' className="shop-btn">Shop</NavLink>
           <CreateProductModal />
           <div className="favs-and-profile">
@@ -49,6 +51,8 @@ function Navigation({ isLoaded }) {
           <div className="searchbar">
           </div>
           <div className="nav-right">
+            <a href='https://github.com/janjovellanos'><i className='fa-brands fa-github'></i></a>
+            <a href='https://www.linkedin.com/in/jan-michael-jovellanos-b30322242/'><i className='fa-brands fa-linkedin'></i></a>
             <LoginFormModal />
             <SignupFormModal />
           </div>
