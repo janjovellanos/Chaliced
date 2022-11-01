@@ -427,6 +427,10 @@
         visibility: hidden;
     }
 
+    .favs-and-profile {
+        justify-content: flex-end;
+    }
+
     .top-nav {
         grid-template-columns: 20% 10% 70%;
     }
