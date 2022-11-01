@@ -8,12 +8,12 @@
 
 .top-nav {
     display: grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 20% 55% 25%;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    margin-left: 1rem;
     width: auto;
+    margin-left: 1rem;
 }
 
 .profile-btn-top-nav {
@@ -172,6 +172,10 @@
 
 /*//////////////////////////////*/
 
+.log-github, .log-linkedin {
+    margin: 0 0 0 1rem;
+}
+
 .fa-linkedin, .fa-github {
     text-decoration: none;
     color: rgb(0, 0, 0, 0.5);
@@ -191,7 +195,7 @@
 }
 
 .nav-right > *:not(.nav-session-btn) {
-    margin: 0 0 0 1rem;
+    /* margin: 0 0 0 1rem; */
     font-weight: bold;
     font-size: 16px;
 }
@@ -246,6 +250,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-right: 1rem;
 }
 
 .favs-and-profile > i, .profile-btn {
@@ -397,4 +402,33 @@
     font-size: 11pt;
     margin: 1rem;
     border-color: black;
+}
+
+
+/* media query */
+
+@media only screen and (max-width: 480px) {
+    .log-github, .log-linkedin {
+        visibility: hidden;
+    }
+
+    .featured {
+        font-size: 6pt;
+
+    }
+
+    .top-nav {
+        grid-template-columns: 20% 10% 70%;
+    }
+}
+
+@media only screen and (max-width: 1130px) {
+    .search-bar-container {
+        visibility: hidden;
+    }
+
+    .top-nav {
+        grid-template-columns: 20% 10% 70%;
+    }
+
 }
