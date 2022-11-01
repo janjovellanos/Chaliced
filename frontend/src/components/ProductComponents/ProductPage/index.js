@@ -23,6 +23,7 @@ export default function ProductPage() {
     useEffect(() => {
         if (product && product?.id === +productId) {
             dispatch(productActions.getCategory(product?.categoryId));
+            setMainImage(product?.Images[0]?.url);
         }
         dispatch(productActions.getProduct(productId))
     }, [
@@ -33,7 +34,7 @@ export default function ProductPage() {
         product?.price,
         product?.description,
         product?.categoryId,
-        product?.id
+        product?.id,
         ]
     );
 
