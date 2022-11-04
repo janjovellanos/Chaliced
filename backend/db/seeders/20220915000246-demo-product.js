@@ -1,8 +1,14 @@
 'use strict';
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert("Products", [
+    options.tableName = 'Products';     // define table name in options object
+    await queryInterface.bulkInsert(options, [
       {
         name: 'Salomon XT-4',
         description: 'Great hiking shoe, but also versatile. Very nice silhouette and colorway',
@@ -214,7 +220,9 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Products', {
+    options.tableName = 'Products';     // define table name in options object
+
+    await queryInterface.bulkDelete(options, {
       name: ['Salomon XT-4', 'Y2K Umbro Shirt', 'John Bull Pant', 'Doc Marten Loafers', 'Lululemon Sweatpant', 'CPFM Tee', 'Nike Mule', 'Human Made Cap', 'Vtg 80s Stussy', 'Smiley Bandana', 'Old Crewneck', 'Basketball Shorts', 'Asics GEL', 'Futura', 'CDG Bomber', 'Dream Team Shirt', 'Birkenstock', 'Lulu Lined Shorts', 'CPFM Chain', 'Yohji Pant', 'Nike Hoodie', 'Small Font Tee', 'Spiridon']
     });
   }

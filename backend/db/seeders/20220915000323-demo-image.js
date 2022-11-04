@@ -1,8 +1,15 @@
 'use strict';
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
+
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert("Images", [
+    options.tableName = 'Images';     // define table name in options object
+    await queryInterface.bulkInsert(options, [
       {
         url: 'https://chaliced-images.s3.us-west-1.amazonaws.com/salomon1.jpeg',
         userId: 1,
@@ -248,7 +255,8 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Images', {
+    options.tableName = 'Images';     // define table name in options object
+    await queryInterface.bulkDelete(options, {
       productId: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
     });
   }
