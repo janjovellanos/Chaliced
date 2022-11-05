@@ -28,7 +28,7 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
     margin-left: 1rem;
     -webkit-transition: all ease-in-out .7s;
     -moz-transition: all ease-in-out .7s;
@@ -38,7 +38,7 @@
 
 .home-logo:hover {
     color: rgb(0, 0, 0, 0.8);
-    font-size: 20.5px;
+    font-size: 24.5px;
     text-shadow:
     -0.4px -0.4px 0 rgb(0, 0, 0, 0.5),
     0.4px -0.4px 0 rgb(0, 0, 0, 0.5),
@@ -162,7 +162,7 @@
 
 .home-logo:hover {
     color: rgb(0, 0, 0, 0.8);
-    font-size: 20.5px;
+    font-size: 24.5px;
     text-shadow:
     -0.4px -0.4px 0 rgb(0, 0, 0, 0.5),
     0.4px -0.4px 0 rgb(0, 0, 0, 0.5),
@@ -195,10 +195,14 @@
 }
 
 .nav-right > *:not(.nav-session-btn) {
-    /* margin: 0 0 0 1rem; */
     font-weight: bold;
     font-size: 16px;
 }
+
+.not-log {
+    margin: 0 1rem;
+}
+
 
 .nav-right a+.sell-btn,
 .nav-right .shop-btn {
@@ -412,7 +416,7 @@
         visibility: hidden;
     }
 
-    .featured {
+    .featured-description {
         font-size: 6pt;
 
     }
