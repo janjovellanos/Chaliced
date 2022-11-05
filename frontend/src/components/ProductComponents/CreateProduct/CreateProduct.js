@@ -119,6 +119,7 @@ function CreateProductForm({setShowModal}) {
                 <option value={1}>Tops</option>
                 <option value={2}>Bottoms</option>
                 <option value={3}>Shoes</option>
+                <option value={4}>Accessories</option>
             </select>
             <label className="listing-label">
             Price
