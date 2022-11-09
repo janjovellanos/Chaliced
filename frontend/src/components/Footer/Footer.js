@@ -8,17 +8,20 @@ export default function Footer() {
         <div className='footer-tech-links'>
             <div className='footer-tech'>
                 <div className='tech-title'>Technologies</div>
-                <div>Tech</div>
-                <div>Tech</div>
-                <div>Tech</div>
-                <div>Tech</div>
+                <div className='tech-list'>
+                    <div>React</div>
+                    <div>Redux</div>
+                    <div>Express</div>
+                    <div>PostgreSQL</div>
+                </div>
             </div>
             <div className='footer-links'>
                 <div className='link-title'>Personal Links</div>
-                <div>Link</div>
-                <div>Link</div>
-                <div>Link</div>
-                <div>Link</div>
+                <div className='link-list'>
+                    <div>Portfolio</div>
+                    <div>LinkedIn</div>
+                    <div>Github</div>
+                </div>
             </div>
         </div>
     </footer>
