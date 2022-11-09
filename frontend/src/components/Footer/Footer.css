@@ -1,0 +1,24 @@
+.chaliced-footer {
+    display: grid;
+    grid-template-rows: 20% 80%;
+    margin: 1rem 0;
+    /* background-color: red; */
+}
+
+.chaliced-footer > * {
+    margin: 2rem;
+}
+
+.footer-title {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footer-tech-links {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-tech-links > * {
+    margin: 0 15em;
+}

@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage";
 import Explore from "./components/ProductComponents/Explore";
 import ProductPage from "./components/ProductComponents/ProductPage";
 import ProfilePage from "./components/UserComponents/ProfilePage";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
@@ -60,6 +61,7 @@ function App() {
           }
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
