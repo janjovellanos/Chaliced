@@ -20,7 +20,7 @@ export default function Footer() {
                 <div className='link-list'>
                     <div>Portfolio</div>
                     <div>LinkedIn</div>
-                    <div>Github</div>
+                    <div>Githubb</div>
                 </div>
             </div>
         </div>
