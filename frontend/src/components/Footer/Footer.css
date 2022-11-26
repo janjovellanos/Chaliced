@@ -19,7 +19,7 @@
 
 .footer-tech-links {
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 40% 30% 30%;
     justify-content: center;
     border: 2px solid rgb(0, 0, 0, 0.0125);
     border-radius: 2px;
@@ -30,14 +30,14 @@
     /* margin: 0 15em; */
 }
 
-.tech-title, .link-title {
+.tech-title, .link-title, .app-title {
     margin: 1em 0 0 1em;
     display: flex;
     /* justify-content: center; */
     width: 100%;
 }
 
-.tech-list, .link-list {
+.tech-list, .link-list{
     display: flex;
     margin: 0 1rem;
     /* justify-content: center; */
@@ -46,13 +46,27 @@
 
 .tech-list > *, .link-list > * {
     margin: 1em;
+    text-decoration: none;
+    color: rgb(0, 0, 0, 0.8);
+}
+
+.link-list > a:hover {
+    text-decoration: underline;
 }
 
 .footer-tech {
-    background: rgb(0, 0, 0, 0.025);
+    background: rgb(0, 0, 0, 0.03);
 }
 
 .footer-links {
+    background: rgb(0, 0, 0, 0.07);
+    width: 100%;
+}
+
+.other-apps {
     background: rgb(0, 0, 0, 0.05);
+    border-radius: 3px;
+    /* border-left: 2px solid rgb(0, 0, 0, 0.1); */
+    /* border-right: 1px solid rgb(0, 0, 0, 0.1); */
     width: 100%;
 }

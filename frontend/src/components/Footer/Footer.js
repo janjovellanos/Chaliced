@@ -12,9 +12,19 @@ export default function Footer() {
                 <div className='tech-list'>
                     <div>React</div>
                     <div>Redux</div>
+                    <div>Sequelize</div>
                     <div>Express</div>
                     <div>PostgreSQL</div>
+                    <div>AWS</div>
                 </div>
+            </div>
+            <div className='other-apps'>
+                <div className='app-title'>Browse Applications</div>
+                <div className='link-list'>
+                    <a>Shair</a>
+                    <a>Instapix</a>
+                </div>
+
             </div>
             <div className='footer-links'>
                 <div className='link-title'>Personal Links</div>
