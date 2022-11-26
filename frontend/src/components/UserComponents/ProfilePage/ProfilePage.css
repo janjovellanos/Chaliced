@@ -1,7 +1,7 @@
 .profile-page-container {
     display: grid;
     grid-template-rows: 25% 10% 10%;
-    height: 40rem;
+    height: 50rem;
 }
 
 .profile-page-header {

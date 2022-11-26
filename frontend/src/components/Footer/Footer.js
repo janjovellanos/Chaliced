@@ -12,7 +12,6 @@ export default function Footer() {
                 <div className='tech-list'>
                     <div>React</div>
                     <div>Redux</div>
-                    <div>Sequelize</div>
                     <div>Express</div>
                     <div>PostgreSQL</div>
                     <div>AWS</div>
