@@ -4,7 +4,8 @@
     margin: 10rem 0 0 0;
     /* border: 2px solid rgb(0, 0, 0, 0.4); */
     font-weight: bold;
-    color: rgb(0, 0, 0, 0.8);
+    font-size: 0.85em;
+    color: rgb(0, 0, 0, 0.5);
 }
 
 .chaliced-footer > * {
@@ -37,6 +38,7 @@
     display: flex;
     /* justify-content: center; */
     width: 100%;
+    color: rgb(0, 0, 0, 0.6);
 }
 
 .tech-list, .link-list{
@@ -49,7 +51,7 @@
 .tech-list > *, .link-list > * {
     margin: 1em;
     text-decoration: none;
-    color: rgb(0, 0, 0, 0.8);
+    color: rgb(0, 0, 0, 0.5);
 }
 
 .link-list > a:hover {
