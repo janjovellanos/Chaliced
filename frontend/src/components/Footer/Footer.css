@@ -1,0 +1,76 @@
+.chaliced-footer {
+    display: grid;
+    grid-template-rows: 20% 80%;
+    margin: 10rem 0 0 0;
+    /* border: 2px solid rgb(0, 0, 0, 0.4); */
+    font-weight: bold;
+    font-size: 0.85em;
+    color: rgb(0, 0, 0, 0.5);
+}
+
+.chaliced-footer > * {
+    margin: 1rem 0 0 0;
+}
+
+.footer-title {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.6em;
+    color: rgb(0, 0, 0, 0.3);
+    font-size: 0.9em;
+}
+
+.footer-tech-links {
+    display: grid;
+    grid-template-columns: 40% 30% 30%;
+    justify-content: center;
+    border: 2px solid rgb(0, 0, 0, 0.0125);
+    border-radius: 2px;
+    border-top: 2px solid rgb(0, 0, 0, 0.075);
+}
+
+.footer-tech-links > * {
+    /* margin: 0 15em; */
+}
+
+.tech-title, .link-title, .app-title {
+    margin: 1em 0 0 2em;
+    display: flex;
+    /* justify-content: center; */
+    width: 100%;
+    color: rgb(0, 0, 0, 0.6);
+}
+
+.tech-list, .link-list{
+    display: flex;
+    margin: 0 1rem;
+    /* justify-content: center; */
+    width: 100%;
+}
+
+.tech-list > *, .link-list > * {
+    margin: 1em;
+    text-decoration: none;
+    color: rgb(0, 0, 0, 0.5);
+}
+
+.link-list > a:hover {
+    text-decoration: underline;
+}
+
+.footer-tech {
+    background: rgb(0, 0, 0, 0.025);
+}
+
+.footer-links {
+    background: rgb(0, 0, 0, 0.066);
+    width: 100%;
+}
+
+.other-apps {
+    background: rgb(0, 0, 0, 0.045);
+    border-radius: 3px;
+    /* border-left: 2px solid rgb(0, 0, 0, 0.1); */
+    /* border-right: 1px solid rgb(0, 0, 0, 0.1); */
+    width: 100%;
+}
