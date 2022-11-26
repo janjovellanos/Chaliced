@@ -21,8 +21,8 @@ export default function Footer() {
             <div className='other-apps'>
                 <div className='app-title'>Browse Applications</div>
                 <div className='link-list'>
-                    <a>Shair</a>
-                    <a>Instapix</a>
+                    <a href='https://on-the-shair.herokuapp.com/'>Shair</a>
+                    <a href='https://instapix-project.herokuapp.com/'>Instapix</a>
                 </div>
 
             </div>
