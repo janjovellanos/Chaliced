@@ -3,6 +3,8 @@
     grid-template-rows: 20% 80%;
     margin: 10rem 0 0 0;
     /* border: 2px solid rgb(0, 0, 0, 0.4); */
+    font-weight: bold;
+    color: rgb(0, 0, 0, 0.8);
 }
 
 .chaliced-footer > * {
@@ -12,6 +14,7 @@
 .footer-title {
     display: flex;
     justify-content: center;
+    padding-top: 0.6em;
 }
 
 .footer-tech-links {
@@ -20,6 +23,7 @@
     justify-content: center;
     border: 2px solid rgb(0, 0, 0, 0.0125);
     border-radius: 2px;
+    border-top: 3px solid rgb(0, 0, 0, 0.075);
 }
 
 .footer-tech-links > * {
@@ -45,10 +49,10 @@
 }
 
 .footer-tech {
-    background: rgb(0, 0, 0, 0.0125);
+    background: rgb(0, 0, 0, 0.025);
 }
 
 .footer-links {
-    background: rgb(0, 0, 0, 0.025);
+    background: rgb(0, 0, 0, 0.05);
     width: 100%;
 }
