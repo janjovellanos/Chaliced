@@ -80,7 +80,7 @@
 
 .items-container-scroll-home {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     grid-template-rows: auto;
     justify-content: center;
     margin: 8px;
