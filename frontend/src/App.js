@@ -57,11 +57,11 @@ function App() {
           <Route exact path="/users/:userId/favorites">
             <ProfilePage />
           </Route>
+          <Footer />
           </>
           }
         </Switch>
       )}
-      {/* <Footer /> */}
     </>
   );
 }
