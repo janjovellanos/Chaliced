@@ -8,6 +8,7 @@ import { restoreCSRF, csrfFetch } from "./store/csrf";
 import configureStore from "./store";
 import * as sessionActions from "./store/session";
 import App from "./App";
+import Footer from "./components/Footer/Footer";
 
 const store = configureStore();
 
